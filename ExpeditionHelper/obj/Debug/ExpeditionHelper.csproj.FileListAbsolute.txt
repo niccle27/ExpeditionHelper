@@ -13,3 +13,5 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.csproj.CoreCompileInputs.cache
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.exe
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.pdb
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\Window1.g.cs
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\Window1.baml

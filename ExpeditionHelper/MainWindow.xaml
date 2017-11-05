@@ -5,19 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <DockPanel>
+        Title="ExpeditionHelper" Height="350" Width="525">
+    <StackPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Expedition">
                 <MenuItem Header="_New"/>
                 <MenuItem Header="_Open"/>
                 <MenuItem Header="_Save"/>
             </MenuItem>
-            <MenuItem Header="My _Account">
+            <MenuItem Header="My _Account" RenderTransformOrigin="0.715,0.566">
                 <MenuItem Header="_Edit"/>
                 <MenuItem Header="Change _Password"/>
+                <MenuItem Header="_Disconnect"/>
             </MenuItem>
         </Menu>
-    </DockPanel>
+        <StackPanel>
+            <Label FontSize="15" FontWeight="Bold" HorizontalAlignment="Center">Titre du voyage</Label>
+            <Border Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <Button Margin="3" Content="new activities"/>
+                        <Button Margin="3" Content="new meal"/>
+                        <Button Margin="3" Content="new transport"/>
+                        <Button Margin="3" Content="new others"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Expander>
+                            <Expander.Header>
+                                <Label FontWeight="DemiBold">01/01/01</Label>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Catégorie:</Label>
+                                        <Label>test</Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Prix:</Label>
+                                        <Label Name="labelPrice">50</Label>
+                                        <Label>$</Label>
+                                    </StackPanel>
+                                    <Label>Commentaire:</Label>
+                                    <TextBlock TextWrapping="WrapWithOverflow">
+                                        Sed fruatur sane hoc solacio atque hanc insignem ignominiam, quoniam uni praeter se inusta sit, putet esse leviorem, dum modo, cuius exemplo se consolatur, eius exitum expectet, praesertim cum in Albucio nec Pisonis libidines nec audacia Gabini fuerit ac tamen hac una plaga conciderit, ignominia senatus.
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </Expander.Content>
+
+                        </Expander>
+                        
+
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+        </StackPanel>
+    </StackPanel>
 
 </Window>
