@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
-        Title="ExpeditionHelper" Height="350" Width="525">
+        Title="ExpeditionHelper" Height="600" Width="800">
     <StackPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Expedition">
@@ -33,7 +33,7 @@
                         <Button Margin="3" Content="new transport"/>
                         <Button Margin="3" Content="new others"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="1">
+                    <StackPanel Grid.Column="1" Name="colonne1">
                         <Expander>
                             <Expander.Header>
                                 <Label FontWeight="DemiBold">01/01/01</Label>
@@ -49,9 +49,8 @@
                                         <Label Name="labelPrice">50</Label>
                                         <Label>$</Label>
                                     </StackPanel>
-                                    <Label>Commentaire:</Label>
-                                    <TextBlock TextWrapping="WrapWithOverflow">
-                                        Sed fruatur sane hoc solacio atque hanc insignem ignominiam, quoniam uni praeter se inusta sit, putet esse leviorem, dum modo, cuius exemplo se consolatur, eius exitum expectet, praesertim cum in Albucio nec Pisonis libidines nec audacia Gabini fuerit ac tamen hac una plaga conciderit, ignominia senatus.
+                                    <TextBlock Width="450" TextWrapping="WrapWithOverflow">
+                                        Sed laeditur hic coetuum magnificus splendor levitate paucorum incondita, ubi nati sunt non reputantium, sed tamquam indulta licentia vitiis ad errores lapsorum ac lasciviam. ut enim Simonides lyricus docet, beate perfecta ratione vieturo ante alia patriam esse convenit gloriosam.
                                     </TextBlock>
                                 </StackPanel>
 
