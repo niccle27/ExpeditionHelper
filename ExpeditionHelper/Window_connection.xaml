@@ -1,0 +1,30 @@
+﻿<Window x:Class="ExpeditionHelper.Window_connection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpeditionHelper"
+        mc:Ignorable="d"
+        Title="Window_connection" Height="170" Width="300">
+    <Border Padding="20">
+        <StackPanel>
+            <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center">Connection</Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label >Login:</Label>
+                <TextBox Grid.Column="1" Name="tb_login"/>
+                <Label Grid.Row="1">Password:</Label>
+                <TextBox Grid.Column="1" Grid.Row="1" Name="tb_password"/>
+
+            </Grid>
+        </StackPanel>
+
+    </Border>
+</Window>

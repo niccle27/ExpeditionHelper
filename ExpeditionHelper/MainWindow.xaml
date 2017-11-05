@@ -14,9 +14,10 @@
                 <MenuItem Header="_Save"/>
             </MenuItem>
             <MenuItem Header="My _Account" RenderTransformOrigin="0.715,0.566">
+                <MenuItem Name="MI_connection" Header="_Connection" Click="MI_connection_Click"/>
                 <MenuItem Header="_Edit"/>
                 <MenuItem Header="Change _Password"/>
-                <MenuItem Header="_Disconnect"/>
+                <MenuItem Header="_Disconnection"/>
             </MenuItem>
         </Menu>
         <StackPanel>
@@ -28,10 +29,10 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Row="0">
-                        <Button Margin="3" Content="new activities"/>
-                        <Button Margin="3" Content="new meal"/>
-                        <Button Margin="3" Content="new transport"/>
-                        <Button Margin="3" Content="new others"/>
+                        <Button Margin="3" Name="btn_new_activities" Content="new activities" Click="btn_new_activities_Click"/>
+                        <Button Margin="3" Name="btn_new_meal" Content="new meal" Click="btn_new_meal_Click"/>
+                        <Button Margin="3" Name="btn_new_transport" Content="new transport" Click="btn_new_transport_Click"/>
+                        <Button Margin="3" Name="btn_new_others" Content="new others" Click="btn_new_others_Click"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Name="colonne1">
                         <Expander>

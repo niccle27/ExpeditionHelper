@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ExpeditionHelper
 {
     /// <summary>
-    /// Logique d'interaction pour Window1.xaml
+    /// Logique d'interaction pour Window_connection.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window_connection : Window
     {
-        public Window1()
+        public Window_connection()
         {
             InitializeComponent();
         }
