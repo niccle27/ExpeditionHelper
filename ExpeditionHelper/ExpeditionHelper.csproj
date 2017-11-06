@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connection_Singleton.cs" />
     <Compile Include="Window_connection.xaml.cs">
       <DependentUpon>Window_connection.xaml</DependentUpon>
     </Compile>
