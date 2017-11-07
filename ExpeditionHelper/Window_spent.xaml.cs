@@ -26,5 +26,25 @@ namespace ExpeditionHelper
             this.category = category;
             InitializeComponent();
         }
+
+        private void btn_ok_spent_Click(object sender, RoutedEventArgs e)// à améliorer pour automatiser ce système
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande=new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText= "insert into spent (`id`, `price`, `comment`) values(id, @price, @comment)";
+                commande.Parameters.AddWithValue("@price", tb_price.Text);
+                commande.Parameters.AddWithValue("@comment", tb_comment.Text);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            this.Close();
+        }
     }
 }

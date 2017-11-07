@@ -62,7 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commande_Singleton.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="Window_connection.xaml.cs">
       <DependentUpon>Window_connection.xaml</DependentUpon>
     </Compile>

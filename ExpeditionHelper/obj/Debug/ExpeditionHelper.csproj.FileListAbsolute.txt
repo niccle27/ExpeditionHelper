@@ -16,3 +16,9 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.pdb
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\Window_connection.g.cs
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\Window_connection.baml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\MySql.Data.dll
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\MySql.Web.dll
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\Google.Protobuf.dll
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\MySql.Data.xml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\MySql.Web.xml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.csprojResolveAssemblyReference.cache
