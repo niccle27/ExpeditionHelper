@@ -2,12 +2,10 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\ExpeditionHelper.exe
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\ExpeditionHelper.pdb
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\MainWindow.g.cs
-D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\Window_spent.g.cs
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\App.g.cs
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper_MarkupCompile.cache
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper_MarkupCompile.lref
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\MainWindow.baml
-D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\Window_spent.baml
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.g.resources
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.Properties.Resources.resources
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.csproj.GenerateResource.Cache
@@ -22,3 +20,5 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\MySql.Data.xml
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\MySql.Web.xml
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.csprojResolveAssemblyReference.cache
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowSpentEntry.g.cs
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowSpentEntry.baml

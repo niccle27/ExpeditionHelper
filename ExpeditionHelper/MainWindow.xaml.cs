@@ -27,25 +27,25 @@ namespace ExpeditionHelper
 
         private void btn_new_activities_Click(object sender, RoutedEventArgs e)
         {
-            Window_spent tmp = new Window_spent("activity");
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.activity);
             tmp.ShowDialog();
         }
 
         private void btn_new_meal_Click(object sender, RoutedEventArgs e)
         {
-            Window_spent tmp = new Window_spent("meal");
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.meal);
             tmp.ShowDialog();
         }
 
         private void btn_new_transport_Click(object sender, RoutedEventArgs e)
         {
-            Window_spent tmp = new Window_spent("transport");
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.transport);
             tmp.ShowDialog();
         }
 
         private void btn_new_others_Click(object sender, RoutedEventArgs e)
         {
-            Window_spent tmp = new Window_spent("other");
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.other);
             tmp.ShowDialog();
         }
 

@@ -63,11 +63,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Connection.cs" />
+    <Compile Include="ManagerSql.cs" />
+    <Compile Include="Spent.cs" />
     <Compile Include="Window_connection.xaml.cs">
       <DependentUpon>Window_connection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window_spent.xaml.cs">
-      <DependentUpon>Window_spent.xaml</DependentUpon>
+    <Compile Include="WindowSpentEntry.xaml.cs">
+      <DependentUpon>WindowSpentEntry.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -85,7 +87,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window_spent.xaml">
+    <Page Include="WindowSpentEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
