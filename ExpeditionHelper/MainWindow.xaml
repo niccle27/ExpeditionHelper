@@ -5,8 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="ExpeditionHelper" Height="600" Width="800">
+    <StackPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Expedition">
+                <MenuItem Header="_New"/>
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+            </MenuItem>
+            <MenuItem Header="My _Account" RenderTransformOrigin="0.715,0.566">
+                <MenuItem Name="MI_connection" Header="_Connection" Click="MI_connection_Click"/>
+                <MenuItem Header="_Edit"/>
+                <MenuItem Header="Change _Password"/>
+                <MenuItem Header="_Disconnection"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel>
+            <Label FontSize="15" FontWeight="Bold" HorizontalAlignment="Center">Titre du voyage</Label>
+            <Border Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <Button Margin="3" Name="btn_new_activities" Content="new activities" Click="btn_new_activities_Click"/>
+                        <Button Margin="3" Name="btn_new_meal" Content="new meal" Click="btn_new_meal_Click"/>
+                        <Button Margin="3" Name="btn_new_transport" Content="new transport" Click="btn_new_transport_Click"/>
+                        <Button Margin="3" Name="btn_new_others" Content="new others" Click="btn_new_others_Click"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Name="colonne1">
+                        <Expander>
+                            <Expander.Header>
+                                <Label FontWeight="DemiBold">01/01/01</Label>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Catégorie:</Label>
+                                        <Label>test</Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Prix:</Label>
+                                        <Label Name="labelPrice">50</Label>
+                                        <Label>$</Label>
+                                    </StackPanel>
+                                    <TextBlock Width="450" TextWrapping="WrapWithOverflow">
+                                        Sed laeditur hic coetuum magnificus splendor levitate paucorum incondita, ubi nati sunt non reputantium, sed tamquam indulta licentia vitiis ad errores lapsorum ac lasciviam. ut enim Simonides lyricus docet, beate perfecta ratione vieturo ante alia patriam esse convenit gloriosam.
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </Expander.Content>
+
+                        </Expander>
+                        
+
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+
 </Window>

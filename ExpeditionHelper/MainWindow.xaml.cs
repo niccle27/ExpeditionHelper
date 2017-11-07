@@ -24,5 +24,35 @@ namespace ExpeditionHelper
         {
             InitializeComponent();
         }
+
+        private void btn_new_activities_Click(object sender, RoutedEventArgs e)
+        {
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.activity);
+            tmp.ShowDialog();
+        }
+
+        private void btn_new_meal_Click(object sender, RoutedEventArgs e)
+        {
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.meal);
+            tmp.ShowDialog();
+        }
+
+        private void btn_new_transport_Click(object sender, RoutedEventArgs e)
+        {
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.transport);
+            tmp.ShowDialog();
+        }
+
+        private void btn_new_others_Click(object sender, RoutedEventArgs e)
+        {
+            WindowSpentEntry tmp = new WindowSpentEntry(Spent.categories.other);
+            tmp.ShowDialog();
+        }
+
+        private void MI_connection_Click(object sender, RoutedEventArgs e)
+        {
+            Window_connection tmp = new Window_connection();
+            tmp.ShowDialog();
+        }
     }
 }
