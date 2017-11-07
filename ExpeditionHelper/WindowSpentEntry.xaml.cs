@@ -31,7 +31,8 @@ namespace ExpeditionHelper
         {
             Spent tmp = new Spent(category,float.Parse(this.tb_price.Text),this.tb_comment.Text);
             ManagerSql.InsertSpent(tmp);
-           
+            UserControlSpent tmpU = new UserControlSpent();
+            ((MainWindow)Application.Current.MainWindow).colonne1.Children.Add(tmpU);
             this.Close();
         }
     }

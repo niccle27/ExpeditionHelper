@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\App.xaml
-3989712726
+41049831711
 
-10-1951267521
+11440118538
 15-1475215531
-MainWindow.xaml;Window_connection.xaml;WindowSpentEntry.xaml;
+MainWindow.xaml;UserControlSpent.xaml;Window_connection.xaml;WindowSpentEntry.xaml;
 
 False
 
