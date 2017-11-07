@@ -20,8 +20,10 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class UserControlSpent : UserControl
     {
-        public UserControlSpent()
+        Spent spent;
+        public UserControlSpent(Spent spent)
         {
+            
             InitializeComponent();
         }
     }

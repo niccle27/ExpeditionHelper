@@ -19,9 +19,9 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class WindowSpentEntry : Window
     {
-        Spent.categories category;
+        int category;
 
-        public WindowSpentEntry(Spent.categories category)
+        public WindowSpentEntry(int category)
         {
             this.category = category;
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace ExpeditionHelper
         {
             Spent tmp = new Spent(category,float.Parse(this.tb_price.Text),this.tb_comment.Text);
             ManagerSql.InsertSpent(tmp);
-            UserControlSpent tmpU = new UserControlSpent();
+            UserControlSpent tmpU = new UserControlSpent(tmp);
             ((MainWindow)Application.Current.MainWindow).colonne1.Children.Add(tmpU);
             this.Close();
         }

@@ -10,11 +10,11 @@ namespace ExpeditionHelper
     {
         public enum categories{ other,activity, meal,transport};
 
-        private categories category;
+        private int category;
         private float price;
         private string comment;
 
-        public categories Category { get => category; set => category = value; }
+        public int Category { get => category; set => category = value; }
         public float Price { get => price; set => price = value; }
         public string Comment { get => comment; set => comment = value; }
 
@@ -22,13 +22,13 @@ namespace ExpeditionHelper
         {
 
         }
-        public Spent(categories category, float price,string comment)
+        public Spent(int category, float price,string comment)
         {
             this.category = category;
             this.price = price;
             this.comment = comment;
         }
-        public void hydrate(categories category, float price, string comment)
+        public void hydrate(int category, float price, string comment)
         {
             this.category = category;
             this.price = price;

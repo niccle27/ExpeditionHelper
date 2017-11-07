@@ -13,17 +13,15 @@
         <Expander.Content>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label>Catégorie:</Label>
-                    <Label>test</Label>
+                    <Label>Category:</Label>
+                    <Label Content="default" Name="lblCategory"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label>Prix:</Label>
-                    <Label Name="labelPrice">50</Label>
+                    <Label>Price:</Label>
+                    <Label Name="lblPrice">50</Label>
                     <Label>$</Label>
                 </StackPanel>
-                <TextBlock Width="450" TextWrapping="WrapWithOverflow">
-                                        Sed laeditur hic coetuum magnificus splendor levitate paucorum incondita, ubi nati sunt non reputantium, sed tamquam indulta licentia vitiis ad errores lapsorum ac lasciviam. ut enim Simonides lyricus docet, beate perfecta ratione vieturo ante alia patriam esse convenit gloriosam.
-                </TextBlock>
+                <TextBlock Name="tbComment" Width="450" TextWrapping="WrapWithOverflow" Text="Default"  />
             </StackPanel>
 
         </Expander.Content>
