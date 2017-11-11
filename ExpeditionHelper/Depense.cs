@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpeditionHelper
 {
-     class Depense
+     public class Depense
     {
         private int id;
         private float price;

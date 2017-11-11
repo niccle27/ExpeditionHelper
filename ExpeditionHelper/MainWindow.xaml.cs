@@ -62,12 +62,17 @@ namespace ExpeditionHelper
             WindowTransport tmp = new WindowTransport();
             tmp.ShowDialog();
         }
-
+        private void btn_new_logement_Click(object sender, RoutedEventArgs e)
+        {
+            WindowLogement tmp = new WindowLogement();
+            tmp.ShowDialog();
+        }
         private void btn_new_divers_Click(object sender, RoutedEventArgs e)
         {
             WindowDivers tmp = new WindowDivers();
             tmp.ShowDialog();
         }
+
         private void MI_connection_Click(object sender, RoutedEventArgs e)
         {
             Window_connection tmp = new Window_connection();
@@ -77,5 +82,7 @@ namespace ExpeditionHelper
         {
             refresh();
         }
+
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpeditionHelper
 {
-    class Nourriture:Depense
+    public class Nourriture :Depense
     {
         private int categorie;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ExpeditionHelper
 {
 
-    class Activite:Depense
+    public class Activite :Depense
     {
         private string ville;
 

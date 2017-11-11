@@ -29,5 +29,19 @@ namespace ExpeditionHelper
             }
 
         }
+        public static void InsertDepense(Depense depense)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
     }
 }

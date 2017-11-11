@@ -32,6 +32,7 @@
                         <Button Margin="3" Name="btn_new_activite" Content="new activities" Click="btn_new_activities_Click"/>
                         <Button Margin="3" Name="btn_new_nourriture" Content="new meal" Click="btn_new_meal_Click"/>
                         <Button Margin="3" Name="btn_new_transport" Content="new transport" Click="btn_new_transport_Click"/>
+                        <Button Margin="3" Name="btn_new_logement" Content="new accomodation" Click="btn_new_logement_Click"/>
                         <Button Margin="3" Name="btn_new_divers" Content="new various element" Click="btn_new_divers_Click"/>
                         <Button Margin="3" Name="btn_refresh" Content="refresh" Click="btn_refresh_Click"/>
                     </StackPanel>

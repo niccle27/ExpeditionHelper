@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpeditionHelper
 {
-    class Transport : Depense
+    public class Transport : Depense
     {
         private string depart;
         private string destination;
