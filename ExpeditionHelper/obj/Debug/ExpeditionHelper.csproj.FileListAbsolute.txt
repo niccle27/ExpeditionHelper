@@ -30,3 +30,7 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowActivites.baml
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowLogement.baml
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowTransport.baml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowDivers.g.cs
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowNourriture.g.cs
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowDivers.baml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowNourriture.baml

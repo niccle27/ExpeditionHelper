@@ -53,28 +53,26 @@ namespace ExpeditionHelper
 
         private void btn_new_meal_Click(object sender, RoutedEventArgs e)
         {
-            WindowActivites tmp = new WindowActivites();
+            WindowNourriture tmp = new WindowNourriture();
             tmp.ShowDialog();
         }
 
         private void btn_new_transport_Click(object sender, RoutedEventArgs e)
         {
-            WindowActivites tmp = new WindowActivites();
+            WindowTransport tmp = new WindowTransport();
             tmp.ShowDialog();
         }
 
-        private void btn_new_others_Click(object sender, RoutedEventArgs e)
+        private void btn_new_divers_Click(object sender, RoutedEventArgs e)
         {
-            WindowActivites tmp = new WindowActivites();
+            WindowDivers tmp = new WindowDivers();
             tmp.ShowDialog();
         }
-
         private void MI_connection_Click(object sender, RoutedEventArgs e)
         {
             Window_connection tmp = new Window_connection();
             tmp.ShowDialog();
         }
-
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
         {
             refresh();

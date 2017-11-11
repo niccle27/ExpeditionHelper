@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
-        Title="Add Transport" MinHeight="372" Height="372" MinWidth="300" Width="300">
+        Title="Add Transport" MinHeight="380" Height="380" MinWidth="300" Width="300">
     <Border Padding="20">
         <StackPanel>
             <Grid>
