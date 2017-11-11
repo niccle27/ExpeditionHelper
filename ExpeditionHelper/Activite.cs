@@ -7,35 +7,20 @@ using System.Threading.Tasks;
 namespace ExpeditionHelper
 {
 
-    class Activite
+    class Activite:Depense
     {
-        private string category;
-        private float price;
-        private string comment;
-        private DateTime m_datetime;
-
-        public string Category { get => category; set => category = value; }
-        public float Price { get => price; set => price = value; }
-        public string Comment { get => comment; set => comment = value; }
-        public DateTime Datetime1 { get => m_datetime; set => m_datetime = value; }
-
         public Activite()
         {
 
         }
-        public Activite(string category, float price, string comment, DateTime m_datetime)
+        public Activite(int id, float price, string comment, DateTime m_dateTime, string depart, string destination) : base( id,  price,  comment,  m_dateTime)
         {
-            this.category = category;
-            this.price = price;
-            this.comment = comment;
-            this.m_datetime = m_datetime;
+
         }
-        public void hydrate(string category, float price, string comment, DateTime m_datetime)
+
+        public void Hydrate(int id, float price, string comment, DateTime m_dateTime, string depart, string destination)
         {
-            this.category = category;
-            this.price = price;
-            this.comment = comment;
-            this.m_datetime = m_datetime;
+            base.Hydrate(id, price, comment, m_dateTime); 
         }
     }
 }
