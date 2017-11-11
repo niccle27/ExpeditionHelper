@@ -27,7 +27,7 @@ namespace ExpeditionHelper
         }
         public void refresh()
         {
-            colonne1.Children.Clear();
+            /*colonne1.Children.Clear();
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "select id_category,price,comment from spent";
             cmd.Connection = Connection.getInstance();
@@ -41,31 +41,31 @@ namespace ExpeditionHelper
                 UserControlSpent userControlSpent_tmp = new UserControlSpent(tmp);
                 colonne1.Children.Add(userControlSpent_tmp);
             }
-            Connection.getInstance().Dispose();
+            Connection.getInstance().Dispose();*/
         }
 
 
         private void btn_new_activities_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.activity);
+            WindowActivites tmp = new WindowActivites();
             tmp.ShowDialog();
         }
 
         private void btn_new_meal_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.meal);
+            WindowActivites tmp = new WindowActivites();
             tmp.ShowDialog();
         }
 
         private void btn_new_transport_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.transport);
+            WindowActivites tmp = new WindowActivites();
             tmp.ShowDialog();
         }
 
         private void btn_new_others_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.other);
+            WindowActivites tmp = new WindowActivites();
             tmp.ShowDialog();
         }
 
