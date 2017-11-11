@@ -15,7 +15,7 @@ namespace ExpeditionHelper
             try
             {
                 commande.Connection = Connection.getInstance();
-                commande.CommandText = "insert into spent (`id`,`category`, `price`, `comment`) values(id,@category, @price, @comment)";
+                commande.CommandText = "insert into spent (`id`,`id_category`, `price`, `comment`) values(id,@category, @price, @comment)";
                 commande.Parameters.AddWithValue("@price", spent.Price);
                 commande.Parameters.AddWithValue("@category", spent.Category);
                 commande.Parameters.AddWithValue("@comment", spent.Comment);
