@@ -17,6 +17,11 @@ namespace ExpeditionHelper
         public string Comment { get => comment; set => comment = value; }
         public DateTime Datetime1 { get => m_datetime; set => m_datetime = value; }
 
+        public Depense()
+        {
+
+        }
+
         public Depense(int id, float price, string comment, DateTime m_dateTime)
         {
             this.id = id;
@@ -24,7 +29,7 @@ namespace ExpeditionHelper
             this.comment = comment;
             this.m_datetime = m_dateTime;
         }
-        public void hydrate(int id, float price, string comment, DateTime m_dateTime)
+        public void Hydrate(int id, float price, string comment, DateTime m_dateTime)
         {
             this.id = id;
             this.price = price;
