@@ -29,7 +29,7 @@ namespace ExpeditionHelper
         {
             colonne1.Children.Clear();
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "select category.nom,price,comment from spent left join category on spent.id=category.id_category";
+            cmd.CommandText = "select id_category,price,comment from spent";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
@@ -41,6 +41,7 @@ namespace ExpeditionHelper
                 UserControlSpent userControlSpent_tmp = new UserControlSpent(tmp);
                 colonne1.Children.Add(userControlSpent_tmp);
             }
+            Connection.getInstance().Dispose();
         }
 
 
@@ -72,6 +73,11 @@ namespace ExpeditionHelper
         {
             Window_connection tmp = new Window_connection();
             tmp.ShowDialog();
+        }
+
+        private void btn_refresh_Click(object sender, RoutedEventArgs e)
+        {
+            refresh();
         }
     }
 }

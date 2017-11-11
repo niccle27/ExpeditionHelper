@@ -30,7 +30,7 @@ namespace ExpeditionHelper
 
         public static MySql.Data.MySqlClient.MySqlConnection getInstance()
         {
-            if (connection == null)
+            if (connection == null || connection.State==System.Data.ConnectionState.Closed)
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
                 string connStr = "server=" + server + ";user=" + user + ";database="

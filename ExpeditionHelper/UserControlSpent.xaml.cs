@@ -23,8 +23,12 @@ namespace ExpeditionHelper
         Spent spent;
         public UserControlSpent(Spent spent)
         {
-            
+            this.spent = spent;
             InitializeComponent();
+            lblPrice.Content = spent.Price.ToString();
+            lblCategory.Content = spent.Category.ToString();
+            tbComment.Text = spent.Comment;
+
         }
     }
 }
