@@ -39,8 +39,6 @@
                         <StackPanel  Name="colonne1" >
                         </StackPanel>
                     </ScrollViewer>
-
-
                 </Grid>
             </Border>
         </StackPanel>
