@@ -23,5 +23,16 @@ namespace ExpeditionHelper
         {
             InitializeComponent();
         }
+
+        private void btn_ok_Click(object sender, RoutedEventArgs e)
+        {
+            Nourriture tmp = new Nourriture(1, float.Parse(tb_price.Text), tb_comment.Text, DateTime.Now,1);
+            ManagerSql.InsertNourriture(tmp);
+            ManagerSql.InsertDepense(tmp);
+
+            //UserControlSpent tmpU = new UserControlSpent(tmp);
+            //((MainWindow)Application.Current.MainWindow).colonne1.Children.Add(tmpU);
+            this.Close();
+        }
     }
 }

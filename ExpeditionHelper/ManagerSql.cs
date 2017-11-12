@@ -134,5 +134,26 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
 
         }
+        public static void InsertNourriture(Nourriture nourriture)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "INSERT INTO `nourritures`(`id_categorieNourriture`)" +
+                    "VALUES (@id_categorieNourriture)";
+                commande.Parameters.AddWithValue("@id_categorieNourriture", 1);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
+
+        }
     }
 }

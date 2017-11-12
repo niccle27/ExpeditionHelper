@@ -24,7 +24,7 @@ namespace ExpeditionHelper
             InitializeComponent();
         }
 
-        private void btn_ok_spent_Click(object sender, RoutedEventArgs e)
+        private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
             Depense tmp = new Depense(1,float.Parse(tb_price.Text),tb_comment.Text,DateTime.Now);
             ManagerSql.InsertDepense(tmp);
