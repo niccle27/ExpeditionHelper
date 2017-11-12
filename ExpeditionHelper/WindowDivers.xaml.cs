@@ -27,7 +27,7 @@ namespace ExpeditionHelper
         private void btn_ok_spent_Click(object sender, RoutedEventArgs e)
         {
             Depense tmp = new Depense(1,float.Parse(tb_price.Text),tb_comment.Text,DateTime.Now);
-            ManagerSql.InsertDepense(tmp,1,1);
+            ManagerSql.InsertDepense(tmp,1);
             //UserControlSpent tmpU = new UserControlSpent(tmp);
             //((MainWindow)Application.Current.MainWindow).colonne1.Children.Add(tmpU);
             this.Close();

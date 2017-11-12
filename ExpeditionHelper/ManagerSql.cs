@@ -18,7 +18,7 @@ namespace ExpeditionHelper
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Depense.categorie.Add(reader.GetValue(0).ToString(), (int)reader.GetValue(1));
+                Depense.categorieTable.Add(reader.GetValue(0).ToString(), (int)reader.GetValue(1));
             }
             Connection.getInstance().Dispose();
         }
@@ -43,7 +43,7 @@ namespace ExpeditionHelper
             }
 
         }
-        public static void InsertDepense(Depense depense,int id_categorie,int id_subCat)
+        public static void InsertDepense(Depense depense,int id_subCat)
         {
             MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
             try
@@ -54,7 +54,7 @@ namespace ExpeditionHelper
                     " VALUES(NOW(),1,@id_categorie,@id_subCat,@price,@comment)";
                 commande.Parameters.AddWithValue("@price", depense.Price);
                 commande.Parameters.AddWithValue("@comment", depense.Comment);
-                commande.Parameters.AddWithValue("@id_categorie", id_categorie);
+                commande.Parameters.AddWithValue("@id_categorie", depense.findCategorie());
                 commande.Parameters.AddWithValue("@id_subCat", id_subCat);
                 commande.Prepare();
                 commande.ExecuteNonQuery();
@@ -75,7 +75,7 @@ namespace ExpeditionHelper
                 commande.CommandText =
                     "INSERT INTO `activites`(`id_categorie`, `ville`) " +
                     "VALUES (@id_categorie,@ville)";
-                commande.Parameters.AddWithValue("@id_categorie", Depense.categorie["activite"]);
+                commande.Parameters.AddWithValue("@id_categorie", Depense.categorieTable["activite"]);
                 commande.Parameters.AddWithValue("@ville",activite.Ville);
                 commande.Prepare();
                 commande.ExecuteNonQuery();

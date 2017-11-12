@@ -65,6 +65,7 @@
     <Compile Include="Activite.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Depense.cs" />
+    <Compile Include="Logement.cs" />
     <Compile Include="ManagerSql.cs" />
     <Compile Include="Nourriture.cs" />
     <Compile Include="Spent.cs" />
