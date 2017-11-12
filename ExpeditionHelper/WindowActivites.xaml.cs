@@ -28,7 +28,7 @@ namespace ExpeditionHelper
         {
             Activite tmp = new Activite(1, float.Parse(tb_price.Text), tb_comment.Text, DateTime.Now, tb_city.Text);
             ManagerSql.InsertActivity(tmp);
-            ManagerSql.InsertDepense(tmp, 1);
+            ManagerSql.InsertDepense(tmp);
 
             //UserControlSpent tmpU = new UserControlSpent(tmp);
             //((MainWindow)Application.Current.MainWindow).colonne1.Children.Add(tmpU);
