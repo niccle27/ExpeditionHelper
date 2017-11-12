@@ -66,5 +66,26 @@ namespace ExpeditionHelper
             }
 
         }
+        public static void InsertActivity(Activite activite)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "INSERT INTO `activites`(`id_categorie`, `ville`) " +
+                    "VALUES (@id_categorie,@ville)";
+                commande.Parameters.AddWithValue("@id_categorie", Depense.categorie["Activity"]);
+                commande.Parameters.AddWithValue("@ville",activite.Ville);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
     }
 }
