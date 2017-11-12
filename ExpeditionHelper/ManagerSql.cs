@@ -12,7 +12,7 @@ namespace ExpeditionHelper
         public static void hydrateCategorie()
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT nom,id_categorie FROM categories";
+            cmd.CommandText = "SELECT nomTable,id_categorie FROM categories";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
@@ -75,7 +75,7 @@ namespace ExpeditionHelper
                 commande.CommandText =
                     "INSERT INTO `activites`(`id_categorie`, `ville`) " +
                     "VALUES (@id_categorie,@ville)";
-                commande.Parameters.AddWithValue("@id_categorie", Depense.categorie["Activity"]);
+                commande.Parameters.AddWithValue("@id_categorie", Depense.categorie["activite"]);
                 commande.Parameters.AddWithValue("@ville",activite.Ville);
                 commande.Prepare();
                 commande.ExecuteNonQuery();

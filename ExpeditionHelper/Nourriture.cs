@@ -8,23 +8,23 @@ namespace ExpeditionHelper
 {
     public class Nourriture :Depense
     {
-        private int categorie;
+        private int categorieNourriture;
 
         public Nourriture()
         {
 
         }
-        public Nourriture(int id, float price, string comment, DateTime m_dateTime, int categorie) : base( id,  price,  comment,  m_dateTime)
+        public Nourriture(int id, float price, string comment, DateTime m_dateTime, int categorieNourriture) : base( id,  price,  comment,  m_dateTime)
         {
-            this.categorie = categorie;
+            this.categorieNourriture = categorieNourriture;
         }
 
-        public int Categorie { get => categorie; set => categorie = value; }
+        public int Categorie { get => categorieNourriture; set => categorieNourriture = value; }
 
-        public void Hydrate(int id, float price, string comment, DateTime m_dateTime, int categorie)
+        public void Hydrate(int id, float price, string comment, DateTime m_dateTime, int categorieNourriture)
         {
             base.Hydrate(id, price, comment, m_dateTime);
-            this.categorie = categorie;
+            this.categorieNourriture = categorieNourriture;
         }
     }
 }
