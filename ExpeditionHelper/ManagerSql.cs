@@ -111,5 +111,28 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
 
         }
+        public static void InsertTransport(Transport transport)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "INSERT INTO `transports`(`id_categorieTransport`, `depart`, `destination`)" +
+                    "VALUES (@id_categorieTransport,@depart,@destination)";
+                commande.Parameters.AddWithValue("@id_categorieTransport", 1);
+                commande.Parameters.AddWithValue("@depart",transport.Depart);
+                commande.Parameters.AddWithValue("@destination", transport.Destination);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
+
+        }
     }
 }
