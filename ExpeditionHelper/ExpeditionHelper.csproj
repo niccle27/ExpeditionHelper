@@ -62,11 +62,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Activite.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="Depense.cs" />
+    <Compile Include="Logement.cs" />
     <Compile Include="ManagerSql.cs" />
+    <Compile Include="Nourriture.cs" />
     <Compile Include="Spent.cs" />
+    <Compile Include="Transport.cs" />
     <Compile Include="UserControlSpent.xaml.cs">
       <DependentUpon>UserControlSpent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowActivites.xaml.cs">
+      <DependentUpon>WindowActivites.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowDivers.xaml.cs">
+      <DependentUpon>WindowDivers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowLogement.xaml.cs">
+      <DependentUpon>WindowLogement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowNourriture.xaml.cs">
+      <DependentUpon>WindowNourriture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowTransport.xaml.cs">
+      <DependentUpon>WindowTransport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window_connection.xaml.cs">
       <DependentUpon>Window_connection.xaml</DependentUpon>
@@ -87,6 +107,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControlSpent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowActivites.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowDivers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowLogement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowNourriture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowTransport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,12 +22,13 @@ namespace ExpeditionHelper
     {
         public MainWindow()
         {
+            ManagerSql.hydrateCategorie();
             InitializeComponent();
             refresh();
         }
         public void refresh()
         {
-            colonne1.Children.Clear();
+            /*colonne1.Children.Clear();
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "select id_category,price,comment from spent";
             cmd.Connection = Connection.getInstance();
@@ -41,31 +42,35 @@ namespace ExpeditionHelper
                 UserControlSpent userControlSpent_tmp = new UserControlSpent(tmp);
                 colonne1.Children.Add(userControlSpent_tmp);
             }
-            Connection.getInstance().Dispose();
+            Connection.getInstance().Dispose();*/
         }
 
 
         private void btn_new_activities_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.activity);
+            WindowActivites tmp = new WindowActivites();
             tmp.ShowDialog();
         }
 
         private void btn_new_meal_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.meal);
+            WindowNourriture tmp = new WindowNourriture();
             tmp.ShowDialog();
         }
 
         private void btn_new_transport_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.transport);
+            WindowTransport tmp = new WindowTransport();
             tmp.ShowDialog();
         }
-
-        private void btn_new_others_Click(object sender, RoutedEventArgs e)
+        private void btn_new_logement_Click(object sender, RoutedEventArgs e)
         {
-            WindowSpentEntry tmp = new WindowSpentEntry((int)Spent.categories.other);
+            WindowLogement tmp = new WindowLogement();
+            tmp.ShowDialog();
+        }
+        private void btn_new_divers_Click(object sender, RoutedEventArgs e)
+        {
+            WindowDivers tmp = new WindowDivers();
             tmp.ShowDialog();
         }
 
@@ -74,10 +79,11 @@ namespace ExpeditionHelper
             Window_connection tmp = new Window_connection();
             tmp.ShowDialog();
         }
-
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
         {
             refresh();
         }
+
+
     }
 }
