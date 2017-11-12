@@ -9,6 +9,20 @@ namespace ExpeditionHelper
 {
     public class ManagerSql
     {
+        public static void hydrateCategorie()
+        {
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
+            cmd.CommandText = "SELECT nom,id_categorie FROM categories";
+            cmd.Connection = Connection.getInstance();
+            cmd.CommandTimeout = 60;
+            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Depense.categorie.Add(reader.GetValue(0).ToString(), (int)reader.GetValue(1));
+            }
+            Connection.getInstance().Dispose();
+        }
+
         public static void InsertSpent(Spent spent)
         {
             MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();

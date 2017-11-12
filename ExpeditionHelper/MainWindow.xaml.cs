@@ -22,6 +22,7 @@ namespace ExpeditionHelper
     {
         public MainWindow()
         {
+            ManagerSql.hydrateCategorie();
             InitializeComponent();
             refresh();
         }

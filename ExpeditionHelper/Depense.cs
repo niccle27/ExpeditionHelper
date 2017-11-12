@@ -8,6 +8,9 @@ namespace ExpeditionHelper
 {
      public class Depense
     {
+        public static Dictionary<string, int> categorie = new Dictionary<string, int>();
+
+
         private int id;
      //   private int depenseCategorie;
         private float price;
