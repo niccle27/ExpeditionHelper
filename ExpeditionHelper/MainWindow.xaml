@@ -25,22 +25,21 @@
             <Border Padding="10">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Row="0">
-                        <Button Margin="3" Name="btn_new_activities" Content="new activities" Click="btn_new_activities_Click"/>
-                        <Button Margin="3" Name="btn_new_meal" Content="new meal" Click="btn_new_meal_Click"/>
+                        <Button Margin="3" Name="btn_new_activite" Content="new activities" Click="btn_new_activities_Click"/>
+                        <Button Margin="3" Name="btn_new_nourriture" Content="new meal" Click="btn_new_meal_Click"/>
                         <Button Margin="3" Name="btn_new_transport" Content="new transport" Click="btn_new_transport_Click"/>
-                        <Button Margin="3" Name="btn_new_others" Content="new others" Click="btn_new_others_Click"/>
+                        <Button Margin="3" Name="btn_new_logement" Content="new accomodation" Click="btn_new_logement_Click"/>
+                        <Button Margin="3" Name="btn_new_divers" Content="new various element" Click="btn_new_divers_Click"/>
                         <Button Margin="3" Name="btn_refresh" Content="refresh" Click="btn_refresh_Click"/>
                     </StackPanel>
                     <ScrollViewer Width="auto" Height="500" Grid.Column="1">
                         <StackPanel  Name="colonne1" >
                         </StackPanel>
                     </ScrollViewer>
-
-
                 </Grid>
             </Border>
         </StackPanel>
