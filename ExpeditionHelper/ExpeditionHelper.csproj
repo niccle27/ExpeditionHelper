@@ -165,5 +165,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\cutlery.png" />
+    <Resource Include="img\bed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\taxi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\money.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

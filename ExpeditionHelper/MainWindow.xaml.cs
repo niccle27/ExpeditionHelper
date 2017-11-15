@@ -46,29 +46,29 @@ namespace ExpeditionHelper
         }
 
 
-        private void btn_new_activities_Click(object sender, RoutedEventArgs e)
+        private void new_activities(object sender, RoutedEventArgs e)
         {
             WindowActivites tmp = new WindowActivites();
             tmp.ShowDialog();
         }
 
-        private void btn_new_meal_Click(object sender, RoutedEventArgs e)
+        private void new_meal(object sender, RoutedEventArgs e)
         {
             WindowNourriture tmp = new WindowNourriture();
             tmp.ShowDialog();
         }
 
-        private void btn_new_transport_Click(object sender, RoutedEventArgs e)
+        private void new_transport(object sender, RoutedEventArgs e)
         {
             WindowTransport tmp = new WindowTransport();
             tmp.ShowDialog();
         }
-        private void btn_new_logement_Click(object sender, RoutedEventArgs e)
+        private void new_logement(object sender, RoutedEventArgs e)
         {
             WindowLogement tmp = new WindowLogement();
             tmp.ShowDialog();
         }
-        private void btn_new_divers_Click(object sender, RoutedEventArgs e)
+        private void new_divers(object sender, RoutedEventArgs e)
         {
             WindowDivers tmp = new WindowDivers();
             tmp.ShowDialog();

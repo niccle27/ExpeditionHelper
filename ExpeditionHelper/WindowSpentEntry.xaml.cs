@@ -29,11 +29,11 @@ namespace ExpeditionHelper
 
         private void btn_ok_spent_Click(object sender, RoutedEventArgs e)// à améliorer pour automatiser ce système
         {
-            Spent tmp = new Spent(category,float.Parse(this.tb_price.Text),this.tb_comment.Text);
+           /* Spent tmp = new Spent(category,float.Parse(this.tb_price.Text),this.tb_comment.Text);
             ManagerSql.InsertSpent(tmp);
             UserControlSpent tmpU = new UserControlSpent(tmp);
             ((MainWindow)Application.Current.MainWindow).colonne1.Children.Add(tmpU);
-            this.Close();
+            this.Close();*/
         }
     }
 }

@@ -6,7 +6,73 @@
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
         Title="ExpeditionHelper" Height="600" Width="800">
-    <StackPanel>
+    <DockPanel>
+
+
+
+
+
+        <!--Definition du status bar -->
+        <StatusBar DockPanel.Dock="Bottom" Background="#FFCFCFCF">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="208"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Budget" Foreground="Green"/>
+                    <Label Content=","/>
+                    <Label Content="Spent" Foreground="Red"/>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2">
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="0,0,10,0" Content="Connection status:"/>
+                    <Ellipse Width="20" Height="20" Fill="#FF1AD11A" />
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+
+        <!--Definition du Tool Bar -->
+        <ToolBarTray DockPanel.Dock="Left" Orientation="Vertical">
+            <ToolBar>
+                <ToolBar.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="10"/>
+                        <Setter Property="Height" Value="10"/>
+                    </Style>
+                </ToolBar.Resources>
+                <Button ToolTip="Hotel" Click="new_logement">
+                    <Image Source="img/bed.png" Height="64" Width="64"/>
+                </Button>
+                <Button ToolTip="Food" Click="new_meal">
+                    <Image Source="img/cutlery.png" Height="64" Width="64"/>
+                </Button>
+                <Button ToolTip="Transport" Click="new_transport">
+                    <Image Source="img/taxi.png" Height="64" Width="64"/>
+                </Button>
+                <Button ToolTip="Activity" Click="new_activities">
+                    <Image Source="img/ticket.png" Height="64" Width="64"/>
+                </Button>
+                <Button ToolTip="Spent" Click="new_divers">
+                    <Image Source="img/money.png" Height="64" Width="64"/>
+                </Button>
+            </ToolBar>
+            <ToolBar>
+                <Button Content="option 4" />
+                <Button Content="option 5" />
+                <Button Content="option 6" />
+            </ToolBar>
+        </ToolBarTray>
+
+        <!--Definition du menu-->
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Expedition">
                 <MenuItem Header="_New"/>
@@ -20,29 +86,25 @@
                 <MenuItem Header="_Disconnection"/>
             </MenuItem>
         </Menu>
-        <StackPanel>
-            <Label FontSize="15" FontWeight="Bold" HorizontalAlignment="Center">Titre du voyage</Label>
-            <Border Padding="10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Row="0">
-                        <Button Margin="3" Name="btn_new_activite" Content="new activities" Click="btn_new_activities_Click"/>
-                        <Button Margin="3" Name="btn_new_nourriture" Content="new meal" Click="btn_new_meal_Click"/>
-                        <Button Margin="3" Name="btn_new_transport" Content="new transport" Click="btn_new_transport_Click"/>
-                        <Button Margin="3" Name="btn_new_logement" Content="new accomodation" Click="btn_new_logement_Click"/>
-                        <Button Margin="3" Name="btn_new_divers" Content="new various element" Click="btn_new_divers_Click"/>
-                        <Button Margin="3" Name="btn_refresh" Content="refresh" Click="btn_refresh_Click"/>
-                    </StackPanel>
-                    <ScrollViewer Width="auto" Height="500" Grid.Column="1">
-                        <StackPanel  Name="colonne1" >
-                        </StackPanel>
-                    </ScrollViewer>
-                </Grid>
-            </Border>
-        </StackPanel>
-    </StackPanel>
 
+
+
+        <Border Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Background="Blue"/>
+                <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
+                <StackPanel Grid.Column="2" Background="Red"/>
+                <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
+                <StackPanel Grid.Column="4" Background="Green"/>
+
+            </Grid>
+        </Border>
+    </DockPanel>
 </Window>
