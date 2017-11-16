@@ -87,7 +87,7 @@
             </MenuItem>
         </Menu>
 
-
+<!-- definition des 3 colonnes-->
 
         <Border Padding="10">
             <Grid>
@@ -110,7 +110,10 @@
                     </ListView>
                 </Grid>
                 <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
-                <StackPanel Grid.Column="2" Background="Red"/>
+                <StackPanel Grid.Column="2">
+                    <Label Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=liste_Voyage}" />
+                    
+                </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
                 <StackPanel Grid.Column="4" Background="Green"/>
 
