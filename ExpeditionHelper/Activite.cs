@@ -9,7 +9,14 @@ namespace ExpeditionHelper
 
     public class Activite :Depense
     {
+        //private string ville;
         private string ville;
+        public string Ville
+        {
+            get { return ville; }
+            set { ville = value; }
+        }
+
 
         public Activite()
         {
@@ -19,8 +26,6 @@ namespace ExpeditionHelper
         {
             this.ville = ville;
         }
-
-        public string Ville { get => ville; set => ville = value; }
 
         public void Hydrate(int id, float price, string comment, DateTime m_dateTime, string ville)
         {

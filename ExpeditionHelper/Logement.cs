@@ -8,8 +8,23 @@ namespace ExpeditionHelper
 {
     public class Logement: Depense
     {
+        /* private string ville;
+         private int categorieLogement;*/
         private string ville;
+
+        public string Ville
+        {
+            get { return ville; }
+            set { ville = value; }
+        }
         private int categorieLogement;
+
+        public int CategorieLogement
+        {
+            get { return categorieLogement; }
+            set { categorieLogement = value; }
+        }
+
 
         public Logement()
         {
@@ -21,9 +36,6 @@ namespace ExpeditionHelper
             this.ville = ville;
             this.categorieLogement = categorieLogement;
         }
-
-        public string Ville { get => ville; set => ville = value; }
-        public int CategorieLogement { get => categorieLogement; set => categorieLogement = value; }
 
         public void Hydrate(int id, float price, string comment, DateTime m_dateTime, string ville, int categorieLogement)
         {

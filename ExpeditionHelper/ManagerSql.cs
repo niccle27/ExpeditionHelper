@@ -9,7 +9,7 @@ namespace ExpeditionHelper
 {
     public class ManagerSql
     {
-        public static void hydrateCategorie()
+        public static void HydrateCategorie()
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "SELECT nomTable,id_categorie FROM categories";
@@ -23,27 +23,6 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
         }
 
-        public static void InsertSpent(Spent spent)
-        {
-            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
-            try
-            {
-                commande.Connection = Connection.getInstance();
-                commande.CommandText = "insert into spent (`id`,`id_category`, `price`, `comment`) values(id,@category, @price, @comment)";
-                commande.Parameters.AddWithValue("@price", spent.Price);
-                commande.Parameters.AddWithValue("@category", spent.Category);
-                commande.Parameters.AddWithValue("@comment", spent.Comment);
-                commande.Prepare();
-                commande.ExecuteNonQuery();
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
-                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            Connection.getInstance().Dispose();
-
-        }
         public static void InsertDepense(Depense depense)
         {
             MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
@@ -53,8 +32,8 @@ namespace ExpeditionHelper
                 commande.CommandText =
                     "insert into depenses (m_datetime, id_voyage, id_categorie, id_subCat, prix, nom)"+
                     " VALUES(NOW(),1,@id_categorie,LAST_INSERT_ID(),@price,@comment)";
-                commande.Parameters.AddWithValue("@price", depense.Price);
-                commande.Parameters.AddWithValue("@comment", depense.Comment);
+                commande.Parameters.AddWithValue("@price", depense.Prix);
+                commande.Parameters.AddWithValue("@comment", depense.Commentaire);
                 commande.Parameters.AddWithValue("@id_categorie", depense.findCategorie());
                 commande.Prepare();
                 commande.ExecuteNonQuery();

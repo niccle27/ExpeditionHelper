@@ -8,7 +8,15 @@ namespace ExpeditionHelper
 {
     public class Nourriture :Depense
     {
+        // private int categorieNourriture;
         private int categorieNourriture;
+
+        public int CategorieNourriture
+        {
+            get { return categorieNourriture; }
+            set { categorieNourriture = value; }
+        }
+
 
         public Nourriture()
         {
@@ -18,8 +26,6 @@ namespace ExpeditionHelper
         {
             this.categorieNourriture = categorieNourriture;
         }
-
-        public int Categorie { get => categorieNourriture; set => categorieNourriture = value; }
 
         public void Hydrate(int id, float price, string comment, DateTime m_dateTime, int categorieNourriture)
         {

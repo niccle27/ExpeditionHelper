@@ -8,10 +8,37 @@ namespace ExpeditionHelper
 {
     class Voyage
     {
-        string nom;
-        DateTime debut;
-        DateTime fin;
-        List<Depense> listeDepense = new List<Depense>();
+       // DateTime fin;
+       // List<Depense> listeDepense = new List<Depense>();
+        private string nom;
+        public string Nom
+        {
+            get { return nom; }
+            set { nom = value; }
+        }
+
+        private DateTime debut;
+        public DateTime Debut
+        {
+            get { return debut; }
+            set { debut = value; }
+        }
+
+        private DateTime fin;
+        public DateTime Fin
+        {
+            get { return fin; }
+            set { fin = value; }
+        }
+
+       private List<Depense> listeDepense = new List<Depense>();
+       public List<Depense> ListeDepense
+        {
+            get { return listeDepense; }
+            set { listeDepense = value; }
+        }
+
+
 
         public Voyage()
         {
@@ -37,9 +64,6 @@ namespace ExpeditionHelper
         {
             ListeDepense.Add(depense);
         }
-        public string Nom { get => nom; set => nom = value; }
-        public DateTime Debut { get => debut; set => debut = value; }
-        public DateTime Fin { get => fin; set => fin = value; }
-        public List<Depense> ListeDepense { get => listeDepense; set => listeDepense = value; }
+        
     }
 }

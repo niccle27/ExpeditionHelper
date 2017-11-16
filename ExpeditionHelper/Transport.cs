@@ -8,8 +8,24 @@ namespace ExpeditionHelper
 {
     public class Transport : Depense
     {
+        /* private string depart;
+         private string destination;*/
         private string depart;
-        private string destination;
+
+        public string Depart
+        {
+            get { return depart; }
+            set { depart = value; }
+        }
+
+        private string  destination;
+
+        public string  Destination
+        {
+            get { return destination; }
+            set { destination = value; }
+        }
+
 
         public Transport()
         {
@@ -20,9 +36,6 @@ namespace ExpeditionHelper
             this.depart = depart;
             this.destination = destination;
         }
-
-        public string Depart { get => depart; set => depart = value; }
-        public string Destination { get => destination; set => destination = value; }
 
         public void Hydrate(int id, float price, string comment, DateTime m_dateTime,string depart,string destination)
         {

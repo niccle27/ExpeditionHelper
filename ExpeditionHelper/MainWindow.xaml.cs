@@ -22,9 +22,8 @@ namespace ExpeditionHelper
     {
         public MainWindow()
         {
-            ManagerSql.hydrateCategorie();
+            ManagerSql.HydrateCategorie();
             InitializeComponent();
-            refresh();
             // juste pour test
             
             List<Voyage> test = new List<Voyage>();
@@ -33,24 +32,6 @@ namespace ExpeditionHelper
             test.Add(new Voyage("france", new DateTime(2014, 1, 1), new DateTime(2014, 1, 10)));
 
 
-        }
-        public void refresh()
-        {
-            /*colonne1.Children.Clear();
-            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "select id_category,price,comment from spent";
-            cmd.Connection = Connection.getInstance();
-            cmd.CommandTimeout = 60;
-            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                object[] values = new object[3];
-                reader.GetValues(values);
-                Spent tmp = new Spent(Convert.ToInt32(values[0]), Convert.ToSingle(values[1]), values[2].ToString());
-                UserControlSpent userControlSpent_tmp = new UserControlSpent(tmp);
-                colonne1.Children.Add(userControlSpent_tmp);
-            }
-            Connection.getInstance().Dispose();*/
         }
 
 
@@ -87,11 +68,5 @@ namespace ExpeditionHelper
             Window_connection tmp = new Window_connection();
             tmp.ShowDialog();
         }
-        private void btn_refresh_Click(object sender, RoutedEventArgs e)
-        {
-            refresh();
-        }
-
-
     }
 }
