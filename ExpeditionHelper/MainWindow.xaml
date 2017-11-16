@@ -111,7 +111,12 @@
                 </Grid>
                 <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
                 <StackPanel Grid.Column="2">
-                    <Label Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=liste_Voyage}" />
+                    <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=liste_Voyage}" />
+                    <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440">
+                        <ListItem>
+                            
+                        </ListItem>
+                    </ListBox>
                     
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
