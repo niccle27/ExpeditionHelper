@@ -25,6 +25,14 @@ namespace ExpeditionHelper
             ManagerSql.hydrateCategorie();
             InitializeComponent();
             refresh();
+            // juste pour test
+            
+            List<Voyage> test = new List<Voyage>();
+            liste_Voyage.ItemsSource = test;
+            test.Add(new Voyage("belgique",new DateTime(2014,1,1),new DateTime(2014, 1, 10)));
+            test.Add(new Voyage("belgique", new DateTime(2014, 1, 1), new DateTime(2014, 1, 10)));
+
+
         }
         public void refresh()
         {

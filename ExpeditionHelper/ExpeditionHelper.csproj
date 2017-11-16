@@ -73,6 +73,7 @@
     <Compile Include="UserControlSpent.xaml.cs">
       <DependentUpon>UserControlSpent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Voyage.cs" />
     <Compile Include="WindowActivites.xaml.cs">
       <DependentUpon>WindowActivites.xaml</DependentUpon>
     </Compile>
