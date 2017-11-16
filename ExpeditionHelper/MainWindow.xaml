@@ -33,7 +33,7 @@
                 </StackPanel>
             </StatusBarItem>
             <StatusBarItem Grid.Column="2">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" >
                     <Label Margin="0,0,10,0" Content="Connection status:"/>
                     <Ellipse Width="20" Height="20" Fill="#FF1AD11A" />
                 </StackPanel>
