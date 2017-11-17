@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ExpeditionHelper
 {
-    class Utilisateur
+    public class Utilisateur
     {
+        static Utilisateur instance;
+
         public Utilisateur()
         {
 
@@ -43,7 +45,6 @@ namespace ExpeditionHelper
             set { password = value; }
         }
 
-
-
+        public static Utilisateur Instance { get => instance; set => instance = value; }
     }
 }

@@ -9,6 +9,21 @@ namespace ExpeditionHelper
 {
     public class ManagerSql
     {
+        //select
+        public static void Connection_Utilisateur(Utilisateur utilisateur)
+        {
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
+            cmd.CommandText = "SELECT COUNT(`id_utilisateur`)as nombre,`id_utilisateur`, `login`, `password` FROM utilisateurs where login=@login";
+            cmd.Connection = Connection.getInstance();
+            cmd.CommandTimeout = 60;
+            cmd.Parameters.AddWithValue("@login", utilisateur.Login);
+            cmd.Prepare();
+            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            if((int)reader.GetValue(0) == 1  && reader != null && utilisateur.Password== reader.GetValue(3).ToString())
+            {
+                Utilisateur.Instance= new Utilisateur((int)reader.GetValue(1), reader.GetValue(2).ToString(), reader.GetValue(3).ToString());
+            }
+        }
         public static void HydrateCategorie()
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
@@ -22,7 +37,7 @@ namespace ExpeditionHelper
             }
             Connection.getInstance().Dispose();
         }
-
+        //insert
         public static void InsertDepense(Depense depense)
         {
             MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();

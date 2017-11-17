@@ -19,8 +19,8 @@ namespace ExpeditionHelper
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-       
+    {        
+
         public MainWindow()
         {
             ManagerSql.HydrateCategorie();
@@ -35,6 +35,15 @@ namespace ExpeditionHelper
 
         }
 
+        public void load(Utilisateur utilisateur)
+        {
+            if(Utilisateur.Instance!=null)
+            {
+                //loader ce qu'il faut 
+                //test
+                TitreVoyage.Content = Utilisateur.Instance.Login;
+            }
+        }
 
         private void new_activities(object sender, RoutedEventArgs e)
         {

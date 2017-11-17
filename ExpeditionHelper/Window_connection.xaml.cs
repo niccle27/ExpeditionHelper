@@ -23,5 +23,11 @@ namespace ExpeditionHelper
         {
             InitializeComponent();
         }
+
+        private void btn_connection_Click(object sender, RoutedEventArgs e)
+        {
+            Utilisateur tmp = new Utilisateur(0, tb_login.Text, tb_password.Text);
+            ManagerSql.Connection_Utilisateur(tmp);
+        }
     }
 }

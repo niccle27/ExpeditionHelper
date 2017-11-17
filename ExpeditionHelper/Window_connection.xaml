@@ -22,8 +22,8 @@
                 <TextBox Grid.Column="1" Name="tb_login"/>
                 <Label Grid.Row="1">Password:</Label>
                 <TextBox Grid.Column="1" Grid.Row="1" Name="tb_password"/>
-
             </Grid>
+            <Button Content="connection" Name="btn_connection" Click="btn_connection_Click"/>
         </StackPanel>
 
     </Border>
