@@ -10,26 +10,76 @@ namespace ExpeditionHelper
     {
         public static Dictionary<string, int> categorieTable = new Dictionary<string, int>();
 
+        private string nom;
+
+        public string Nom
+        {
+            get { return nom; }
+            set { nom = value; }
+        }
 
 
-        private int id_categorieTable;
-        private int depenseCategorie=0;
-        private float price;
-        private string comment;
+        private int id_Voyage;
+
+        public int Id_Voyage
+        {
+            get { return id_Voyage; }
+            set { id_Voyage = value; }
+        }
+
+
+        private int id_Depense;
+
+        public int Id_Depense
+        {
+            get { return id_Depense; }
+            set { id_Depense = value; }
+        }
+
+
+        private int id_CategorieTable;
+        public int Id_CategorieTable
+        {
+            get { return id_CategorieTable; }
+            set { id_CategorieTable = value; }
+        }
+
+        private int depenseCategorie;
+        public int DepenseCategorie
+        {
+            get { return depenseCategorie; }
+            set { depenseCategorie = value; }
+        }
+
+        private float prix;
+        public float Prix
+        {
+            get { return prix; }
+            set { prix = value; }
+        }
+
+        private string commentaire;
+
+        public string Commentaire
+        {
+            get { return commentaire; }
+            set { commentaire = value; }
+        }
         private DateTime m_datetime;
 
-        public float Price { get => price; set => price = value; }
-        public string Comment { get => comment; set => comment = value; }
-        public DateTime Datetime1 { get => m_datetime; set => m_datetime = value; }
-        public int DepenseCategorie { get => depenseCategorie; set => depenseCategorie = value; }
-        public int Id_categorieTable { get => id_categorieTable; set => id_categorieTable = value; }
+        public DateTime M_datetime
+        {
+            get { return m_datetime; }
+            set { m_datetime = value; }
+        }
+
 
         public string GetCategorieTableName()
         {
             if (depenseCategorie == 0) findCategorie();
                 foreach (var element in categorieTable)
                 {
-                    if (element.Value == Id_categorieTable) return element.Key;
+                    if (element.Value == id_CategorieTable) return element.Key;
                 }
             return "NULL";
         }
@@ -39,11 +89,14 @@ namespace ExpeditionHelper
 
         }
 
-        public Depense(int id, float price, string comment, DateTime m_dateTime)
+        public Depense(int id_Depense,int Id_Voyage, int id_CategorieTable, float prix,string nom, string commentaire, DateTime m_dateTime)
         {
-            this.id_categorieTable = id;
-            this.price = price;
-            this.comment = comment;
+            this.nom = nom;
+            this.id_Voyage = Id_Voyage;
+            this.id_Depense = id_Depense;
+            this.id_CategorieTable = id_CategorieTable;
+            this.Prix = prix;
+            this.commentaire = commentaire;
             this.m_datetime = m_dateTime;
         }
         public int findCategorie()
@@ -56,11 +109,14 @@ namespace ExpeditionHelper
             return depenseCategorie;
         }
 
-        public void Hydrate(int id, float price, string comment, DateTime m_dateTime)
+        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime)
         {
-            this.id_categorieTable = id;
-            this.price = price;
-            this.comment = comment;
+            this.nom = nom;
+            this.id_Voyage = Id_Voyage;
+            this.id_Depense = id_Depense;
+            this.id_CategorieTable = id_CategorieTable;
+            this.Prix = prix;
+            this.commentaire = commentaire;
             this.m_datetime = m_dateTime;
         }
 

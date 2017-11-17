@@ -68,11 +68,8 @@
     <Compile Include="Logement.cs" />
     <Compile Include="ManagerSql.cs" />
     <Compile Include="Nourriture.cs" />
-    <Compile Include="Spent.cs" />
     <Compile Include="Transport.cs" />
-    <Compile Include="UserControlSpent.xaml.cs">
-      <DependentUpon>UserControlSpent.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Voyage.cs" />
     <Compile Include="WindowActivites.xaml.cs">
       <DependentUpon>WindowActivites.xaml</DependentUpon>
     </Compile>
@@ -91,9 +88,6 @@
     <Compile Include="Window_connection.xaml.cs">
       <DependentUpon>Window_connection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowSpentEntry.xaml.cs">
-      <DependentUpon>WindowSpentEntry.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,10 +100,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControlSpent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="WindowActivites.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,10 +121,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window_connection.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WindowSpentEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +150,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\cutlery.png" />
+    <Resource Include="img\bed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\taxi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\money.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
