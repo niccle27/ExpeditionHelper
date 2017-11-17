@@ -8,7 +8,14 @@ namespace ExpeditionHelper
 {
     public class Nourriture :Depense
     {
-        // private int categorieNourriture;
+        private int id_Nourriture;
+
+        public int Id_Nourriture
+        {
+            get { return id_Nourriture; }
+            set { id_Nourriture = value; }
+        }
+
         private int categorieNourriture;
 
         public int CategorieNourriture

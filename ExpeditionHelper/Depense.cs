@@ -10,6 +10,15 @@ namespace ExpeditionHelper
     {
         public static Dictionary<string, int> categorieTable = new Dictionary<string, int>();
 
+        private int id_depense;
+
+        public int Id_depense
+        {
+            get { return id_depense; }
+            set { id_depense = value; }
+        }
+
+
         private int id_categorieTable;
         public int Id_categorieTable
         {

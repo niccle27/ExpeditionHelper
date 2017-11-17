@@ -8,8 +8,15 @@ namespace ExpeditionHelper
 {
     public class Logement: Depense
     {
-        /* private string ville;
-         private int categorieLogement;*/
+        private int id_logement;
+
+        public int Id_logement
+        {
+            get { return id_logement; }
+            set { id_logement = value; }
+        }
+
+
         private string ville;
 
         public string Ville

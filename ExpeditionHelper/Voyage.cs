@@ -8,8 +8,16 @@ namespace ExpeditionHelper
 {
     class Voyage
     {
-       // DateTime fin;
-       // List<Depense> listeDepense = new List<Depense>();
+        private int id_Voyage;
+
+        public int Id_Voyage
+        {
+            get { return id_Voyage; }
+            set { id_Voyage = value; }
+        }
+
+        // DateTime fin;
+        // List<Depense> listeDepense = new List<Depense>();
         private string nom;
         public string Nom
         {

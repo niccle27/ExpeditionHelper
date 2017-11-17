@@ -9,7 +9,15 @@ namespace ExpeditionHelper
 
     public class Activite :Depense
     {
-        //private string ville;
+        private int id_activite;
+
+        public int Id_activite
+        {
+            get { return id_activite; }
+            set { id_activite = value; }
+        }
+
+
         private string ville;
         public string Ville
         {

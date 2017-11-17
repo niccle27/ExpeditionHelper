@@ -8,8 +8,15 @@ namespace ExpeditionHelper
 {
     public class Transport : Depense
     {
-        /* private string depart;
-         private string destination;*/
+        private int id_Transport;
+
+        public int Id_Transport
+        {
+            get { return id_Transport; }
+            set { id_Transport = value; }
+        }
+
+
         private string depart;
 
         public string Depart
