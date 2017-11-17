@@ -10,20 +10,38 @@ namespace ExpeditionHelper
     {
         public static Dictionary<string, int> categorieTable = new Dictionary<string, int>();
 
-        private int id_depense;
+        private string nom;
 
-        public int Id_depense
+        public string Nom
         {
-            get { return id_depense; }
-            set { id_depense = value; }
+            get { return nom; }
+            set { nom = value; }
         }
 
 
-        private int id_categorieTable;
-        public int Id_categorieTable
+        private int id_Voyage;
+
+        public int Id_Voyage
         {
-            get { return id_categorieTable; }
-            set { id_categorieTable = value; }
+            get { return id_Voyage; }
+            set { id_Voyage = value; }
+        }
+
+
+        private int id_Depense;
+
+        public int Id_Depense
+        {
+            get { return id_Depense; }
+            set { id_Depense = value; }
+        }
+
+
+        private int id_CategorieTable;
+        public int Id_CategorieTable
+        {
+            get { return id_CategorieTable; }
+            set { id_CategorieTable = value; }
         }
 
         private int depenseCategorie;
@@ -61,7 +79,7 @@ namespace ExpeditionHelper
             if (depenseCategorie == 0) findCategorie();
                 foreach (var element in categorieTable)
                 {
-                    if (element.Value == Id_categorieTable) return element.Key;
+                    if (element.Value == id_CategorieTable) return element.Key;
                 }
             return "NULL";
         }
@@ -71,9 +89,12 @@ namespace ExpeditionHelper
 
         }
 
-        public Depense(int id, float prix, string commentaire, DateTime m_dateTime)
+        public Depense(int id_Depense,int Id_Voyage, int id_CategorieTable, float prix,string nom, string commentaire, DateTime m_dateTime)
         {
-            this.id_categorieTable = id;
+            this.nom = nom;
+            this.id_Voyage = Id_Voyage;
+            this.id_Depense = id_Depense;
+            this.id_CategorieTable = id_CategorieTable;
             this.Prix = prix;
             this.commentaire = commentaire;
             this.m_datetime = m_dateTime;
@@ -88,9 +109,12 @@ namespace ExpeditionHelper
             return depenseCategorie;
         }
 
-        public void Hydrate(int id, float prix, string commentaire, DateTime m_dateTime)
+        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime)
         {
-            this.id_categorieTable = id;
+            this.nom = nom;
+            this.id_Voyage = Id_Voyage;
+            this.id_Depense = id_Depense;
+            this.id_CategorieTable = id_CategorieTable;
             this.Prix = prix;
             this.commentaire = commentaire;
             this.m_datetime = m_dateTime;

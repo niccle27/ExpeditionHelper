@@ -8,12 +8,12 @@ namespace ExpeditionHelper
 {
     public class Logement: Depense
     {
-        private int id_logement;
+        private int id_Logement;
 
-        public int Id_logement
+        public int Id_Logement
         {
-            get { return id_logement; }
-            set { id_logement = value; }
+            get { return id_Logement; }
+            set { id_Logement = value; }
         }
 
 
@@ -37,16 +37,16 @@ namespace ExpeditionHelper
         {
 
         }
-        public Logement(int id, float price, string comment, DateTime m_dateTime,string ville,int categorieLogement)
-            : base( id,  price,  comment,  m_dateTime)
+        public Logement(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string ville,int categorieLogement)
+            : base(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime)
         {
             this.ville = ville;
             this.categorieLogement = categorieLogement;
         }
 
-        public void Hydrate(int id, float price, string comment, DateTime m_dateTime, string ville, int categorieLogement)
+        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string ville, int categorieLogement)
         {
-            base.Hydrate(id, price, comment, m_dateTime);
+            base.Hydrate(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime);
             this.ville = ville;
             this.categorieLogement = categorieLogement;
         }

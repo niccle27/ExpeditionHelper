@@ -30,11 +30,13 @@ namespace ExpeditionHelper
             {
                 commande.Connection = Connection.getInstance();
                 commande.CommandText =
-                    "insert into depenses (m_datetime, id_voyage, id_categorie, id_subCat, prix, nom)"+
-                    " VALUES(NOW(),1,@id_categorie,LAST_INSERT_ID(),@price,@comment)";
-                commande.Parameters.AddWithValue("@price", depense.Prix);
-                commande.Parameters.AddWithValue("@comment", depense.Commentaire);
+                    "insert into depenses (`m_datetime`, `id_voyage`, `id_categorie`, `id_subCat`, `prix`, `nom`, `commentaire`)" +
+                    " VALUES(NOW(),@id_voyage,@id_categorie,LAST_INSERT_ID(),@prix,@nom,@commentaire)";
+                commande.Parameters.AddWithValue("@id_voyage", 1);
                 commande.Parameters.AddWithValue("@id_categorie", depense.findCategorie());
+                commande.Parameters.AddWithValue("@prix", depense.Prix);
+                commande.Parameters.AddWithValue("@nom", depense.Nom);
+                commande.Parameters.AddWithValue("@commentaire", depense.Commentaire);
                 commande.Prepare();
                 commande.ExecuteNonQuery();
             }

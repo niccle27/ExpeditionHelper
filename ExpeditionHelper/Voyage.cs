@@ -16,8 +16,6 @@ namespace ExpeditionHelper
             set { id_Voyage = value; }
         }
 
-        // DateTime fin;
-        // List<Depense> listeDepense = new List<Depense>();
         private string nom;
         public string Nom
         {
@@ -52,14 +50,16 @@ namespace ExpeditionHelper
         {
 
         }
-        public Voyage(string nom, DateTime debut, DateTime fin)
+        public Voyage(int id,string nom, DateTime debut, DateTime fin)
         {
+            this.id_Voyage = id;
             this.nom = nom;
             this.debut = debut;
             this.fin = fin;
         }
-        public void Hydrate(string nom, DateTime debut, DateTime fin)
+        public void Hydrate(int id, string nom, DateTime debut, DateTime fin)
         {
+            this.id_Voyage = id;
             this.nom = nom;
             this.debut = debut;
             this.fin = fin;

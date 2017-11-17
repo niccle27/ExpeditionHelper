@@ -29,14 +29,15 @@ namespace ExpeditionHelper
         {
 
         }
-        public Nourriture(int id, float price, string comment, DateTime m_dateTime, int categorieNourriture) : base( id,  price,  comment,  m_dateTime)
+        public Nourriture(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, int categorieNourriture)
+            : base(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime)
         {
             this.categorieNourriture = categorieNourriture;
         }
 
-        public void Hydrate(int id, float price, string comment, DateTime m_dateTime, int categorieNourriture)
+        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, int categorieNourriture)
         {
-            base.Hydrate(id, price, comment, m_dateTime);
+            base.Hydrate(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime);
             this.categorieNourriture = categorieNourriture;
         }
     }
