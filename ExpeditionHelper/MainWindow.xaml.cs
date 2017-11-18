@@ -46,8 +46,8 @@ namespace ExpeditionHelper
 
         public void ReLoad()
         {
-            listeDeVoyage=ManagerSql.SelectVoyages();
-            listView_Voyage.ItemsSource = listeDeVoyage;
+            listeDeVoyage.AddRange(ManagerSql.SelectVoyages());
+            listView_Voyage.Items.Refresh();
         }
 
         private void new_activities(object sender, RoutedEventArgs e)
