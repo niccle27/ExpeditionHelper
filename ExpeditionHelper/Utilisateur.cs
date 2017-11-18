@@ -31,7 +31,7 @@ namespace ExpeditionHelper
             this.id_Utilisateur = id_utilisateur;
             this.login = login;
             this.password = password;
-            Instance.OnModification(EventArgs.Empty);
+           // Instance.OnModification(EventArgs.Empty);
         }
         public void hydrate(int id_utilisateur, string login, string password)
         {
@@ -40,12 +40,18 @@ namespace ExpeditionHelper
             this.password = password;
             Instance.OnModification(EventArgs.Empty);
         }
+        public void hydrate(Utilisateur utilisateur)
+        {
+            this.id_Utilisateur = utilisateur.Id_utilisateur;
+            this.login = utilisateur.Login;
+            this.password = utilisateur.Password;
+            Instance.OnModification(EventArgs.Empty);
+        }
         private int id_Utilisateur;
         public int Id_utilisateur
         {
             get { return id_Utilisateur; }
             set { id_Utilisateur = value;
-                Instance.OnModification(EventArgs.Empty);
             }
         }
         private string login;
@@ -53,7 +59,6 @@ namespace ExpeditionHelper
         {
             get { return login; }
             set { login = value;
-                Instance.OnModification(EventArgs.Empty);
             }
         }
         private string password;
@@ -61,7 +66,6 @@ namespace ExpeditionHelper
         {
             get { return password; }
             set { password = value;
-                instance.OnModification(EventArgs.Empty);
             }
         }
 

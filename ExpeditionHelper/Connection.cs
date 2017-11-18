@@ -21,7 +21,6 @@ namespace ExpeditionHelper
         static private string server = "localhost";
         static private string user = "root";
         static private string password = "";
-        //static private string database = "testc#";
         static private string database = "eh";
         static private string port = "3306";
 

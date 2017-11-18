@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpeditionHelper
 {
-    class Voyage
+    public class Voyage
     {
         private int id_Voyage;
 
