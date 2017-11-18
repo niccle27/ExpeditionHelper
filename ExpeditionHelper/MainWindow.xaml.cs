@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,8 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Voyage> listeDeVoyage = new List<Voyage>();
+        //List<Voyage> listeDeVoyage = new List<Voyage>();
+        ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
 
         public void OnUtilisateurModification(Object sender, EventArgs e)
         {
@@ -46,8 +48,9 @@ namespace ExpeditionHelper
 
         public void ReLoad()
         {
-            listeDeVoyage.AddRange(ManagerSql.SelectVoyages());
-            listView_Voyage.Items.Refresh();
+            ManagerSql.SelectVoyages(listeDeVoyage);
+            //listeDeVoyage.AddRange(ManagerSql.SelectVoyages());
+            //listView_Voyage.Items.Refresh();
         }
 
         private void new_activities(object sender, RoutedEventArgs e)

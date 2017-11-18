@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,10 @@ namespace ExpeditionHelper
     public class ManagerSql
     {
         //select
-        public static List<Voyage> SelectVoyages()
+        public static void SelectVoyages(ObservableCollection<Voyage> listeDeVoyage)
         {
-            List<Voyage> listeDeVoyage = new List<Voyage>();
+            //List<Voyage> listeDeVoyage = new List<Voyage>();
+            //ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "SELECT `id_voyage`,`name`, `date_depart`, `date_retour` FROM `voyages` where `id_utilisateur`=(1)";
             cmd.Connection = Connection.getInstance();
@@ -26,7 +28,6 @@ namespace ExpeditionHelper
                 listeDeVoyage.Add(tmp);
             }
             Connection.getInstance().Dispose();
-            return listeDeVoyage;
         }
 
         public static void Connection_Utilisateur(Utilisateur utilisateur)
