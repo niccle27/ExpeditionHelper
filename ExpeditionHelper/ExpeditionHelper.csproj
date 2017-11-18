@@ -69,6 +69,7 @@
     <Compile Include="ManagerSql.cs" />
     <Compile Include="Nourriture.cs" />
     <Compile Include="Transport.cs" />
+    <Compile Include="Utilisateur.cs" />
     <Compile Include="Voyage.cs" />
     <Compile Include="WindowActivites.xaml.cs">
       <DependentUpon>WindowActivites.xaml</DependentUpon>
