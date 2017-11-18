@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
-        Title="Window_connection" Height="170" Width="300">
+        Title="Window_connection" Height="200" Width="300">
     <Border Padding="20">
         <StackPanel>
             <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center">Connection</Label>

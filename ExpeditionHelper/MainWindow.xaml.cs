@@ -19,30 +19,33 @@ namespace ExpeditionHelper
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {        
+    {
+        public void OnUtilisateurModification(Object sender, EventArgs e)
+        {
+            ReLoad();
+        }
+
 
         public MainWindow()
         {
             ManagerSql.HydrateCategorie();
             InitializeComponent();
+            Utilisateur.Instance.Modification += OnUtilisateurModification;
             // juste pour test
-            
-           /* List<Voyage> test = new List<Voyage>();
-            liste_Voyage.ItemsSource = test;
-            test.Add(new Voyage("belgique",new DateTime(2014,1,1),new DateTime(2014, 1, 10)));
-            test.Add(new Voyage("france", new DateTime(2014, 1, 1), new DateTime(2014, 1, 10)));*/
+
+            /* List<Voyage> test = new List<Voyage>();
+             liste_Voyage.ItemsSource = test;
+             test.Add(new Voyage("belgique",new DateTime(2014,1,1),new DateTime(2014, 1, 10)));
+             test.Add(new Voyage("france", new DateTime(2014, 1, 1), new DateTime(2014, 1, 10)));*/
 
 
         }
 
-        public void load(Utilisateur utilisateur)
+        public void ReLoad()
         {
-            if(Utilisateur.Instance!=null)
-            {
-                //loader ce qu'il faut 
+            //loader ce qu'il faut 
                 //test
                 TitreVoyage.Content = Utilisateur.Instance.Login;
-            }
         }
 
         private void new_activities(object sender, RoutedEventArgs e)

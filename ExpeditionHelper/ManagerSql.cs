@@ -13,16 +13,21 @@ namespace ExpeditionHelper
         public static void Connection_Utilisateur(Utilisateur utilisateur)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT COUNT(`id_utilisateur`)as nombre,`id_utilisateur`, `login`, `password` FROM utilisateurs where login=@login";
+            cmd.CommandText = "SELECT COUNT(`id_utilisateur`)as nombre,`id_utilisateur`, `login`, `password` FROM utilisateurs where `login`='admin'";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
-            cmd.Parameters.AddWithValue("@login", utilisateur.Login);
-            cmd.Prepare();
+            //cmd.Parameters.AddWithValue("@login", utilisateur.Login);//"admin");
+            //cmd.Prepare();
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
-            if((int)reader.GetValue(0) == 1  && reader != null && utilisateur.Password== reader.GetValue(3).ToString())
+            while(reader.Read())
             {
-                Utilisateur.Instance= new Utilisateur((int)reader.GetValue(1), reader.GetValue(2).ToString(), reader.GetValue(3).ToString());
+                //if((int)reader.GetValue(0) == 1  && utilisateur.Password== reader.GetValue(3).ToString())
+                {
+                    Utilisateur.Instance.hydrate((int)reader.GetValue(1), reader.GetValue(2).ToString(), reader.GetValue(3).ToString());
+                    return;
+                }
             }
+            Connection.getInstance().Dispose();
         }
         public static void HydrateCategorie()
         {

@@ -28,6 +28,7 @@ namespace ExpeditionHelper
         {
             Utilisateur tmp = new Utilisateur(0, tb_login.Text, tb_password.Text);
             ManagerSql.Connection_Utilisateur(tmp);
+            this.Close();
         }
     }
 }
