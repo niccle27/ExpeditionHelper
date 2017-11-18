@@ -36,21 +36,11 @@ namespace ExpeditionHelper
             Utilisateur.Instance.Modification += OnUtilisateurModification;
             InitializeComponent();
             listView_Voyage.ItemsSource = listeDeVoyage;
-            // juste pour test
-
-            
-             
-             /*test.Add(new Voyage("belgique",new DateTime(2014,1,1),new DateTime(2014, 1, 10)));
-             test.Add(new Voyage("france", new DateTime(2014, 1, 1), new DateTime(2014, 1, 10)));*/
-
-
         }
 
         public void ReLoad()
         {
-            ManagerSql.SelectVoyages(listeDeVoyage);
-            //listeDeVoyage.AddRange(ManagerSql.SelectVoyages());
-            //listView_Voyage.Items.Refresh();
+            ManagerSql.SelectVoyages(listeDeVoyage);// refresh automatique via observableCollection
         }
 
         private void new_activities(object sender, RoutedEventArgs e)
