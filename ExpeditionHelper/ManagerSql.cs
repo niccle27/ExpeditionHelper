@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,48 @@ namespace ExpeditionHelper
 {
     public class ManagerSql
     {
+        //select
+        public static void SelectVoyages(ObservableCollection<Voyage> listeDeVoyage)
+        {
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
+            cmd.CommandText = "SELECT `id_voyage`,`name`, `date_depart`, `date_retour` FROM `voyages` where `id_utilisateur`=(@id_utilisateur)";
+            cmd.Connection = Connection.getInstance();
+            cmd.CommandTimeout = 60;
+            cmd.Parameters.AddWithValue("@id_utilisateur", Utilisateur.Instance.Id_utilisateur);
+            cmd.Prepare();
+            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var tmp = new Voyage(Convert.ToInt32(reader.GetValue(0)), reader.GetValue(1).ToString(), DateTime.Now, DateTime.Now);
+                listeDeVoyage.Add(tmp);
+            }
+            Connection.getInstance().Dispose();
+        }
+
+        public static void Connection_Utilisateur(Utilisateur utilisateur)
+        {
+            Utilisateur tmp=null;
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
+            cmd.CommandText = "SELECT COUNT(`id_utilisateur`)as nombre,`id_utilisateur`, `login`, `password` FROM utilisateurs where `login`=(@login) and `password`=(@password)";
+            cmd.Connection = Connection.getInstance();
+            cmd.CommandTimeout = 60;
+            cmd.Parameters.AddWithValue("@login", utilisateur.Login);
+            cmd.Parameters.AddWithValue("@password", utilisateur.Password);
+            cmd.Prepare();
+            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                if(Convert.ToInt32(reader.GetValue(0))== 1  && utilisateur.Password== reader.GetValue(3).ToString())
+                {
+                    //Connection.getInstance().Dispose();
+                    tmp =new Utilisateur((int)reader.GetValue(1), reader.GetValue(2).ToString(), reader.GetValue(3).ToString());
+                    break;
+                }
+            }
+            Connection.getInstance().Dispose();
+            if(tmp!=null) Utilisateur.Instance.hydrate(tmp);
+            // call dispose before hydrating because there must be only a connection at the time
+        }
         public static void HydrateCategorie()
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
@@ -22,7 +65,7 @@ namespace ExpeditionHelper
             }
             Connection.getInstance().Dispose();
         }
-
+        //insert
         public static void InsertDepense(Depense depense)
         {
             MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();

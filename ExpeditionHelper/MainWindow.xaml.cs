@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,20 +21,27 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class MainWindow : Window
     {
+        //List<Voyage> listeDeVoyage = new List<Voyage>();
+        ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
+
+        public void OnUtilisateurModification(Object sender, EventArgs e)
+        {
+            ReLoad();
+        }
+
+
         public MainWindow()
         {
             ManagerSql.HydrateCategorie();
+            Utilisateur.Instance.Modification += OnUtilisateurModification;
             InitializeComponent();
-            // juste pour test
-            
-           /* List<Voyage> test = new List<Voyage>();
-            liste_Voyage.ItemsSource = test;
-            test.Add(new Voyage("belgique",new DateTime(2014,1,1),new DateTime(2014, 1, 10)));
-            test.Add(new Voyage("france", new DateTime(2014, 1, 1), new DateTime(2014, 1, 10)));*/
-
-
+            listView_Voyage.ItemsSource = listeDeVoyage;
         }
 
+        public void ReLoad()
+        {
+            ManagerSql.SelectVoyages(listeDeVoyage);// refresh automatique via observableCollection
+        }
 
         private void new_activities(object sender, RoutedEventArgs e)
         {
