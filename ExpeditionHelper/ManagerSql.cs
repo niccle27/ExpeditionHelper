@@ -14,7 +14,7 @@ namespace ExpeditionHelper
         public static void SelectVoyages(ObservableCollection<Voyage> listeDeVoyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT `id_voyage`,`name`, `date_depart`, `date_retour` FROM `voyages` where `id_utilisateur`=(@id_utilisateur)";
+            cmd.CommandText = "SELECT `id_voyage`,`name`, UNIX_TIMESTAMP(`date_depart`),UNIX_TIMESTAMP(`date_retour`)  FROM `voyages` where `id_utilisateur`=(@id_utilisateur)";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
             cmd.Parameters.AddWithValue("@id_utilisateur", Utilisateur.Instance.Id_utilisateur);
@@ -22,7 +22,9 @@ namespace ExpeditionHelper
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                var tmp = new Voyage(Convert.ToInt32(reader.GetValue(0)), reader.GetValue(1).ToString(), DateTime.Now, DateTime.Now);
+                DateTimeOffset date_depart = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(2)));
+                DateTimeOffset date_retour = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(3)));
+                var tmp = new Voyage(Convert.ToInt32(reader.GetValue(0)), reader.GetValue(1).ToString(), date_depart.DateTime, date_retour.DateTime);
                 listeDeVoyage.Add(tmp);
             }
             Connection.getInstance().Dispose();
