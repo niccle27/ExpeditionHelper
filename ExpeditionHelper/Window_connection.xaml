@@ -5,33 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
-        Title="Window_connection" Height="200" Width="300">
-    <!--   <Border Padding="20">
-        <StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="140"/>
-                </Grid.RowDefinitions>
-
-                <Label FontWeight="DemiBold">Name</Label>
-                <TextBox Margin="15,0,0,15" Grid.Column="1"  Name="tb_name"/>
-                <Label Grid.Row="1" FontWeight="DemiBold">Price</Label>
-                <TextBox Grid.Row="1" Margin="15,0,0,15" Grid.Column="1"  Name="tb_price" />
-                <Label Grid.Row="2" FontWeight="DemiBold">Comment</Label>
-                <TextBox Margin="15,0,0,0" Grid.Row="2" Grid.Column="1" AcceptsReturn="True"  Name="tb_comment"/>
-            </Grid>
-            <Button Margin="10" Content="OK" Width="40" HorizontalAlignment="Center" Name="btn_ok" Click="btn_ok_Click"/>
-        </StackPanel>
-    </Border>-->
+        Title="Window_connection" Height="220" Width="300">    
     <Border Padding="20">
         <StackPanel>
-            <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center">Connection</Label>
+            <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,20">Connection</Label>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

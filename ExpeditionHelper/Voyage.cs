@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,8 +38,8 @@ namespace ExpeditionHelper
             set { fin = value; }
         }
 
-       private List<Depense> listeDepense = new List<Depense>();
-       public List<Depense> ListeDepense
+       private ObservableCollection<Depense> listeDepense = new ObservableCollection<Depense>();
+       public ObservableCollection<Depense> ListeDepense
         {
             get { return listeDepense; }
             set { listeDepense = value; }
@@ -63,10 +64,6 @@ namespace ExpeditionHelper
             this.nom = nom;
             this.debut = debut;
             this.fin = fin;
-        }
-        public void AddList(List<Depense> additionnalList)
-        {
-            ListeDepense.AddRange(additionnalList);
         }
         public void AddDepense(Depense depense)
         {

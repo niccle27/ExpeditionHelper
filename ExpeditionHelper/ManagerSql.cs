@@ -11,6 +11,26 @@ namespace ExpeditionHelper
     public class ManagerSql
     {
         //select
+        public static void SelectDivers(Voyage voyage)
+        {//non testé
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
+            cmd.CommandText = "SELECT `id_depense`, `id_voyage`, `id_categorie`, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`), `id_subCat` FROM `depenses`" +
+                " WHERE `id_voyage`=(@id_voyage) AND `id_categorie`= 0 order by `m_datetime`";
+            cmd.Connection = Connection.getInstance();
+            cmd.CommandTimeout = 60;
+            cmd.Parameters.AddWithValue("@id_voyage", voyage.Id_Voyage);
+            cmd.Prepare();
+            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
+                var tmp = new Depense(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)),0, Convert.ToInt32(reader.GetValue(3)),
+                    reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime);
+                voyage.AddDepense(tmp);
+            }
+            Connection.getInstance().Dispose();
+        }
+
         public static void SelectVoyages(ObservableCollection<Voyage> listeDeVoyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
