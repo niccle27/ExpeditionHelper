@@ -24,7 +24,7 @@ namespace ExpeditionHelper
             {
                 DateTimeOffset date_depart = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(2)));
                 DateTimeOffset date_retour = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(3)));
-                var tmp = new Voyage(Convert.ToInt32(reader.GetValue(0)), reader.GetValue(1).ToString(), date_depart.DateTime, date_retour.DateTime);
+                var tmp = new Voyage(Convert.ToInt32(reader.GetValue(0)), reader.GetValue(1).ToString(), date_depart.UtcDateTime, date_retour.UtcDateTime );
                 listeDeVoyage.Add(tmp);
             }
             Connection.getInstance().Dispose();
