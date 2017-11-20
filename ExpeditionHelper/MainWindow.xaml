@@ -99,7 +99,7 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" >
-                    <ListView Name="listView_Voyage" >
+                    <ListView SelectionMode="Single" Name="listView_Voyage" >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Nom}" />
