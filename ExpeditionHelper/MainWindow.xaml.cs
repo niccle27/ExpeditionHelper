@@ -36,6 +36,9 @@ namespace ExpeditionHelper
             Utilisateur.Instance.Modification += OnUtilisateurModification;
             InitializeComponent();
             listView_Voyage.ItemsSource = listeDeVoyage;
+            /*CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvUsers.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Sex");
+            view.GroupDescriptions.Add(groupDescription);*/
         }
 
         public void ReLoad()

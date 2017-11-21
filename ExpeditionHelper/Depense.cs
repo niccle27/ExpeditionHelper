@@ -10,6 +10,15 @@ namespace ExpeditionHelper
     {
         public static Dictionary<string, int> categorieTable = new Dictionary<string, int>();
 
+        private string date;
+
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+
+
         private string nom;
 
         public string Nom
@@ -70,7 +79,9 @@ namespace ExpeditionHelper
         public DateTime M_datetime
         {
             get { return m_datetime; }
-            set { m_datetime = value; }
+            set { m_datetime = value;
+                this.date = value.Date.ToString("MM/dd/yyyy");
+            }
         }
 
 
@@ -97,7 +108,7 @@ namespace ExpeditionHelper
             this.id_CategorieTable = id_CategorieTable;
             this.Prix = prix;
             this.commentaire = commentaire;
-            this.m_datetime = m_dateTime;
+            this.M_datetime = m_dateTime;
         }
         public int findCategorie()
         {
@@ -117,7 +128,8 @@ namespace ExpeditionHelper
             this.id_CategorieTable = id_CategorieTable;
             this.Prix = prix;
             this.commentaire = commentaire;
-            this.m_datetime = m_dateTime;
+            this.M_datetime = m_dateTime;
+            
         }
 
     }

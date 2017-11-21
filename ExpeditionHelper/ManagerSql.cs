@@ -48,6 +48,10 @@ namespace ExpeditionHelper
                 listeDeVoyage.Add(tmp);
             }
             Connection.getInstance().Dispose();
+            foreach(Voyage voyage in listeDeVoyage)
+            {
+                SelectDivers(voyage);
+            }
         }
 
         public static void Connection_Utilisateur(Utilisateur utilisateur)

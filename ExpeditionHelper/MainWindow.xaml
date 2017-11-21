@@ -112,12 +112,22 @@
                 <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
                 <StackPanel Grid.Column="2">
                     <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=liste_Voyage}" />
-                    <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440">
-                        <ListItem>
-                            
-                        </ListItem>
-                    </ListBox>
-                    
+                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}">
+                        <ListView.Resources>
+                            <DataTemplate DataType = "{x:Type local:Depense}">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Name = "nom_Depense" Content="{Binding Nom}" Margin = "10"/>
+                                        <Label Content=" : " Margin = "10"/>
+                                        <Label Name = "prix_Depense" Content="{Binding Prix}" Margin = "2"/>
+                                        <Label Content="$" />
+                                    </StackPanel>
+                                    <Label Name="datetime_Depense" Content="{Binding M_datetime}" Margin="10"/>
+                                    <TextBlock Name="commentaire_Depense" Text="{Binding Commentaire}" Margin="10"/>
+                                </StackPanel>                                
+                            </DataTemplate>
+                        </ListView.Resources>
+                    </ListView>                    
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
                 <StackPanel Grid.Column="4" Background="Green"/>
