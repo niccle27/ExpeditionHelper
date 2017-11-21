@@ -28,8 +28,12 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <Label Grid.Row="2" FontWeight="DemiBold">City</Label>
                 <TextBox Grid.Row="2" Margin="15,0,0,15" Grid.Column="1"  Name="tb_city"/>
                 <Label Grid.Row="3" FontWeight="DemiBold">Category</Label>
-                <ComboBox Grid.Row="3" Margin="15,0,0,15" Grid.Column="1"  Name="cb_category"/>
-                <Label Grid.Row="4" FontWeight="DemiBold">Comment</Label>
+                <ComboBox SelectedValuePath="Content" Name="cb_categorie" Grid.Row="3" Margin="15,0,0,15" Grid.Column="1">
+                    <ComboBoxItem Content="5 stars hotel"/>
+                    <ComboBoxItem Content="Hotel"/>
+                    <ComboBoxItem Content="Youth hostel"/>
+                </ComboBox>
+                    <Label Grid.Row="4" FontWeight="DemiBold">Comment</Label>
                 <TextBox Margin="15,0,0,0" Grid.Row="4" Grid.Column="1" AcceptsReturn="True"  Name="tb_comment"/>
             </Grid>
             <Button Margin="10" Content="OK" Width="40" HorizontalAlignment="Center" Name="btn_ok" Click="btn_ok_Click"/>

@@ -26,7 +26,7 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Nourriture tmp = new Nourriture(0,1,0, float.Parse(tb_price.Text),tb_name.Text, tb_comment.Text,DateTime.Now,1);
+            Nourriture tmp = new Nourriture(0,1,0, float.Parse(tb_price.Text),tb_name.Text, tb_comment.Text,DateTime.Now,cb_categorie.Text);
             ManagerSql.InsertNourriture(tmp);
             ManagerSql.InsertDepense(tmp);
             this.Close();

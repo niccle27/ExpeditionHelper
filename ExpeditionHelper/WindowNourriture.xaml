@@ -25,7 +25,11 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <Label Grid.Row="1" FontWeight="DemiBold">Price</Label>
                 <TextBox Grid.Row="1" Margin="15,0,0,15" Grid.Column="1"  Name="tb_price"/>
                 <Label Grid.Row="2" FontWeight="DemiBold">Category</Label>
-                <ComboBox Grid.Row="2" Margin="15,0,0,15" Grid.Column="1"  Name="cb_category"/>
+                <ComboBox Grid.Row="2" Margin="15,0,0,15" Grid.Column="1"  Name="cb_categorie">
+                    <ComboBoxItem Content="5 stars restaurant"/>
+                    <ComboBoxItem Content="restaurant"/>
+                    <ComboBoxItem Content="fastfood"/>
+                </ComboBox>
                 <Label Grid.Row="3" FontWeight="DemiBold">Comment</Label>
                 <TextBox Margin="15,0,0,0" Grid.Row="3" Grid.Column="1" AcceptsReturn="True"  Name="tb_comment"/>
             </Grid>
