@@ -35,7 +35,9 @@ namespace ExpeditionHelper
             ManagerSql.HydrateCategorie();
             Utilisateur.Instance.Modification += OnUtilisateurModification;
             InitializeComponent();
+            //remodifier ça et passer en xaml => code behind pas propre
             listView_Voyage.ItemsSource = listeDeVoyage;
+            listView_Voyage.SelectedIndex = 0;
             /*CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvUsers.ItemsSource);
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("Sex");
             view.GroupDescriptions.Add(groupDescription);*/
@@ -78,6 +80,11 @@ namespace ExpeditionHelper
         {
             Window_connection tmp = new Window_connection();
             tmp.ShowDialog();
+        }
+
+        private void listView_Voyage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
         }
     }
 }

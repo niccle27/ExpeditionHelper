@@ -22,6 +22,15 @@ namespace ExpeditionHelper
 
         static Utilisateur instance;
 
+        private Voyage currentVoyage=null;
+
+        public Voyage CurrentVoyage
+        {
+            get { return currentVoyage; }
+            set { currentVoyage = value; }
+        }
+
+
         public Utilisateur()
         {
 

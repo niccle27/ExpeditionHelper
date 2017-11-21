@@ -101,7 +101,7 @@ namespace ExpeditionHelper
                 commande.CommandText =
                     "insert into depenses (`m_datetime`, `id_voyage`, `id_categorie`, `id_subCat`, `prix`, `nom`, `commentaire`)" +
                     " VALUES(NOW(),@id_voyage,@id_categorie,LAST_INSERT_ID(),@prix,@nom,@commentaire)";
-                commande.Parameters.AddWithValue("@id_voyage", 1);
+                commande.Parameters.AddWithValue("@id_voyage", Utilisateur.Instance.CurrentVoyage.Id_Voyage);
                 commande.Parameters.AddWithValue("@id_categorie", depense.findCategorie());
                 commande.Parameters.AddWithValue("@prix", depense.Prix);
                 commande.Parameters.AddWithValue("@nom", depense.Nom);
