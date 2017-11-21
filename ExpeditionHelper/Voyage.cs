@@ -9,6 +9,12 @@ namespace ExpeditionHelper
 {
     public class Voyage
     {
+        public void refreshListeDepense()
+        {
+            listeDepense.Clear();
+            ManagerSql.SelectDivers(this);
+        }
+
         private int id_Voyage;
 
         public int Id_Voyage

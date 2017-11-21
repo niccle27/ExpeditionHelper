@@ -28,6 +28,7 @@ namespace ExpeditionHelper
         {
             Depense tmp = new Depense(0,1,0, float.Parse(tb_price.Text),tb_name.Text, tb_comment.Text,DateTime.Now);
             ManagerSql.InsertDepense(tmp);
+            Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
             this.Close();
         }
     }
