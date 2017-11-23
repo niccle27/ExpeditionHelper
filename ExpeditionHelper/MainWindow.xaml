@@ -112,7 +112,8 @@
                 <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
                 <StackPanel Grid.Column="2">
                     <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=liste_Voyage}" />
-                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}">
+                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}" >
+                        
                         <ListView.Resources>
                             <DataTemplate DataType = "{x:Type local:Depense}">
                                 <StackPanel>
@@ -126,7 +127,29 @@
                                     <TextBlock Name="commentaire_Depense" Text="{Binding Commentaire}" Margin="10"/>
                                 </StackPanel>                                
                             </DataTemplate>
+                            
                         </ListView.Resources>
+                        <ListView.GroupStyle>
+                            <GroupStyle >
+                                <GroupStyle.ContainerStyle>
+                                    <Style  TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Expander IsExpanded="False">
+                                                        <Expander.Header>
+                                                            <TextBlock Text="{Binding Name}"/>
+                                                        </Expander.Header>
+                                                        <ItemsPresenter />
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+                        
                     </ListView>                    
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />

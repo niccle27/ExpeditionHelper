@@ -27,6 +27,7 @@ namespace ExpeditionHelper
         public void OnUtilisateurModification(Object sender, EventArgs e)
         {
             ReLoad();
+           
         }
 
 
@@ -38,14 +39,13 @@ namespace ExpeditionHelper
             //remodifier ça et passer en xaml => code behind pas propre
             listView_Voyage.ItemsSource = listeDeVoyage;
             listView_Voyage.SelectedIndex = 0;
-            /*CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvUsers.ItemsSource);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Sex");
-            view.GroupDescriptions.Add(groupDescription);*/
+
         }
 
         public void ReLoad()
         {
             ManagerSql.SelectVoyages(listeDeVoyage);// refresh automatique via observableCollection
+           
         }
 
         private void new_activities(object sender, RoutedEventArgs e)
@@ -85,6 +85,11 @@ namespace ExpeditionHelper
         private void listView_Voyage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
+            view.GroupDescriptions.Add(groupDescription);
         }
+
+        
     }
 }
