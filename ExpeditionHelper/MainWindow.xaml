@@ -118,12 +118,11 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="ListBoxItem">
-                                            <Border Name="Border" Padding="2" Background="Green" Margin="0">
+                                            <Border Name="Border" Padding="2" Margin="0">
                                                 <ContentPresenter/>
                                             </Border>
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsSelected" Value="true">
-                                                    <Setter TargetName="Border" Property="Background" Value="blue"/>
                                                     <Setter TargetName="Border" Property="BorderThickness" Value="7"  />
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
@@ -137,10 +136,10 @@
                                 <Grid Name="container">
                                     <Grid.Style>
                                         <Style TargetType="Grid">
-                                            <Setter Property="Background" Value="Yellow"/>
+                                            <Setter Property="Background" Value="#00C851"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                   <Setter Property="Background" Value="Red" />
+                                                    <Setter Property="Background" Value="#007E33" />
                                                 </Trigger>                                                
                                             </Style.Triggers>
                                         </Style>                                        
@@ -184,10 +183,10 @@
                                 <Grid Name="container">
                                     <Grid.Style>
                                         <Style TargetType="Grid">
-                                            <Setter Property="Background" Value="Yellow"/>
+                                            <Setter Property="Background" Value="#ffbb33"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="Red" />
+                                                    <Setter Property="Background" Value="#FF8800" />
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -235,10 +234,10 @@
                                 <Grid Name="container">
                                     <Grid.Style>
                                         <Style TargetType="Grid">
-                                            <Setter Property="Background" Value="Yellow"/>
+                                            <Setter Property="Background" Value="#33b5e5"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="Red" />
+                                                    <Setter Property="Background" Value="#0099CC" />
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -291,10 +290,10 @@
                                 <Grid Name="container">
                                     <Grid.Style>
                                         <Style TargetType="Grid">
-                                            <Setter Property="Background" Value="Yellow"/>
+                                            <Setter Property="Background" Value="#ff4444"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="Red" />
+                                                    <Setter Property="Background" Value="#CC0000" />
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -342,10 +341,10 @@
                                 <Grid Name="container">
                                     <Grid.Style>
                                         <Style TargetType="Grid">
-                                            <Setter Property="Background" Value="Yellow"/>
+                                            <Setter Property="Background" Value="#2BBBAD"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="Red" />
+                                                    <Setter Property="Background" Value="#00695c" />
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
