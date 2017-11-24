@@ -15,7 +15,7 @@ namespace ExpeditionHelper
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
-                " `id_subCat`,transports.depart,transports.destination FROM depenses LEFT JOIN transports ON depenses.id_subCat = transports.id " +
+                " transports.depart,transports.destination FROM depenses LEFT JOIN transports ON depenses.id_subCat = transports.id " +
                 "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 2  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
@@ -36,7 +36,7 @@ namespace ExpeditionHelper
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
-                " `id_subCat`,nourritures.categorieNourriture FROM `depenses` LEFT JOIN nourritures ON depenses.id_subCat = nourritures.id " +
+                " nourritures.categorieNourriture FROM `depenses` LEFT JOIN nourritures ON depenses.id_subCat = nourritures.id " +
                 "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 2  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
@@ -56,7 +56,7 @@ namespace ExpeditionHelper
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
-                " `id_subCat`,logements.ville,logements.categorieLogement FROM `depenses` LEFT JOIN logements ON depenses.id_subCat = logements.id " +
+                " logements.ville,logements.categorieLogement FROM `depenses` LEFT JOIN logements ON depenses.id_subCat = logements.id " +
                 "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 2  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
@@ -65,7 +65,7 @@ namespace ExpeditionHelper
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
+                DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));                
                 var tmp = new Logement(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), 0, Convert.ToInt32(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime, reader.GetValue(7).ToString(), reader.GetValue(8).ToString());
                 voyage.AddDepense(tmp);
@@ -76,7 +76,7 @@ namespace ExpeditionHelper
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
-                " `id_subCat`,activites.ville FROM `depenses` LEFT JOIN activites ON depenses.id_subCat = activites.id " +
+                " activites.ville FROM `depenses` LEFT JOIN activites ON depenses.id_subCat = activites.id " +
                 "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 1  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
@@ -131,10 +131,10 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
             foreach(Voyage voyage in listeDeVoyage)
             {
-                SelectDivers(voyage);
-                SelectActivites(voyage);
-                SelectLogements(voyage);
-                SelectNourritures(voyage);
+                //SelectDivers(voyage);
+                //SelectActivites(voyage);
+                //SelectLogements(voyage);
+                //SelectNourritures(voyage);
                 SelectTransports(voyage);
             }
         }
