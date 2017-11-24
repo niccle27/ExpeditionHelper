@@ -44,8 +44,7 @@ namespace ExpeditionHelper
 
         public void ReLoad()
         {
-            ManagerSql.SelectVoyages(listeDeVoyage);// refresh automatique via observableCollection
-           
+            ManagerSql.SelectVoyages(listeDeVoyage);// refresh automatique via observableCollection           
         }
 
         private void new_activities(object sender, RoutedEventArgs e)
