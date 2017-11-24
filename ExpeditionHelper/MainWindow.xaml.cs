@@ -83,10 +83,12 @@ namespace ExpeditionHelper
 
         private void listView_Voyage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CollectionView view1 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
+            view1.GroupDescriptions.Clear();
             Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
+            CollectionView view2 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
-            view.GroupDescriptions.Add(groupDescription);
+            view2.GroupDescriptions.Add(groupDescription);
         }
 
         

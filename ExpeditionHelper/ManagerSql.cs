@@ -131,10 +131,10 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
             foreach(Voyage voyage in listeDeVoyage)
             {
-                //SelectDivers(voyage);
-                //SelectActivites(voyage);
-                //SelectLogements(voyage);
-                //SelectNourritures(voyage);
+                SelectDivers(voyage);
+                SelectActivites(voyage);
+                SelectLogements(voyage);
+                SelectNourritures(voyage);
                 SelectTransports(voyage);
             }
         }
