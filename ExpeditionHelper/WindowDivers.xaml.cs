@@ -26,7 +26,7 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Depense tmp = new Depense(0,1,0, float.Parse(tb_price.Text),tb_name.Text, tb_comment.Text,DateTime.Now);
+            Depense tmp = new Depense(0,1,0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,DateTime.Now);
             ManagerSql.InsertDepense(tmp);
             Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
             this.Close();

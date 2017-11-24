@@ -31,3 +31,5 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\WindowNourriture.baml
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.csprojResolveAssemblyReference.cache
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\UserControlDepense.g.cs
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\UserControlDepense.baml

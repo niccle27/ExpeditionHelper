@@ -70,6 +70,9 @@
     <Compile Include="ManagerSql.cs" />
     <Compile Include="Nourriture.cs" />
     <Compile Include="Transport.cs" />
+    <Compile Include="UserControlDepense.xaml.cs">
+      <DependentUpon>UserControlDepense.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilisateur.cs" />
     <Compile Include="Voyage.cs" />
     <Compile Include="WindowActivites.xaml.cs">
@@ -102,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControlDepense.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowActivites.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

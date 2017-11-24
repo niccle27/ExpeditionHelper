@@ -25,7 +25,7 @@ namespace ExpeditionHelper
             while (reader.Read())
             {
                 DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
-                var tmp = new Transport(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), 0, Convert.ToInt32(reader.GetValue(3)),
+                var tmp = new Transport(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime, reader.GetValue(7).ToString(), reader.GetValue(8).ToString());
                 voyage.AddDepense(tmp);
             }
@@ -46,7 +46,7 @@ namespace ExpeditionHelper
             while (reader.Read())
             {
                 DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
-                var tmp = new Nourriture(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), 0, Convert.ToInt32(reader.GetValue(3)),
+                var tmp = new Nourriture(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime, reader.GetValue(7).ToString());
                 voyage.AddDepense(tmp);
             }
@@ -66,7 +66,7 @@ namespace ExpeditionHelper
             while (reader.Read())
             {
                 DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));                
-                var tmp = new Logement(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), 0, Convert.ToInt32(reader.GetValue(3)),
+                var tmp = new Logement(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime, reader.GetValue(7).ToString(), reader.GetValue(8).ToString());
                 voyage.AddDepense(tmp);
             }
@@ -86,7 +86,7 @@ namespace ExpeditionHelper
             while (reader.Read())
             {
                 DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
-                var tmp = new Activite(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), 0, Convert.ToInt32(reader.GetValue(3)),
+                var tmp = new Activite(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime, reader.GetValue(7).ToString());
                 voyage.AddDepense(tmp);
             }
@@ -105,7 +105,7 @@ namespace ExpeditionHelper
             while (reader.Read())
             {
                 DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
-                var tmp = new Depense(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)),0, Convert.ToInt32(reader.GetValue(3)),
+                var tmp = new Depense(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime);
                 voyage.AddDepense(tmp);
             }

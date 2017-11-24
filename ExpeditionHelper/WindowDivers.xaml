@@ -7,8 +7,12 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         mc:Ignorable="d"
         Title="Add Various element " MinHeight="320" Height="320" MinWidth="300" Width="300">
     <Border Padding="20">
-        <StackPanel>
-            <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <!--<Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*"/>
@@ -25,8 +29,9 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <TextBox Grid.Row="1" Margin="15,0,0,15" Grid.Column="1"  Name="tb_price" />
                 <Label Grid.Row="2" FontWeight="DemiBold">Comment</Label>
                 <TextBox Margin="15,0,0,0" Grid.Row="2" Grid.Column="1" AcceptsReturn="True"  Name="tb_comment"/>
-            </Grid>
-            <Button Margin="10" Content="OK" Width="40" HorizontalAlignment="Center" Name="btn_ok" Click="btn_ok_Click"/>
-        </StackPanel>
+            </Grid>-->
+            <local:UserControlDepense x:Name="userControlDepense" Grid.Row="0"/>
+            <Button Grid.Row="1" Margin="10" Content="OK" Width="40" HorizontalAlignment="Center" Name="btn_ok" Click="btn_ok_Click"/>
+        </Grid>
     </Border>
 </Window>
