@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ExpeditionHelper"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Border BorderThickness="7" RenderTransformOrigin="0.528,0.488">
+    <Border BorderThickness="7">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
