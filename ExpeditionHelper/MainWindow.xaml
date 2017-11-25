@@ -98,6 +98,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
+                <!-- liste de voyages-->
                 <Grid Grid.Column="0" >
                     <ListView SelectionMode="Single" Name="listView_Voyage" SelectionChanged="listView_Voyage_SelectionChanged" >
                         <ListView.View>
@@ -110,20 +111,26 @@
                     </ListView>
                 </Grid>
                 <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
+                <!-- liste des depenses du voyage-->
                 <StackPanel Grid.Column="2">
-                    <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=listView_Voyag}" /><!--problème quand j'indique correctement listeView_Voyage-->
+                    <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=listView_Voyage}" />
                     <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}" HorizontalContentAlignment="Stretch" >
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="ListBoxItem">
-                                            <Border Name="Border" Padding="2" Margin="0">
+                                            <Border Name="Border" Padding="2" Margin="0" BorderThickness="7">
                                                 <ContentPresenter/>
                                             </Border>
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsSelected" Value="true">
-                                                    <Setter TargetName="Border" Property="BorderThickness" Value="7"  />
+                                                    <Setter TargetName="Border" Property="BorderThickness" Value="2"  />
+                                                    <Setter TargetName="Border" Property="Effect">
+                                                        <Setter.Value>
+                                                             <DropShadowEffect/>
+                                                        </Setter.Value>
+                                                    </Setter>
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -418,6 +425,10 @@
                     </ListView>                    
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
+                <!-- colonne d'update-->
+                <Grid>
+                    <!-- il faut que je réutilise les usercontrol d'avant dedans -->
+                </Grid>
                 <StackPanel Grid.Column="4" Background="Green"/>
 
             </Grid>
