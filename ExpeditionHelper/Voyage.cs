@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,12 @@ namespace ExpeditionHelper
 {
     public class Voyage
     {
+        public void refreshListeDepense()
+        {
+            listeDepense.Clear();
+            ManagerSql.SelectDivers(this);
+        }
+
         private int id_Voyage;
 
         public int Id_Voyage
@@ -37,8 +44,8 @@ namespace ExpeditionHelper
             set { fin = value; }
         }
 
-       private List<Depense> listeDepense = new List<Depense>();
-       public List<Depense> ListeDepense
+       private ObservableCollection<Depense> listeDepense = new ObservableCollection<Depense>();
+       public ObservableCollection<Depense> ListeDepense
         {
             get { return listeDepense; }
             set { listeDepense = value; }
@@ -63,10 +70,6 @@ namespace ExpeditionHelper
             this.nom = nom;
             this.debut = debut;
             this.fin = fin;
-        }
-        public void AddList(List<Depense> additionnalList)
-        {
-            ListeDepense.AddRange(additionnalList);
         }
         public void AddDepense(Depense depense)
         {

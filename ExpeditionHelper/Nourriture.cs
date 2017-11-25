@@ -16,9 +16,9 @@ namespace ExpeditionHelper
             set { id_Nourriture = value; }
         }
 
-        private int categorieNourriture;
+        private string categorieNourriture;
 
-        public int CategorieNourriture
+        public string CategorieNourriture
         {
             get { return categorieNourriture; }
             set { categorieNourriture = value; }
@@ -29,13 +29,13 @@ namespace ExpeditionHelper
         {
 
         }
-        public Nourriture(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, int categorieNourriture)
+        public Nourriture(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string categorieNourriture)
             : base(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime)
         {
             this.categorieNourriture = categorieNourriture;
         }
 
-        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, int categorieNourriture)
+        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string categorieNourriture)
         {
             base.Hydrate(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime);
             this.categorieNourriture = categorieNourriture;

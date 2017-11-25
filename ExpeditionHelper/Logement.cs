@@ -24,9 +24,9 @@ namespace ExpeditionHelper
             get { return ville; }
             set { ville = value; }
         }
-        private int categorieLogement;
+        private string categorieLogement;
 
-        public int CategorieLogement
+        public string CategorieLogement
         {
             get { return categorieLogement; }
             set { categorieLogement = value; }
@@ -37,14 +37,14 @@ namespace ExpeditionHelper
         {
 
         }
-        public Logement(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string ville,int categorieLogement)
+        public Logement(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string ville,string categorieLogement)
             : base(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime)
         {
             this.ville = ville;
             this.categorieLogement = categorieLogement;
         }
 
-        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string ville, int categorieLogement)
+        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime, string ville, string categorieLogement)
         {
             base.Hydrate(id_Depense, Id_Voyage, id_CategorieTable, prix, nom, commentaire, m_dateTime);
             this.ville = ville;

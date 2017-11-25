@@ -99,7 +99,7 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" >
-                    <ListView Name="listView_Voyage" >
+                    <ListView SelectionMode="Single" Name="listView_Voyage" SelectionChanged="listView_Voyage_SelectionChanged" >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Nom}" />
@@ -111,13 +111,311 @@
                 </Grid>
                 <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
                 <StackPanel Grid.Column="2">
-                    <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=liste_Voyage}" />
-                    <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440">
-                        <ListItem>
-                            
-                        </ListItem>
-                    </ListBox>
-                    
+                    <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=listView_Voyag}" /><!--problème quand j'indique correctement listeView_Voyage-->
+                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}" HorizontalContentAlignment="Stretch" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border Name="Border" Padding="2" Margin="0">
+                                                <ContentPresenter/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="true">
+                                                    <Setter TargetName="Border" Property="BorderThickness" Value="7"  />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.Resources>
+                            <DataTemplate DataType = "{x:Type local:Depense}">
+                                <Grid Name="container">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="#00C851"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#007E33" />
+                                                </Trigger>                                                
+                                            </Style.Triggers>
+                                        </Style>                                        
+                                    </Grid.Style>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Width="auto" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label FontWeight="Bold" Content="Name: "/>
+                                            <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="Price: "/>
+                                            <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                        <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                </Grid>
+                            </DataTemplate>
+                            <DataTemplate DataType = "{x:Type local:Activite}">
+                                <Grid Name="container">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="#ffbb33"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FF8800" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Width="auto" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label FontWeight="Bold" Content="Name: "/>
+                                            <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="Price: "/>
+                                            <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="Ville: "/>
+                                            <Label Name="lbl_ville_activite" Content="{Binding Ville}"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                </Grid>
+                            </DataTemplate>
+                            <DataTemplate DataType = "{x:Type local:Logement}">
+                                <Grid Name="container">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="#33b5e5"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#0099CC" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Width="auto" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label FontWeight="Bold" Content="Name: "/>
+                                            <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="Price: "/>
+                                            <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="CategorieLogement: "/>
+                                            <Label Name="lbl_categorieLogement_logement" Content="{Binding CategorieLogement}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="2" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="Ville: "/>
+                                            <Label Name="lbl_ville_logement" Content="{Binding Ville}"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                </Grid>
+                            </DataTemplate>
+                            <DataTemplate DataType = "{x:Type local:Nourriture}">
+                                <Grid Name="container">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="#ff4444"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#CC0000" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Width="auto" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label FontWeight="Bold" Content="Name: "/>
+                                            <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="Price: "/>
+                                            <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="CategorieNourriture: "/>
+                                            <Label Name="lbl_categorieNourriture_nourriture" Content="{Binding CategorieNourriture}"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                </Grid>
+                            </DataTemplate>
+                            <DataTemplate DataType = "{x:Type local:Transport}">
+                                <Grid Name="container">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="#2BBBAD"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#00695c" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Width="auto" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label FontWeight="Bold" Content="Name: "/>
+                                            <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="Price: "/>
+                                            <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="2" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="From: "/>
+                                            <Label Name="lbl_depart_transport" Content="{Binding Depart}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" >
+                                            <Label FontWeight="Bold" Content="To: "/>
+                                            <Label Name="lbl_destination_transport" Content="{Binding Destination}"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.Resources>
+                        <ListView.GroupStyle>
+                            <GroupStyle >
+                                <GroupStyle.ContainerStyle>
+                                    <Style  TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Expander IsExpanded="False">
+                                                        <Expander.Header>
+                                                            <TextBlock Text="{Binding Name}"/>
+                                                        </Expander.Header>
+                                                        <ItemsPresenter />
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+                        
+                    </ListView>                    
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
                 <StackPanel Grid.Column="4" Background="Green"/>

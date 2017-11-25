@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:ExpeditionHelper"
         mc:Ignorable="d"
         Title="Add activity" Height="350" Width="300">
-    <Border Padding="20">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <local:UserControlActivite x:Name="userControlActivite" />
+        <local:UserControlDepense x:Name="userControlDepense" Grid.Row="1"/>
+        <Button Margin="10" Grid.Row="2" Content="OK" Width="40" HorizontalAlignment="Center" Name="btn_ok" Click="btn_ok_Click"/>
+    </Grid>
+    <!--    <Border Padding="20">
         <StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -31,6 +41,6 @@
             </Grid>
             <Button Margin="10" Content="OK" Width="40" HorizontalAlignment="Center" Name="btn_ok" Click="btn_ok_Click" />
         </StackPanel>
+    </Border>-->
 
-    </Border>
 </Window>

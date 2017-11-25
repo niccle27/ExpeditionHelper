@@ -26,7 +26,9 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Logement tmp = new Logement(0, 1, 0, float.Parse(tb_price.Text), tb_name.Text, tb_comment.Text, DateTime.Now, tb_city.Text,1);
+            Logement tmp = new Logement(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage,2,
+                float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now,
+                userControlLogement.tb_city.Text,userControlLogement.cb_categorie.Text);
             ManagerSql.InsertLogement(tmp);
             ManagerSql.InsertDepense(tmp);
             this.Close();

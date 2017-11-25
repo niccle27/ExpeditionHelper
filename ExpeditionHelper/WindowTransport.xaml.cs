@@ -26,7 +26,8 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Transport tmp = new Transport(0, 1, 0, float.Parse(tb_price.Text), tb_name.Text, tb_comment.Text, DateTime.Now, tb_from.Text,tb_to.Text);
+            Transport tmp = new Transport(0, 1, 0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
+                DateTime.Now, userControlTransport.tb_from.Text, userControlTransport.tb_to.Text);
             ManagerSql.InsertTransport(tmp);
             ManagerSql.InsertDepense(tmp);
             this.Close();
