@@ -9,10 +9,10 @@ namespace ExpeditionHelper
 {
     public class Utilisateur
     {
-        public event EventHandler Modification;
-        protected virtual void OnModification(EventArgs e)
+        public static event EventHandler Modification;
+        protected static void OnModification(EventArgs e)
         {
-            Modification?.Invoke(this, e);
+            Modification?.Invoke(Instance, e);
             //equivalent
             /*if(Modification!=null)
             {
@@ -47,14 +47,14 @@ namespace ExpeditionHelper
             this.id_Utilisateur = id_utilisateur;
             this.login = login;
             this.password = password;
-            Instance.OnModification(EventArgs.Empty);
+            Utilisateur.OnModification(EventArgs.Empty);
         }
         public void hydrate(Utilisateur utilisateur)
         {
             this.id_Utilisateur = utilisateur.Id_utilisateur;
             this.login = utilisateur.Login;
             this.password = utilisateur.Password;
-            Instance.OnModification(EventArgs.Empty);
+            Utilisateur.OnModification(EventArgs.Empty);
         }
         private int id_Utilisateur;
         public int Id_utilisateur
@@ -77,6 +77,15 @@ namespace ExpeditionHelper
             set { password = value;
             }
         }
+        public static Utilisateur getNewInstance()
+        {
+            if (instance != null)
+            {
+                //instance = new Utilisateur();
+                instance = null;
+            }
+            return instance;
+        }
 
         public static Utilisateur Instance {
             get {
@@ -87,7 +96,7 @@ namespace ExpeditionHelper
                 return instance;
             }
             set {  instance = value;
-                instance.OnModification(EventArgs.Empty);
+               // instance.OnModification(EventArgs.Empty);
             }
         }
     }

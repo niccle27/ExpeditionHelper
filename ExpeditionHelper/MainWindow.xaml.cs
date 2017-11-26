@@ -34,10 +34,9 @@ namespace ExpeditionHelper
 
         public MainWindow()
         {
-            ManagerSql.HydrateCategorie();
-            Utilisateur.Instance.Modification += OnUtilisateurModification;
+            ManagerSql.HydrateCategorie();//hydrater les categories
+            Utilisateur.Modification += OnUtilisateurModification;// link OnUtilisateurModification à l'événement utilisateur
             InitializeComponent();
-            //remodifier ça et passer en xaml => code behind pas propre
             listView_Voyage.ItemsSource = listeDeVoyage;
             listView_Voyage.SelectedIndex = 0;
 
@@ -84,15 +83,22 @@ namespace ExpeditionHelper
 
         private void listView_Voyage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CollectionView view1 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
-            view1.GroupDescriptions.Clear();//artifice pour empêcher d'imbriquer des groupe en rapellant la fonction
-            view1.SortDescriptions.Clear();
-            Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
-            CollectionView view2 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
-            SortDescription sortDescription = new SortDescription("M_datetime", ListSortDirection.Descending);
-            view2.SortDescriptions.Add(sortDescription);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
-            view2.GroupDescriptions.Add(groupDescription);
+            try
+            {
+                CollectionView view1 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
+                view1.GroupDescriptions.Clear();//artifice pour empêcher d'imbriquer des groupe en rapellant la fonction
+                view1.SortDescriptions.Clear();
+                Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
+                CollectionView view2 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
+                SortDescription sortDescription = new SortDescription("M_datetime", ListSortDirection.Descending);
+                view2.SortDescriptions.Add(sortDescription);
+                PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
+                view2.GroupDescriptions.Add(groupDescription);
+            }
+            catch (Exception)
+            {
+                //ne rien faire c'est que la liste est vide
+            }
             //bug le sort ne s'effecture pas 
         }
 

@@ -26,6 +26,7 @@ namespace ExpeditionHelper
 
         private void btn_connection_Click(object sender, RoutedEventArgs e)
         {
+            //Utilisateur.getNewInstance();
             Utilisateur tmp = new Utilisateur(0, tb_login.Text, tb_password.Password);
             ManagerSql.Connection_Utilisateur(tmp);
             this.Close();

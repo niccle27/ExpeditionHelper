@@ -121,6 +121,7 @@ namespace ExpeditionHelper
             cmd.Parameters.AddWithValue("@id_utilisateur", Utilisateur.Instance.Id_utilisateur);
             cmd.Prepare();
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            listeDeVoyage.Clear();
             while (reader.Read())
             {
                 DateTimeOffset date_depart = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(2)));
@@ -160,19 +161,32 @@ namespace ExpeditionHelper
                 }
             }
             Connection.getInstance().Dispose();
-            if(tmp!=null) Utilisateur.Instance.hydrate(tmp);
+            if (tmp != null)
+            {
+                Utilisateur.getNewInstance();
+                Utilisateur.Instance.hydrate(tmp);
+            }
+
             // call dispose before hydrating because there must be only a connection at the time
         }
         public static void HydrateCategorie()
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT nomTable,id_categorie FROM categories";
-            cmd.Connection = Connection.getInstance();
-            cmd.CommandTimeout = 60;
-            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                Depense.categorieTable.Add(reader.GetValue(0).ToString(), (int)reader.GetValue(1));
+                cmd.CommandText = "SELECT nomTable,id_categorie FROM categories";
+                cmd.Connection = Connection.getInstance();
+                cmd.CommandTimeout = 60;
+                MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Depense.categorieTable.Add(reader.GetValue(0).ToString(), (int)reader.GetValue(1));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error from" + ex.Source + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             Connection.getInstance().Dispose();
         }
