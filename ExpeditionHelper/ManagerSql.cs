@@ -155,7 +155,6 @@ namespace ExpeditionHelper
             {
                 if(Convert.ToInt32(reader.GetValue(0))== 1  && utilisateur.Password== reader.GetValue(3).ToString())
                 {
-                    //Connection.getInstance().Dispose();
                     tmp =new Utilisateur((int)reader.GetValue(1), reader.GetValue(2).ToString(), reader.GetValue(3).ToString());
                     break;
                 }
@@ -163,8 +162,9 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
             if (tmp != null)
             {
-                Utilisateur.getNewInstance();
+                Utilisateur.nullInstance();
                 Utilisateur.Instance.hydrate(tmp);
+                ((MainWindow)Application.Current.MainWindow).listView_Voyage.SelectedIndex = 0;
             }
 
             // call dispose before hydrating because there must be only a connection at the time
@@ -174,19 +174,27 @@ namespace ExpeditionHelper
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
             try
             {
-                cmd.CommandText = "SELECT nomTable,id_categorie FROM categories";
-                cmd.Connection = Connection.getInstance();
-                cmd.CommandTimeout = 60;
-                MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (Connection.getInstance() != null)
                 {
-                    Depense.categorieTable.Add(reader.GetValue(0).ToString(), (int)reader.GetValue(1));
+                    cmd.CommandText = "SELECT nomTable,id_categorie FROM categories";
+                    cmd.Connection = Connection.getInstance();
+                    cmd.CommandTimeout = 60;
+                    MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Depense.categorieTable.Add(reader.GetValue(0).ToString(), (int)reader.GetValue(1));
+                    }
                 }
+
             }
-            catch (Exception ex)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                MessageBox.Show("Error from" + ex.Source + " has occurred: " + ex.Message,
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
                 "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(InvalidOperationException ex)
+            {
+
             }
             Connection.getInstance().Dispose();
         }
@@ -196,6 +204,8 @@ namespace ExpeditionHelper
             MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
             try
             {
+                if(Connection.getInstance()!=null)
+                {
                 commande.Connection = Connection.getInstance();
                 commande.CommandText =
                     "insert into depenses (`m_datetime`, `id_voyage`, `id_categorie`, `id_subCat`, `prix`, `nom`, `commentaire`)" +
@@ -207,6 +217,8 @@ namespace ExpeditionHelper
                 commande.Parameters.AddWithValue("@commentaire", depense.Commentaire);
                 commande.Prepare();
                 commande.ExecuteNonQuery();
+                }
+
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {

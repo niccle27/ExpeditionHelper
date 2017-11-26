@@ -47,14 +47,14 @@ namespace ExpeditionHelper
             this.id_Utilisateur = id_utilisateur;
             this.login = login;
             this.password = password;
-            Utilisateur.OnModification(EventArgs.Empty);
+            OnModification(EventArgs.Empty);
         }
         public void hydrate(Utilisateur utilisateur)
         {
             this.id_Utilisateur = utilisateur.Id_utilisateur;
             this.login = utilisateur.Login;
             this.password = utilisateur.Password;
-            Utilisateur.OnModification(EventArgs.Empty);
+            OnModification(EventArgs.Empty);
         }
         private int id_Utilisateur;
         public int Id_utilisateur
@@ -77,7 +77,7 @@ namespace ExpeditionHelper
             set { password = value;
             }
         }
-        public static Utilisateur getNewInstance()
+        public static Utilisateur nullInstance()
         {
             if (instance != null)
             {

@@ -34,9 +34,11 @@ namespace ExpeditionHelper
 
         public MainWindow()
         {
-            ManagerSql.HydrateCategorie();//hydrater les categories
             Utilisateur.Modification += OnUtilisateurModification;// link OnUtilisateurModification à l'événement utilisateur
+
+            
             InitializeComponent();
+            ManagerSql.HydrateCategorie();//hydrater les categories
             listView_Voyage.ItemsSource = listeDeVoyage;
             listView_Voyage.SelectedIndex = 0;
 

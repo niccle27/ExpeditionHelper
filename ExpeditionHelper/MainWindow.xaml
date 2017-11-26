@@ -13,7 +13,7 @@
 
 
         <!--Definition du status bar -->
-        <StatusBar DockPanel.Dock="Bottom" Background="#FFCFCFCF">
+        <StatusBar Name="statusBar" DockPanel.Dock="Bottom" Background="#FFCFCFCF">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -32,10 +32,10 @@
                     <Label Content="Spent" Foreground="Red"/>
                 </StackPanel>
             </StatusBarItem>
-            <StatusBarItem Grid.Column="2">
-                <StackPanel Orientation="Horizontal" >
+            <StatusBarItem Name="statusBarItem_connectionBall"  Grid.Column="2">
+                <StackPanel Name="stackPanel_connectionBall" Orientation="Horizontal" >
                     <Label Margin="0,0,10,0" Content="Connection status:"/>
-                    <Ellipse Width="20" Height="20" Fill="#FF1AD11A" />
+                    <Ellipse Name="connectionBall" Width="20" Height="20" Fill="Red" />
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
@@ -49,20 +49,70 @@
                         <Setter Property="Height" Value="10"/>
                     </Style>
                 </ToolBar.Resources>
-                <Button ToolTip="Hotel" Click="new_logement">
-                    <Image Source="img/bed.png" Height="64" Width="64"/>
+                <Button ToolTip="Hotel" Click="new_logement" IsEnabled="False">
+                    <Image Source="img/bed.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Food" Click="new_meal">
-                    <Image Source="img/cutlery.png" Height="64" Width="64"/>
+                    <Image Source="img/cutlery.png" Height="64" Width="64">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Transport" Click="new_transport">
-                    <Image Source="img/taxi.png" Height="64" Width="64"/>
+                    <Image Source="img/taxi.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Activity" Click="new_activities">
-                    <Image Source="img/ticket.png" Height="64" Width="64"/>
+                    <Image Source="img/ticket.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Spent" Click="new_divers">
-                    <Image Source="img/money.png" Height="64" Width="64"/>
+                    <Image Source="img/money.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
             </ToolBar>
             <ToolBar>
