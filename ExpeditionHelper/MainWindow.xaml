@@ -476,14 +476,20 @@
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
                 <!-- colonne d'update-->
-                <Grid Grid.Column="4" Name="edit_colonne" Width="200">
+                <Grid Grid.Column="4" Width="200">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <!-- il faut que je réutilise les usercontrol d'avant dedans -->
-
-                </Grid>
+                    <Grid Grid.Row="0" Name="edit_zone" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- il faut que je réutilise les usercontrol d'avant dedans -->
+                    </Grid>
+                    <Button Visibility="Hidden" Name="btn_update" Content="update" Grid.Row="2" Click="btn_update_Click"/>
+                </Grid>                
             </Grid>
         </Border>
     </DockPanel>

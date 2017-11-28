@@ -16,8 +16,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontWeight="DemiBold">From</Label>
-        <TextBox Grid.Row="0" Grid.Column="1"  Name="tb_from"/>
+        <TextBox Grid.Row="0" Grid.Column="1"  Name="tb_from" Text="{Binding Depart, Mode=TwoWay}"/>
         <Label Grid.Row="1" FontWeight="DemiBold">To</Label>
-        <TextBox Grid.Row="1" Grid.Column="1"  Name="tb_to"/>
+        <TextBox Grid.Row="1" Grid.Column="1"  Name="tb_to" Text="{Binding Destination, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

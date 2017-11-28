@@ -16,12 +16,12 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label FontWeight="DemiBold" Content="Category:"/>
-        <ComboBox SelectedValuePath="Content" Name="cb_categorie" Grid.Row="0" Grid.Column="1">
+        <ComboBox SelectedValuePath="Content" Name="cb_categorie" Grid.Row="0" Grid.Column="1" Text="{Binding CategorieLogement, Mode=TwoWay}">
             <ComboBoxItem  Content="5 stars hotel" IsSelected="True"/>
             <ComboBoxItem Content="Hotel"/>
             <ComboBoxItem Content="Youth hostel"/>
         </ComboBox>
         <Label Grid.Row="1" Content="City:" FontWeight="DemiBold"/>
-        <TextBox Grid.Row="1" Grid.Column="1"  Name="tb_city"/>
+        <TextBox Grid.Row="1" Grid.Column="1"  Name="tb_city" Text="{Binding Ville, Mode=TwoWay}" />
     </Grid>
 </UserControl>

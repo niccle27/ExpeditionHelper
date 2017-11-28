@@ -15,6 +15,6 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontWeight="DemiBold">City</Label>
-        <TextBox  Grid.Row="0" Grid.Column="1"  Name="tb_city"/>
+        <TextBox  Grid.Row="0" Grid.Column="1"  Name="tb_city" Text="{Binding Ville, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

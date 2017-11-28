@@ -316,5 +316,36 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
 
         }
+        // update
+        public static void UpdateDepense(Depense depense, int id_depense)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                if (Connection.getInstance() != null)
+                {
+                    commande.Connection = Connection.getInstance();
+                    commande.CommandText =
+                        "UPDATE `depenses` SET " +
+                        " `prix`=@prix,`nom`=@nom,`commentaire`=@commentaire WHERE `id_depense`=@id_depense";
+                    commande.Parameters.AddWithValue("@prix", depense.Prix);
+                    commande.Parameters.AddWithValue("@nom", depense.Nom);
+                    commande.Parameters.AddWithValue("@commentaire", depense.Commentaire);
+                    commande.Parameters.AddWithValue("@id_depense", id_depense);
+
+                    commande.Prepare();
+                    commande.ExecuteNonQuery();
+                }
+
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
+
+
+        }
     }
 }

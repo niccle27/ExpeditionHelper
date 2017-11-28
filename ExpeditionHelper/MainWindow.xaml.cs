@@ -106,56 +106,93 @@ namespace ExpeditionHelper
 
         private void listView_Depense_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            edit_colonne.Children.Clear();
+            btn_update.Visibility = Visibility.Visible;
+            edit_zone.Children.Clear();
             var tmp = ((ListView)sender).SelectedItem;
             if (tmp is Activite)
             {
                 Activite tmp2 = tmp as Activite;
-                UserControlActivite userControlActivite = new UserControlActivite(tmp2);
-                edit_colonne.Children.Add(userControlActivite);
+                UserControlActivite userControlActivite = new UserControlActivite();
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
                 Grid.SetRow(userControlActivite, 0);
-                UserControlDepense userControlDepense = new UserControlDepense(tmp2);
-                edit_colonne.Children.Add(userControlDepense);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
                 Grid.SetRow(userControlDepense, 1);
             }
             else if (tmp is Logement)
             {
                 Logement tmp2 = tmp as Logement;
                 UserControlLogement userControlActivite = new UserControlLogement(tmp2);
-                edit_colonne.Children.Add(userControlActivite);
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
                 Grid.SetRow(userControlActivite, 0);
-                UserControlDepense userControlDepense = new UserControlDepense(tmp2);
-                edit_colonne.Children.Add(userControlDepense);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
                 Grid.SetRow(userControlDepense, 1);
             }
             else if (tmp is Transport)
             {
                 Transport tmp2 = tmp as Transport;
                 UserControlTransport userControlActivite = new UserControlTransport(tmp2);
-                edit_colonne.Children.Add(userControlActivite);
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
                 Grid.SetRow(userControlActivite, 0);
-                UserControlDepense userControlDepense = new UserControlDepense(tmp2);
-                edit_colonne.Children.Add(userControlDepense);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
                 Grid.SetRow(userControlDepense, 1);
             }
             else if (tmp is Nourriture)
             {
                 Nourriture tmp2 = tmp as Nourriture;
-                UserControlNourriture userControlActivite = new UserControlNourriture(tmp2);
-                edit_colonne.Children.Add(userControlActivite);
+                UserControlNourriture userControlActivite = new UserControlNourriture();
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
                 Grid.SetRow(userControlActivite, 0);
-                UserControlDepense userControlDepense = new UserControlDepense(tmp2);
-                edit_colonne.Children.Add(userControlDepense);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
                 Grid.SetRow(userControlDepense, 1);
             }
             else if (tmp is Depense)
             {
                 Depense tmp2 = tmp as Depense;
-                UserControlDepense userControlDepense = new UserControlDepense(tmp2);
-                edit_colonne.Children.Add(userControlDepense);
+                //UserControlDepense userControlDepense = new UserControlDepense(tmp2);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
                 Grid.SetRow(userControlDepense, 1);
             }
 
+        }
+
+        private void btn_update_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = ((ListView)sender).SelectedItem;
+            if (tmp is Activite)
+            {
+                Activite tmp2 = tmp as Activite;                
+            }
+            else if (tmp is Logement)
+            {
+                Logement tmp2 = tmp as Logement;
+            }
+            else if (tmp is Transport)
+            {
+                Transport tmp2 = tmp as Transport;
+            }
+            else if (tmp is Nourriture)
+            {
+                Nourriture tmp2 = tmp as Nourriture;
+            }
+            else if (tmp is Depense)
+            {
+                Depense tmp2 = tmp as Depense;
+               // tmp2.Nom=edit_zone.
+            }
         }
     }
 }
