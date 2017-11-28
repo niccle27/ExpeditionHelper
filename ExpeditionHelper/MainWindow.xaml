@@ -49,7 +49,7 @@
                         <Setter Property="Height" Value="10"/>
                     </Style>
                 </ToolBar.Resources>
-                <Button ToolTip="Hotel" Click="new_logement" IsEnabled="False">
+                <Button ToolTip="Hotel" Click="new_logement" IsEnabled="True">
                     <Image Source="img/bed.png" Height="64" Width="64">
                         <Image.Style>
                             <Style TargetType="Image">
@@ -124,8 +124,8 @@
 
         <!--Definition du menu-->
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Expedition">
-                <MenuItem Header="_New"/>
+            <MenuItem Header="_Expedition" Click="MenuItem_Click">
+                <MenuItem Header="_New" Click="MenuItem_Click"/>
                 <MenuItem Header="_Open"/>
                 <MenuItem Header="_Save"/>
             </MenuItem>

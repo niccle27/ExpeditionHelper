@@ -92,7 +92,7 @@ namespace ExpeditionHelper
                 view1.SortDescriptions.Clear();
                 Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
                 CollectionView view2 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
-                SortDescription sortDescription = new SortDescription("M_datetime", ListSortDirection.Descending);
+                SortDescription sortDescription = new SortDescription("M_datetime", ListSortDirection.Ascending);
                 view2.SortDescriptions.Add(sortDescription);
                 PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
                 view2.GroupDescriptions.Add(groupDescription);
@@ -111,6 +111,7 @@ namespace ExpeditionHelper
             var tmp = ((ListView)sender).SelectedItem;
             if (tmp is Activite)
             {
+
                 Activite tmp2 = tmp as Activite;
                 UserControlActivite userControlActivite = new UserControlActivite();
                 userControlActivite.DataContext = tmp2;
@@ -171,28 +172,41 @@ namespace ExpeditionHelper
 
         private void btn_update_Click(object sender, RoutedEventArgs e)
         {
-            var tmp = ((ListView)sender).SelectedItem;
+            var tmp = listView_Depense.SelectedItem;
             if (tmp is Activite)
             {
-                Activite tmp2 = tmp as Activite;                
+                Activite tmp2 = tmp as Activite;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateActivity(tmp2);
             }
             else if (tmp is Logement)
             {
                 Logement tmp2 = tmp as Logement;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateLogement(tmp2);
             }
             else if (tmp is Transport)
             {
                 Transport tmp2 = tmp as Transport;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateTransport(tmp2);
             }
             else if (tmp is Nourriture)
             {
                 Nourriture tmp2 = tmp as Nourriture;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateNourriture(tmp2);
             }
             else if (tmp is Depense)
             {
                 Depense tmp2 = tmp as Depense;
-               // tmp2.Nom=edit_zone.
+                ManagerSql.UpdateDepense(tmp2);
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

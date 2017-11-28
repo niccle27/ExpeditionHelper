@@ -14,9 +14,9 @@ namespace ExpeditionHelper
         public static void SelectTransports(Voyage voyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
+            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_subCat, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
                 " transports.depart,transports.destination FROM depenses LEFT JOIN transports ON depenses.id_subCat = transports.id " +
-                "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 2  order by `m_datetime`";
+                "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 3  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
             cmd.Parameters.AddWithValue("@id_voyage", voyage.Id_Voyage);
@@ -31,13 +31,12 @@ namespace ExpeditionHelper
             }
             Connection.getInstance().Dispose();
         }
-
         public static void SelectNourritures(Voyage voyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
+            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_subCat, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
                 " nourritures.categorieNourriture FROM `depenses` LEFT JOIN nourritures ON depenses.id_subCat = nourritures.id " +
-                "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 2  order by `m_datetime`";
+                "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 4  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
             cmd.Parameters.AddWithValue("@id_voyage", voyage.Id_Voyage);
@@ -55,7 +54,7 @@ namespace ExpeditionHelper
         public static void SelectLogements(Voyage voyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
+            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_subCat, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
                 " logements.ville,logements.categorieLogement FROM `depenses` LEFT JOIN logements ON depenses.id_subCat = logements.id " +
                 "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 2  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
@@ -75,7 +74,7 @@ namespace ExpeditionHelper
         public static void SelectActivites(Voyage voyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_categorie, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
+            cmd.CommandText = "SELECT `id_depense`, `id_voyage`,depenses.id_subCat, `prix`, `nom`, `commentaire`,UNIX_TIMESTAMP(`m_datetime`)," +
                 " activites.ville FROM `depenses` LEFT JOIN activites ON depenses.id_subCat = activites.id " +
                 "WHERE `id_voyage`=(@id_voyage) AND  depenses.id_categorie = 1  order by `m_datetime`";
             cmd.Connection = Connection.getInstance();
@@ -105,7 +104,7 @@ namespace ExpeditionHelper
             while (reader.Read())
             {
                 DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
-                var tmp = new Depense(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)),
+                var tmp = new Depense(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(7)), Convert.ToInt32(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime);
                 voyage.AddDepense(tmp);
             }
@@ -279,9 +278,8 @@ namespace ExpeditionHelper
             {
                 commande.Connection = Connection.getInstance();
                 commande.CommandText =
-                    "INSERT INTO `transports`(`id_categorieTransport`, `depart`, `destination`)" +
-                    "VALUES (@id_categorieTransport,@depart,@destination)";
-                commande.Parameters.AddWithValue("@id_categorieTransport", 1);
+                    "INSERT INTO `transports`(`depart`, `destination`)" +
+                    "VALUES (@depart,@destination)";
                 commande.Parameters.AddWithValue("@depart",transport.Depart);
                 commande.Parameters.AddWithValue("@destination", transport.Destination);
                 commande.Prepare();
@@ -317,7 +315,7 @@ namespace ExpeditionHelper
 
         }
         // update
-        public static void UpdateDepense(Depense depense, int id_depense)
+        public static void UpdateDepense(Depense depense)
         {
             MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
             try
@@ -331,8 +329,7 @@ namespace ExpeditionHelper
                     commande.Parameters.AddWithValue("@prix", depense.Prix);
                     commande.Parameters.AddWithValue("@nom", depense.Nom);
                     commande.Parameters.AddWithValue("@commentaire", depense.Commentaire);
-                    commande.Parameters.AddWithValue("@id_depense", id_depense);
-
+                    commande.Parameters.AddWithValue("@id_depense", depense.Id_Depense);
                     commande.Prepare();
                     commande.ExecuteNonQuery();
                 }
@@ -344,8 +341,93 @@ namespace ExpeditionHelper
                 "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             Connection.getInstance().Dispose();
+        }
+        public static void UpdateActivity(Activite activite)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "UPDATE `activites` SET `ville`=@ville WHERE id=@Id_subCat";
+                commande.Parameters.AddWithValue("@Id_subCat", activite.Id_subCat);
+                commande.Parameters.AddWithValue("@ville", activite.Ville);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
 
+        }
+        public static void UpdateLogement(Logement logement)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "UPDATE `logements` SET `ville`=@ville,`categorieLogement`=@categorieLogement WHERE id=@Id_subCat";
+                commande.Parameters.AddWithValue("@categorieLogement", logement.CategorieLogement);
+                commande.Parameters.AddWithValue("@ville", logement.Ville);
+                commande.Parameters.AddWithValue("@Id_subCat", logement.Id_subCat);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
+
+        }
+        public static void UpdateTransport(Transport transport)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "UPDATE `transports` SET `depart`=@depart,`destination`=@destination WHERE `id`=@Id_subCat";
+                commande.Parameters.AddWithValue("@Id_subCat", transport.Id_subCat);
+                commande.Parameters.AddWithValue("@depart", transport.Depart);
+                commande.Parameters.AddWithValue("@destination", transport.Destination);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
+
+        }
+        public static void UpdateNourriture(Nourriture nourriture)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "UPDATE `nourritures` SET `categorieNourriture`=@categorieNourriture WHERE `id`=@Id_subCat";
+                commande.Parameters.AddWithValue("@categorieNourriture", nourriture.CategorieNourriture);
+                commande.Parameters.AddWithValue("@Id_subCat", nourriture.Id_subCat);
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
 
         }
     }
+    
 }
