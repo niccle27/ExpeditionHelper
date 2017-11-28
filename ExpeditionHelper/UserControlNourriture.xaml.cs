@@ -20,6 +20,12 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class UserControlNourriture : UserControl
     {
+        public UserControlNourriture(Nourriture nourriture)
+        {
+
+            InitializeComponent();
+            cb_categorie.Text = nourriture.CategorieNourriture;
+        }
         public UserControlNourriture()
         {
             InitializeComponent();

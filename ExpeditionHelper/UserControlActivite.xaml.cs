@@ -20,6 +20,11 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class UserControlActivite : UserControl
     {
+        public UserControlActivite(Activite activite)
+        {
+            InitializeComponent();
+            tb_city.Text = activite.Ville;
+        }
         public UserControlActivite()
         {
             InitializeComponent();

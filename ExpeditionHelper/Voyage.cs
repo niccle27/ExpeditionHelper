@@ -13,6 +13,10 @@ namespace ExpeditionHelper
         {
             listeDepense.Clear();
             ManagerSql.SelectDivers(this);
+            ManagerSql.SelectActivites(this);
+            ManagerSql.SelectLogements(this);
+            ManagerSql.SelectNourritures(this);
+            ManagerSql.SelectTransports(this);
         }
 
         private int id_Voyage;

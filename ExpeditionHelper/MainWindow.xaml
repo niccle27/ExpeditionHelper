@@ -164,7 +164,7 @@
                 <!-- liste des depenses du voyage-->
                 <StackPanel Grid.Column="2">
                     <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=listView_Voyage}" />
-                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}" HorizontalContentAlignment="Stretch" >
+                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}" HorizontalContentAlignment="Stretch" SelectionChanged="listView_Depense_SelectionChanged" >
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Template">
@@ -476,11 +476,14 @@
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
                 <!-- colonne d'update-->
-                <Grid>
+                <Grid Grid.Column="4" Name="edit_colonne" Width="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
                     <!-- il faut que je réutilise les usercontrol d'avant dedans -->
-                </Grid>
-                <StackPanel Grid.Column="4" Background="Green"/>
 
+                </Grid>
             </Grid>
         </Border>
     </DockPanel>

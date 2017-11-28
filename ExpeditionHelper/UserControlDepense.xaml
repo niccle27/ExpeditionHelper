@@ -23,7 +23,7 @@
                     <RowDefinition Height="auto"/>            
                 </Grid.RowDefinitions>
                 <Label FontWeight="DemiBold" Content="Name:"/>
-                <TextBox Grid.Column="1" Name="tb_name" />
+                <TextBox Grid.Column="1" Name="tb_name"  />
                 <Label Grid.Row="1" FontWeight="DemiBold" Content="Price:"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Name="tb_price" />
             </Grid>
