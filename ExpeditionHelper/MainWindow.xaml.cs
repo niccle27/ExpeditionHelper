@@ -22,7 +22,6 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class MainWindow : Window
     {
-        //List<Voyage> listeDeVoyage = new List<Voyage>();
         static ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
 
         public void OnUtilisateurModification(Object sender, EventArgs e)
@@ -30,7 +29,10 @@ namespace ExpeditionHelper
             ReLoad();
            
         }
-
+        public static void ResetListeDeVoyage()
+        {
+            listeDeVoyage.Clear();
+        }
 
         public MainWindow()
         {
@@ -213,6 +215,26 @@ namespace ExpeditionHelper
         {
             ManagerSql.DeleteAnyDepense((Depense)listView_Depense.SelectedItem);
             ((Voyage)listView_Voyage.SelectedItem).refreshListeDepense();
+        }
+
+        private void btn_about_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This software was develloped by Clément Nicolas");
+        }
+
+        private void MI_Disconnection_Click(object sender, RoutedEventArgs e)
+        {
+            Utilisateur.resetInstance();
+            ResetListeDeVoyage();
+        }
+
+        private void btn_new_trip_Click(object sender, RoutedEventArgs e)
+        {
+            Voyage voyage = new Voyage();
+            WindowVoyage tmp = new WindowVoyage();
+            tmp.DataContext = voyage;
+            tmp.ShowDialog();
+            ManagerSql.InsertVoyage(voyage);
         }
     }
 }

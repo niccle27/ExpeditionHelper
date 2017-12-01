@@ -77,7 +77,7 @@ namespace ExpeditionHelper
             set { password = value;
             }
         }
-        public static Utilisateur nullInstance()
+        public static Utilisateur resetInstance()
         {
             if (instance != null)
             {

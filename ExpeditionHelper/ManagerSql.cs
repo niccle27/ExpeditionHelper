@@ -159,7 +159,7 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
             if (tmp != null)
             {
-                Utilisateur.nullInstance();
+                Utilisateur.resetInstance();
                 Utilisateur.Instance.hydrate(tmp);
                 ((MainWindow)Application.Current.MainWindow).listView_Voyage.SelectedIndex = 0;
             }
@@ -312,6 +312,31 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
 
         }
+        public static void InsertVoyage(Voyage voyage)
+        {
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                commande.Connection = Connection.getInstance();
+                commande.CommandText =
+                    "INSERT INTO `voyages`(`id_utilisateur`, `name`, `date_depart`, `date_retour`)" +
+                    " VALUES (@id_utilisateur,@name,@date_depart,@date_retour)";
+                commande.Parameters.AddWithValue("@id_utilisateur", Utilisateur.Instance.Id_utilisateur);
+                commande.Parameters.AddWithValue("@name", voyage.Nom);
+                commande.Parameters.AddWithValue("@date_depart", voyage.Debut.ToString("yyyy-MM-dd"));
+                commande.Parameters.AddWithValue("@date_retour", voyage.Fin.ToString("yyyy-MM-dd"));
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
+
+        }
+
         // update
         public static void UpdateDepense(Depense depense)
         {

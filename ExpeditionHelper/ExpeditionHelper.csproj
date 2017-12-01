@@ -102,6 +102,9 @@
     <Compile Include="WindowTransport.xaml.cs">
       <DependentUpon>WindowTransport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowVoyage.xaml.cs">
+      <DependentUpon>WindowVoyage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window_connection.xaml.cs">
       <DependentUpon>Window_connection.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowTransport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowVoyage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
