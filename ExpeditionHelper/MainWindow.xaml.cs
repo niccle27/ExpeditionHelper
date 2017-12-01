@@ -208,5 +208,10 @@ namespace ExpeditionHelper
         {
 
         }
+
+        private void ContextMenuRemove_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerSql.DeleteAnyDepense((Depense)listView_Depense.SelectedItem);
+        }
     }
 }

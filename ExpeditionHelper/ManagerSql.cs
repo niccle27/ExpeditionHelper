@@ -428,6 +428,58 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
 
         }
+        //delete
+        public static void DeleteAnyDepense(Depense depense)
+            {
+                MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+                try
+                {
+                    if (Connection.getInstance() != null)
+                    {
+                        commande.Connection = Connection.getInstance();
+                        commande.CommandText =
+                            "DELETE FROM `depenses` WHERE id_depense=@id_depense ";
+                        commande.Parameters.AddWithValue("@id_depense", depense.Id_Depense);
+                        commande.Prepare();
+                        commande.ExecuteNonQuery();
+                    }
+
+                }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Connection.getInstance().Dispose();
+            if((depense is Activite) || (depense is Logement) || (depense is Nourriture) || (depense is Transport))
+            {
+                string table="";
+                if (depense is Activite) table = "activites";
+                else if (depense is Logement) table = "logements";
+                else if (depense is Nourriture) table = "nourritures";
+                else if (depense is Transport) table = "transports";
+                try
+                {
+                    if (Connection.getInstance() != null)
+                    {
+                        commande.Connection = Connection.getInstance();
+                        commande.CommandText ="DELETE FROM "+table+" WHERE id=@id ";
+                        commande.Parameters.AddWithValue("@id", depense.Id_subCat);
+                        commande.Prepare();
+                        commande.ExecuteNonQuery();
+                    }
+
+                }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Connection.getInstance().Dispose();
+            }
+
+            }
+
     }
     
 }

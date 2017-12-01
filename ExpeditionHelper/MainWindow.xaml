@@ -124,8 +124,8 @@
 
         <!--Definition du menu-->
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Expedition" Click="MenuItem_Click">
-                <MenuItem Header="_New" Click="MenuItem_Click"/>
+            <MenuItem Header="_Expedition">
+                <MenuItem Header="_New" />
                 <MenuItem Header="_Open"/>
                 <MenuItem Header="_Save"/>
             </MenuItem>
@@ -451,6 +451,11 @@
                                 </Grid>
                             </DataTemplate>
                         </ListView.Resources>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Name="ContextMenuRemove_btn" Header="Remove" Click="ContextMenuRemove_btn_Click"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.GroupStyle>
                             <GroupStyle >
                                 <GroupStyle.ContainerStyle>
