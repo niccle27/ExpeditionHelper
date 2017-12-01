@@ -110,7 +110,6 @@ namespace ExpeditionHelper
             }
             Connection.getInstance().Dispose();
         }
-
         public static void SelectVoyages(ObservableCollection<Voyage> listeDeVoyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
@@ -120,7 +119,7 @@ namespace ExpeditionHelper
             cmd.Parameters.AddWithValue("@id_utilisateur", Utilisateur.Instance.Id_utilisateur);
             cmd.Prepare();
             MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
-            listeDeVoyage.Clear();
+            listeDeVoyage.Clear();// on clear puis on remet ce qu'il faut dedans
             while (reader.Read())
             {
                 DateTimeOffset date_depart = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(2)));
@@ -138,7 +137,6 @@ namespace ExpeditionHelper
                 SelectTransports(voyage);
             }
         }
-
         public static void Connection_Utilisateur(Utilisateur utilisateur)
         {
             Utilisateur tmp=null;

@@ -31,6 +31,7 @@ namespace ExpeditionHelper
                 userControlLogement.tb_city.Text,userControlLogement.cb_categorie.Text);
             ManagerSql.InsertLogement(tmp);
             ManagerSql.InsertDepense(tmp);
+            Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
             this.Close();
         }
     }

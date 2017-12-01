@@ -23,7 +23,7 @@ namespace ExpeditionHelper
     public partial class MainWindow : Window
     {
         //List<Voyage> listeDeVoyage = new List<Voyage>();
-        ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
+        static ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
 
         public void OnUtilisateurModification(Object sender, EventArgs e)
         {
@@ -44,7 +44,7 @@ namespace ExpeditionHelper
 
         }
 
-        public void ReLoad()
+        public static void ReLoad()
         {
             ManagerSql.SelectVoyages(listeDeVoyage);// refresh automatique via observableCollection           
         }
@@ -212,6 +212,7 @@ namespace ExpeditionHelper
         private void ContextMenuRemove_btn_Click(object sender, RoutedEventArgs e)
         {
             ManagerSql.DeleteAnyDepense((Depense)listView_Depense.SelectedItem);
+            ((Voyage)listView_Voyage.SelectedItem).refreshListeDepense();
         }
     }
 }

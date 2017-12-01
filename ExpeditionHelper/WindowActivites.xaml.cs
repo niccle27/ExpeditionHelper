@@ -26,10 +26,11 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Activite tmp = new Activite(0,1,0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
-                DateTime.Now, userControlActivite.tb_city.Text);
+            Activite tmp = new Activite(0,Utilisateur.Instance.CurrentVoyage.Id_Voyage,0,float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
+            DateTime.Now, userControlActivite.tb_city.Text);
             ManagerSql.InsertActivity(tmp);
             ManagerSql.InsertDepense(tmp);
+            Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
             this.Close();
         }
     }
