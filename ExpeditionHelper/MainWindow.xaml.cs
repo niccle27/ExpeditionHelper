@@ -234,7 +234,12 @@ namespace ExpeditionHelper
             WindowVoyage tmp = new WindowVoyage();
             tmp.DataContext = voyage;
             tmp.ShowDialog();
-            ManagerSql.InsertVoyage(voyage);
+        }
+
+        private void ContextMenuRemoveVoyage_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerSql.DeleteVoyage((Voyage)listView_Voyage.SelectedItem);
+            ReLoad();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,16 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Depense tmp = new Depense(0,Utilisateur.Instance.CurrentVoyage.Id_Voyage,0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,DateTime.Now);
-            ManagerSql.InsertDepense(tmp);
-            Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
+            if (Utilisateur.IsConnected())
+            {
+                Depense tmp = new Depense(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage, 0, 
+                    float.Parse(userControlDepense.tb_price.Text, System.Globalization.CultureInfo.InvariantCulture),
+                    userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now);
+                ManagerSql.InsertDepense(tmp);
+                Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
+                
+            }
+            else MessageBox.Show("You are not connected!");
             this.Close();
         }
     }

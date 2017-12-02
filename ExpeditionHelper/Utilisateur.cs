@@ -29,7 +29,14 @@ namespace ExpeditionHelper
             get { return currentVoyage; }
             set { currentVoyage = value; }
         }
-
+        public static bool IsConnected()
+        {
+            if (instance !=null &&instance.Id_utilisateur != 0)
+            {
+                return true;
+            }
+            else return false;
+        }
 
         public Utilisateur()
         {

@@ -26,11 +26,16 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Nourriture tmp = new Nourriture(0,Utilisateur.Instance.CurrentVoyage.Id_Voyage,0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
-                DateTime.Now, userControlNourriture.cb_categorie.Text);
-            ManagerSql.InsertNourriture(tmp);
-            ManagerSql.InsertDepense(tmp);
-            Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
+            if (Utilisateur.IsConnected())
+            {
+                Nourriture tmp = new Nourriture(0,Utilisateur.Instance.CurrentVoyage.Id_Voyage,0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
+                    DateTime.Now, userControlNourriture.cb_categorie.Text);
+                ManagerSql.InsertNourriture(tmp);
+                ManagerSql.InsertDepense(tmp);
+                Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
+                
+            }
+            else MessageBox.Show("You are not connected!");
             this.Close();
         }
     }

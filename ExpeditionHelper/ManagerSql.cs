@@ -104,7 +104,7 @@ namespace ExpeditionHelper
             while (reader.Read())
             {
                 DateTimeOffset m_datetime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(6)));
-                var tmp = new Depense(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(7)), Convert.ToInt32(reader.GetValue(3)),
+                var tmp = new Depense(Convert.ToInt32(reader.GetValue(0)), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(7)), Convert.ToSingle(reader.GetValue(3)),
                     reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), m_datetime.UtcDateTime);
                 voyage.AddDepense(tmp);
             }
@@ -502,7 +502,33 @@ namespace ExpeditionHelper
             }
 
             }
+        public static void DeleteVoyage(Voyage voyage)
+        {
+            foreach(Depense depense in voyage.ListeDepense)
+            {
+                DeleteAnyDepense(depense);
+            }
+            MySql.Data.MySqlClient.MySqlCommand commande = new MySql.Data.MySqlClient.MySqlCommand();
+            try
+            {
+                if (Connection.getInstance() != null)
+                {
+                    commande.Connection = Connection.getInstance();
+                    commande.CommandText =
+                        "DELETE FROM `voyages` WHERE id_voyage=@Id_Voyage ";
+                    commande.Parameters.AddWithValue("@Id_Voyage", voyage.Id_Voyage);
+                    commande.Prepare();
+                    commande.ExecuteNonQuery();
+                }
 
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Connection.getInstance().Dispose();
+        }
     }
     
 }

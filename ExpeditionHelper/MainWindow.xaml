@@ -150,6 +150,11 @@
                 <!-- liste de voyages-->
                 <Grid Grid.Column="0" >
                     <ListView SelectionMode="Single" Name="listView_Voyage" SelectionChanged="listView_Voyage_SelectionChanged" >
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Name="ContextMenuRemoveVoyage_btn" Header="Remove" Click="ContextMenuRemoveVoyage_btn_Click"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Nom}" />

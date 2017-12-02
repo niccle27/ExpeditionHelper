@@ -22,10 +22,17 @@ namespace ExpeditionHelper
         public WindowVoyage()
         {
             InitializeComponent();
+
         }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
+            if (Utilisateur.IsConnected())
+            {
+                ManagerSql.InsertVoyage((Voyage)DataContext);
+                MainWindow.ReLoad();
+            }
+            else MessageBox.Show("You are not connected!");
             this.Close();
         }
     }
