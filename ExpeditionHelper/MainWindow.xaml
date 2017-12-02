@@ -18,7 +18,7 @@
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="208"/>
                         </Grid.ColumnDefinitions>
@@ -27,10 +27,12 @@
             </StatusBar.ItemsPanel>
             <StatusBarItem Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Budget" Foreground="Green"/>
-                    <Label Content=","/>
-                    <Label Content="Spent" Foreground="Red"/>
+                    <Label Content="Total Spent" Foreground="Black"/>
+                    <Label DataContext="listView_Voyage." Content="{Binding Path=SelectedValue.DepenseTot,ElementName=listView_Voyage,Mode=OneWay}" Foreground="Red"/>
                 </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1">
+                
             </StatusBarItem>
             <StatusBarItem Name="statusBarItem_connectionBall"  Grid.Column="2">
                 <StackPanel Name="stackPanel_connectionBall" Orientation="Horizontal" >
@@ -157,9 +159,9 @@
                         </ListView.ContextMenu>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Nom}" />
-                                <GridViewColumn Width="65" Header="From" DisplayMemberBinding="{Binding Debut, StringFormat=dd/MM/yyyy}" />
-                                <GridViewColumn Width="65" Header="To" DisplayMemberBinding="{Binding Fin, StringFormat=dd/MM/yyyy}" />
+                                <GridViewColumn Width="auto" Header="Name" DisplayMemberBinding="{Binding Nom}" />
+                                <GridViewColumn Width="auto" Header="From" DisplayMemberBinding="{Binding Debut, StringFormat=dd/MM/yyyy}" />
+                                <GridViewColumn Width="auto" Header="To" DisplayMemberBinding="{Binding Fin, StringFormat=dd/MM/yyyy}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -282,7 +284,7 @@
                                             <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="Ville: "/>
+                                            <Label FontWeight="Bold" Content="City: "/>
                                             <Label Name="lbl_ville_activite" Content="{Binding Ville}"/>
                                         </StackPanel>
 
@@ -334,11 +336,11 @@
                                             <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="CategorieLogement: "/>
+                                            <Label FontWeight="Bold" Content="Accomodation Category: "/>
                                             <Label Name="lbl_categorieLogement_logement" Content="{Binding CategorieLogement}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="2" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="Ville: "/>
+                                            <Label FontWeight="Bold" Content="City: "/>
                                             <Label Name="lbl_ville_logement" Content="{Binding Ville}"/>
                                         </StackPanel>
 
@@ -389,7 +391,7 @@
                                             <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="CategorieNourriture: "/>
+                                            <Label FontWeight="Bold" Content="Food Category: "/>
                                             <Label Name="lbl_categorieNourriture_nourriture" Content="{Binding CategorieNourriture}"/>
                                         </StackPanel>
 

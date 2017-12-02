@@ -110,10 +110,28 @@ namespace ExpeditionHelper
             }
             Connection.getInstance().Dispose();
         }
+        public static void SelectDepenseTot(Voyage voyage)
+        {
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
+            cmd.CommandText = "SELECT SUM(prix) from depenses where id_voyage=@id_voyage";
+            cmd.Connection = Connection.getInstance();
+            cmd.CommandTimeout = 60;
+            cmd.Parameters.AddWithValue("@id_voyage", voyage.Id_Voyage);
+            cmd.Prepare();
+            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                float depenseTot;
+                if (reader.GetValue(0) is DBNull) depenseTot = 0;
+                else depenseTot = Convert.ToInt32(reader.GetValue(0));
+                voyage.DepenseTot = depenseTot;
+            }
+            Connection.getInstance().Dispose();
+        }
         public static void SelectVoyages(ObservableCollection<Voyage> listeDeVoyage)
         {
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
-            cmd.CommandText = "SELECT `id_voyage`,`name`, UNIX_TIMESTAMP(`date_depart`),UNIX_TIMESTAMP(`date_retour`)  FROM `voyages` where `id_utilisateur`=(@id_utilisateur)";
+            cmd.CommandText = "SELECT `id_voyage`,`name`, UNIX_TIMESTAMP(`date_depart`),UNIX_TIMESTAMP(`date_retour`),(SELECT SUM(prix) from depenses where id_voyage=v.id_voyage)  FROM `voyages` as v where `id_utilisateur`=(@id_utilisateur)";
             cmd.Connection = Connection.getInstance();
             cmd.CommandTimeout = 60;
             cmd.Parameters.AddWithValue("@id_utilisateur", Utilisateur.Instance.Id_utilisateur);
@@ -124,7 +142,10 @@ namespace ExpeditionHelper
             {
                 DateTimeOffset date_depart = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(2)));
                 DateTimeOffset date_retour = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(reader.GetValue(3)));
-                var tmp = new Voyage(Convert.ToInt32(reader.GetValue(0)), reader.GetValue(1).ToString(), date_depart.UtcDateTime, date_retour.UtcDateTime );
+                float depenseTot;
+                if (reader.GetValue(4)is DBNull) depenseTot = 0;
+                else depenseTot = Convert.ToInt32(reader.GetValue(4));
+                var tmp = new Voyage(Convert.ToInt32(reader.GetValue(0)), reader.GetValue(1).ToString(), date_depart.UtcDateTime, date_retour.UtcDateTime,depenseTot);
                 listeDeVoyage.Add(tmp);
             }
             Connection.getInstance().Dispose();

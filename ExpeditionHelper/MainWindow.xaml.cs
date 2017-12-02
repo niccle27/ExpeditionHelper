@@ -204,6 +204,7 @@ namespace ExpeditionHelper
                 Depense tmp2 = tmp as Depense;
                 ManagerSql.UpdateDepense(tmp2);
             }
+            ManagerSql.SelectDepenseTot((Voyage)listView_Voyage.SelectedItem);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
