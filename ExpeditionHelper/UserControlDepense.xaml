@@ -23,12 +23,12 @@
                     <RowDefinition Height="auto"/>            
                 </Grid.RowDefinitions>
                 <Label FontWeight="DemiBold" Content="Name:"/>
-                <TextBox Grid.Column="1" Name="tb_name" />
+                <TextBox Grid.Column="1" Name="tb_name" Text="{Binding Nom, Mode=TwoWay}" />
                 <Label Grid.Row="1" FontWeight="DemiBold" Content="Price:"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Name="tb_price" />
+                <TextBox Grid.Row="1" Grid.Column="1" Name="tb_price" Text="{Binding Prix, Mode=TwoWay}" PreviewTextInput="tb_price_PreviewTextInput" />
             </Grid>
             <Label FontWeight="DemiBold" Grid.Row="1" Content="Comment:"/>
-            <TextBox Name="tb_comment" TextWrapping="Wrap" Grid.Row="2" AcceptsReturn="True"/>
+            <TextBox Name="tb_comment" TextWrapping="Wrap" Grid.Row="2" AcceptsReturn="True" Text="{Binding Commentaire, Mode=TwoWay}"/>
         </Grid>
     </Border>
 

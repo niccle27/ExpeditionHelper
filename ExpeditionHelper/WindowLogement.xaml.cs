@@ -26,11 +26,25 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Logement tmp = new Logement(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage,2,
-                float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now,
-                userControlLogement.tb_city.Text,userControlLogement.cb_categorie.Text);
-            ManagerSql.InsertLogement(tmp);
-            ManagerSql.InsertDepense(tmp);
+            if (Utilisateur.IsConnected())
+            {
+                try
+                {
+                    Logement tmp = new Logement(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage,2,
+                    float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now,
+                        userControlLogement.tb_city.Text,userControlLogement.cb_categorie.Text);
+                    ManagerSql.InsertLogement(tmp);
+                    ManagerSql.InsertDepense(tmp);
+                    Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("an error occured, please retry", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+            else MessageBox.Show("You are not connected!");
+
             this.Close();
         }
     }

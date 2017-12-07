@@ -46,11 +46,11 @@ namespace ExpeditionHelper
         }
 
 
-        private int id_CategorieTable;
-        public int Id_CategorieTable
+        private int id_subCat;
+        public int Id_subCat
         {
-            get { return id_CategorieTable; }
-            set { id_CategorieTable = value; }
+            get { return id_subCat; }
+            set { id_subCat = value; }
         }
 
         private int depenseCategorie;
@@ -85,7 +85,7 @@ namespace ExpeditionHelper
         }
 
 
-        public string GetCategorieTableName()
+        /*public string GetCategorieTableName()
         {
             if (depenseCategorie == 0) findCategorie();
                 foreach (var element in categorieTable)
@@ -93,39 +93,51 @@ namespace ExpeditionHelper
                     if (element.Value == id_CategorieTable) return element.Key;
                 }
             return "NULL";
-        }
+        }*/
 
         public Depense()
         {
 
         }
 
-        public Depense(int id_Depense,int Id_Voyage, int id_CategorieTable, float prix,string nom, string commentaire, DateTime m_dateTime)
+        public Depense(int id_Depense,int Id_Voyage, int Id_subCat, float prix,string nom, string commentaire, DateTime m_dateTime)
         {
             this.nom = nom;
             this.id_Voyage = Id_Voyage;
             this.id_Depense = id_Depense;
-            this.id_CategorieTable = id_CategorieTable;
+            this.Id_subCat = Id_subCat;
             this.Prix = prix;
             this.commentaire = commentaire;
             this.M_datetime = m_dateTime;
         }
         public int findCategorie()
         {
-            if (this is Activite) depenseCategorie = categorieTable["activite"];
-            else if (this is Logement) depenseCategorie = categorieTable["logement"];
-            else if (this is Transport) depenseCategorie = categorieTable["transport"];
-            else if (this is Nourriture) depenseCategorie = categorieTable["nourriture"];
-            else if (this is Depense) depenseCategorie = categorieTable["divers"];
+            if (this is Activite) depenseCategorie = categorieTable["Activity"];
+            else if (this is Logement) depenseCategorie = categorieTable["Accomodation"];
+            else if (this is Transport) depenseCategorie = categorieTable["Transport"];
+            else if (this is Nourriture) depenseCategorie = categorieTable["Food"];
+            else if (this is Depense) depenseCategorie = categorieTable["Others"];
             return depenseCategorie;
         }
+        static public string findCategorieByValue(int value)
+        {
+            foreach (KeyValuePair<string, int> item in categorieTable)
+            {
+                if (item.Value == value)
+                {
+                    return item.Key;
+                }
 
-        public void Hydrate(int id_Depense, int Id_Voyage, int id_CategorieTable, float prix, string nom, string commentaire, DateTime m_dateTime)
+            }
+            return "error value not found";
+        }
+
+        public void Hydrate(int id_Depense, int Id_Voyage, int Id_subCat, float prix, string nom, string commentaire, DateTime m_dateTime)
         {
             this.nom = nom;
             this.id_Voyage = Id_Voyage;
             this.id_Depense = id_Depense;
-            this.id_CategorieTable = id_CategorieTable;
+            this.Id_subCat = Id_subCat;
             this.Prix = prix;
             this.commentaire = commentaire;
             this.M_datetime = m_dateTime;

@@ -26,10 +26,24 @@ namespace ExpeditionHelper
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Transport tmp = new Transport(0, 1, 0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
-                DateTime.Now, userControlTransport.tb_from.Text, userControlTransport.tb_to.Text);
-            ManagerSql.InsertTransport(tmp);
-            ManagerSql.InsertDepense(tmp);
+            if (Utilisateur.IsConnected())
+            {
+                try
+                {
+                    Transport tmp = new Transport(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage, 0, float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
+                    DateTime.Now, userControlTransport.tb_from.Text, userControlTransport.tb_to.Text);
+                    ManagerSql.InsertTransport(tmp);
+                    ManagerSql.InsertDepense(tmp);
+                    Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("an error occured, please retry", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+            else MessageBox.Show("You are not connected!");
+
             this.Close();
         }
     }

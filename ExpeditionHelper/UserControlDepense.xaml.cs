@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,9 +21,22 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class UserControlDepense : UserControl
     {
+        public UserControlDepense(Depense depense)
+        {
+            InitializeComponent();
+            tb_name.Text = depense.Nom;
+            tb_price.Text = depense.Prix.ToString();
+            tb_comment.Text = depense.Commentaire;
+        }
         public UserControlDepense()
         {
             InitializeComponent();
+        }
+
+        private void tb_price_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("^[0-9.]+");
+            e.Handled=!regex.IsMatch(e.Text);
         }
     }
 }

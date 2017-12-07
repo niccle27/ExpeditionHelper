@@ -20,6 +20,12 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class UserControlTransport : UserControl
     {
+        public UserControlTransport(Transport transport)
+        {
+            InitializeComponent();
+            tb_from.Text = transport.Depart;
+            tb_to.Text = transport.Destination;
+        }
         public UserControlTransport()
         {
             InitializeComponent();

@@ -24,21 +24,22 @@ namespace ExpeditionHelper
         static private string database = "eh";
         static private string port = "3306";
 
-        static private MySql.Data.MySqlClient.MySqlConnection connection;
+        static private MySql.Data.MySqlClient.MySqlConnection connection=null;
 
         private Connection() { }
 
         public static MySql.Data.MySqlClient.MySqlConnection getInstance()
-        {
+        {                string connStr = "server=" + server + ";user=" + user + ";database="
+        + database + ";port=" + port + ";password=" + password + ";SslMode=none;IgnorePrepare=false";
             if (connection == null || connection.State==System.Data.ConnectionState.Closed)
             {
-                connection = new MySql.Data.MySqlClient.MySqlConnection();
-                string connStr = "server=" + server + ";user=" + user + ";database="
-        + database + ";port=" + port + ";password=" + password + ";SslMode=none;IgnorePrepare=false";
-                connection.ConnectionString = connStr;
+                connection = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+               // connection.ConnectionString = connStr;
                 try
                 {
                     connection.Open();
+                    ((MainWindow)Application.Current.MainWindow).connectionBall.Fill = Brushes.Green;
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {

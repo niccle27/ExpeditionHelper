@@ -15,7 +15,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontWeight="DemiBold">Category:</Label>
-        <ComboBox Grid.Row="0" Grid.Column="1"  Name="cb_categorie">
+        <ComboBox Grid.Row="0" Grid.Column="1"  Name="cb_categorie" Text="{Binding CategorieNourriture, Mode=TwoWay}">
             <ComboBoxItem IsSelected="True" Content="5 stars restaurant"/>
             <ComboBoxItem Content="restaurant"/>
             <ComboBoxItem Content="fastfood"/>

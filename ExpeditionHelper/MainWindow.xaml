@@ -13,12 +13,12 @@
 
 
         <!--Definition du status bar -->
-        <StatusBar DockPanel.Dock="Bottom" Background="#FFCFCFCF">
+        <StatusBar Name="statusBar" DockPanel.Dock="Bottom" Background="#FFCFCFCF">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="208"/>
                         </Grid.ColumnDefinitions>
@@ -27,15 +27,17 @@
             </StatusBar.ItemsPanel>
             <StatusBarItem Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Budget" Foreground="Green"/>
-                    <Label Content=","/>
-                    <Label Content="Spent" Foreground="Red"/>
+                    <Label Content="Total Spent" Foreground="Black"/>
+                    <Label DataContext="listView_Voyage." Content="{Binding Path=SelectedValue.DepenseTot,ElementName=listView_Voyage,Mode=OneWay}" Foreground="Red"/>
                 </StackPanel>
             </StatusBarItem>
-            <StatusBarItem Grid.Column="2">
-                <StackPanel Orientation="Horizontal" >
+            <StatusBarItem Grid.Column="1">
+                
+            </StatusBarItem>
+            <StatusBarItem Name="statusBarItem_connectionBall"  Grid.Column="2">
+                <StackPanel Name="stackPanel_connectionBall" Orientation="Horizontal" >
                     <Label Margin="0,0,10,0" Content="Connection status:"/>
-                    <Ellipse Width="20" Height="20" Fill="#FF1AD11A" />
+                    <Ellipse Name="connectionBall" Width="20" Height="20" Fill="Red" />
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
@@ -49,41 +51,93 @@
                         <Setter Property="Height" Value="10"/>
                     </Style>
                 </ToolBar.Resources>
-                <Button ToolTip="Hotel" Click="new_logement">
-                    <Image Source="img/bed.png" Height="64" Width="64"/>
+                <Button ToolTip="Hotel" Click="new_logement" IsEnabled="True">
+                    <Image Source="img/bed.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Food" Click="new_meal">
-                    <Image Source="img/cutlery.png" Height="64" Width="64"/>
+                    <Image Source="img/cutlery.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Transport" Click="new_transport">
-                    <Image Source="img/taxi.png" Height="64" Width="64"/>
+                    <Image Source="img/taxi.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Activity" Click="new_activities">
-                    <Image Source="img/ticket.png" Height="64" Width="64"/>
+                    <Image Source="img/ticket.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
                 <Button ToolTip="Spent" Click="new_divers">
-                    <Image Source="img/money.png" Height="64" Width="64"/>
+                    <Image Source="img/money.png" Height="64" Width="64">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                 </Button>
-            </ToolBar>
-            <ToolBar>
-                <Button Content="option 4" />
-                <Button Content="option 5" />
-                <Button Content="option 6" />
             </ToolBar>
         </ToolBarTray>
 
         <!--Definition du menu-->
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Expedition">
-                <MenuItem Header="_New"/>
-                <MenuItem Header="_Open"/>
-                <MenuItem Header="_Save"/>
+            <MenuItem Header="_ExpeditionHelper">
+                <MenuItem Name="btn_about" Header="About" Click="btn_about_Click"/>
             </MenuItem>
-            <MenuItem Header="My _Account" RenderTransformOrigin="0.715,0.566">
+            <MenuItem Header="_New">
+                <MenuItem Name="btn_new_trip" Header="_Trip" Click="btn_new_trip_Click"/>
+                <MenuItem Name="btn_new_divers" Header="_Spent" Click="new_divers"/>
+                <MenuItem Name="btn_new_activite" Header="_Activity" Click="new_activities"/>
+                <MenuItem Name="btn_new_logement" Header="_Accomodation" Click="new_logement"/>
+                <MenuItem Name="btn_new_meal" Header="_Meal" Click="new_meal"/>
+                <MenuItem Name="btn_new_transport" Header="_Transport" Click="new_transport"/>
+            </MenuItem>
+            <MenuItem Header="My _Account">
                 <MenuItem Name="MI_connection" Header="_Connection" Click="MI_connection_Click"/>
-                <MenuItem Header="_Edit"/>
-                <MenuItem Header="Change _Password"/>
-                <MenuItem Header="_Disconnection"/>
+                <MenuItem Name="MI_Disconnection" Header="_Disconnection" Click="MI_Disconnection_Click"/>
+            </MenuItem>
+            <MenuItem Header="Search">
+                <MenuItem Name="btn_search_weatherCode" Header="_Weather Code from city name" Click="btn_search_weatherCode_Click"/>
             </MenuItem>
         </Menu>
 
@@ -98,32 +152,45 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
+                <!-- liste de voyages-->
                 <Grid Grid.Column="0" >
                     <ListView SelectionMode="Single" Name="listView_Voyage" SelectionChanged="listView_Voyage_SelectionChanged" >
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Name="ContextMenuRemoveVoyage_btn" Header="Remove" Click="ContextMenuRemoveVoyage_btn_Click"/>
+                                <MenuItem Name="ContextMenuShowGraphique" Header="Show pie" Click="ContextMenuShowGraphique_Click"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Nom}" />
-                                <GridViewColumn Width="65" Header="From" DisplayMemberBinding="{Binding Debut}" />
-                                <GridViewColumn Width="65" Header="To" DisplayMemberBinding="{Binding Fin}" />
+                                <GridViewColumn Width="auto" Header="Name" DisplayMemberBinding="{Binding Nom}" />
+                                <GridViewColumn Width="auto" Header="From" DisplayMemberBinding="{Binding Debut, StringFormat=dd/MM/yyyy}" />
+                                <GridViewColumn Width="auto" Header="To" DisplayMemberBinding="{Binding Fin, StringFormat=dd/MM/yyyy}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </Grid>
                 <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False"  />
+                <!-- liste des depenses du voyage-->
                 <StackPanel Grid.Column="2">
-                    <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=listView_Voyag}" /><!--problème quand j'indique correctement listeView_Voyage-->
-                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}" HorizontalContentAlignment="Stretch" >
+                    <Label Height="60" Name="TitreVoyage" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="30" Content="{Binding Path=SelectedValue.Nom, ElementName=listView_Voyage}" />
+                    <ListView Name="listView_Depense" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="440" ItemsSource="{Binding Path=SelectedValue.ListeDepense,ElementName=listView_Voyage}" HorizontalContentAlignment="Stretch" SelectionChanged="listView_Depense_SelectionChanged" >
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="ListBoxItem">
-                                            <Border Name="Border" Padding="2" Margin="0">
+                                            <Border Name="Border" Padding="2" Margin="0" BorderThickness="7">
                                                 <ContentPresenter/>
                                             </Border>
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsSelected" Value="true">
-                                                    <Setter TargetName="Border" Property="BorderThickness" Value="7"  />
+                                                    <Setter TargetName="Border" Property="BorderThickness" Value="2"  />
+                                                    <Setter TargetName="Border" Property="Effect">
+                                                        <Setter.Value>
+                                                             <DropShadowEffect/>
+                                                        </Setter.Value>
+                                                    </Setter>
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -167,7 +234,7 @@
                                             <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                            <TextBlock FontStyle="Italic" Name="lbl_datetime_depense" Text="{Binding M_datetime, StringFormat=HH:mm}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" >
                                             <Label FontWeight="Bold" Content="Price: "/>
@@ -214,14 +281,14 @@
                                             <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                            <TextBlock FontStyle="Italic" Name="lbl_datetime_depense" Text="{Binding M_datetime, StringFormat=HH:mm}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" >
                                             <Label FontWeight="Bold" Content="Price: "/>
                                             <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="Ville: "/>
+                                            <Label FontWeight="Bold" Content="City: "/>
                                             <Label Name="lbl_ville_activite" Content="{Binding Ville}"/>
                                         </StackPanel>
 
@@ -266,18 +333,18 @@
                                             <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                            <TextBlock FontStyle="Italic" Name="lbl_datetime_depense" Text="{Binding M_datetime, StringFormat=HH:mm}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" >
                                             <Label FontWeight="Bold" Content="Price: "/>
                                             <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="CategorieLogement: "/>
+                                            <Label FontWeight="Bold" Content="Accomodation Category: "/>
                                             <Label Name="lbl_categorieLogement_logement" Content="{Binding CategorieLogement}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="2" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="Ville: "/>
+                                            <Label FontWeight="Bold" Content="City: "/>
                                             <Label Name="lbl_ville_logement" Content="{Binding Ville}"/>
                                         </StackPanel>
 
@@ -321,14 +388,14 @@
                                             <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime, StringFormat=HH:mm:ss}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" >
                                             <Label FontWeight="Bold" Content="Price: "/>
                                             <Label Name="lbl_prix_depense" Content="{Binding Prix}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
-                                            <Label FontWeight="Bold" Content="CategorieNourriture: "/>
+                                            <Label FontWeight="Bold" Content="Food Category: "/>
                                             <Label Name="lbl_categorieNourriture_nourriture" Content="{Binding CategorieNourriture}"/>
                                         </StackPanel>
 
@@ -373,7 +440,7 @@
                                             <Label Name="lbl_nom_depense" Content="{Binding Nom}"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                            <Label FontStyle="Italic" Name="lbl_datetime_depense" Content="{Binding M_datetime}"/>
+                                            <TextBlock FontStyle="Italic" Name="lbl_datetime_depense" Text="{Binding M_datetime, StringFormat=HH:mm}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" >
                                             <Label FontWeight="Bold" Content="Price: "/>
@@ -394,6 +461,11 @@
                                 </Grid>
                             </DataTemplate>
                         </ListView.Resources>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Name="ContextMenuRemove_btn" Header="Remove" Click="ContextMenuRemove_btn_Click"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.GroupStyle>
                             <GroupStyle >
                                 <GroupStyle.ContainerStyle>
@@ -418,8 +490,21 @@
                     </ListView>                    
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
-                <StackPanel Grid.Column="4" Background="Green"/>
-
+                <!-- colonne d'update-->
+                <Grid Grid.Column="4" Width="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Name="edit_zone" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- il faut que je réutilise les usercontrol d'avant dedans -->
+                    </Grid>
+                    <Button Visibility="Hidden" Name="btn_update" Content="update" Grid.Row="2" Click="btn_update_Click"/>
+                </Grid>                
             </Grid>
         </Border>
     </DockPanel>

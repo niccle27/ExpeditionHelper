@@ -22,28 +22,31 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class MainWindow : Window
     {
-        //List<Voyage> listeDeVoyage = new List<Voyage>();
-        ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
+        static ObservableCollection<Voyage> listeDeVoyage = new ObservableCollection<Voyage>();
 
         public void OnUtilisateurModification(Object sender, EventArgs e)
         {
             ReLoad();
            
         }
-
+        public static void ResetListeDeVoyage()
+        {
+            listeDeVoyage.Clear();
+        }
 
         public MainWindow()
         {
-            ManagerSql.HydrateCategorie();
-            Utilisateur.Instance.Modification += OnUtilisateurModification;
+            Utilisateur.Modification += OnUtilisateurModification;// link OnUtilisateurModification à l'événement utilisateur
+
+            
             InitializeComponent();
-            //remodifier ça et passer en xaml => code behind pas propre
+            ManagerSql.HydrateCategorie();//hydrater les categories
             listView_Voyage.ItemsSource = listeDeVoyage;
             listView_Voyage.SelectedIndex = 0;
 
         }
 
-        public void ReLoad()
+        public static void ReLoad()
         {
             ManagerSql.SelectVoyages(listeDeVoyage);// refresh automatique via observableCollection           
         }
@@ -84,18 +87,172 @@ namespace ExpeditionHelper
 
         private void listView_Voyage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CollectionView view1 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
-            view1.GroupDescriptions.Clear();//artifice pour empêcher d'imbriquer des groupe en rapellant la fonction
-            view1.SortDescriptions.Clear();
-            Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
-            CollectionView view2 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
-            SortDescription sortDescription = new SortDescription("M_datetime", ListSortDirection.Descending);
-            view2.SortDescriptions.Add(sortDescription);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
-            view2.GroupDescriptions.Add(groupDescription);
+            try
+            {
+                CollectionView view1 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
+                view1.GroupDescriptions.Clear();//artifice pour empêcher d'imbriquer des groupe en rapellant la fonction
+                view1.SortDescriptions.Clear();
+                Utilisateur.Instance.CurrentVoyage = (Voyage)listView_Voyage.SelectedItem;
+                CollectionView view2 = (CollectionView)CollectionViewSource.GetDefaultView(listView_Depense.ItemsSource);
+                SortDescription sortDescription = new SortDescription("M_datetime", ListSortDirection.Ascending);
+                view2.SortDescriptions.Add(sortDescription);
+                PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
+                view2.GroupDescriptions.Add(groupDescription);
+            }
+            catch (Exception)
+            {
+                //ne rien faire c'est que la liste est vide
+            }
             //bug le sort ne s'effecture pas 
         }
 
-        
+        private void listView_Depense_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btn_update.Visibility = Visibility.Visible;
+            edit_zone.Children.Clear();
+            var tmp = ((ListView)sender).SelectedItem;
+            if (tmp is Activite)
+            {
+
+                Activite tmp2 = tmp as Activite;
+                UserControlActivite userControlActivite = new UserControlActivite();
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
+                Grid.SetRow(userControlActivite, 0);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
+                Grid.SetRow(userControlDepense, 1);
+            }
+            else if (tmp is Logement)
+            {
+                Logement tmp2 = tmp as Logement;
+                UserControlLogement userControlActivite = new UserControlLogement(tmp2);
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
+                Grid.SetRow(userControlActivite, 0);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
+                Grid.SetRow(userControlDepense, 1);
+            }
+            else if (tmp is Transport)
+            {
+                Transport tmp2 = tmp as Transport;
+                UserControlTransport userControlActivite = new UserControlTransport(tmp2);
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
+                Grid.SetRow(userControlActivite, 0);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
+                Grid.SetRow(userControlDepense, 1);
+            }
+            else if (tmp is Nourriture)
+            {
+                Nourriture tmp2 = tmp as Nourriture;
+                UserControlNourriture userControlActivite = new UserControlNourriture();
+                userControlActivite.DataContext = tmp2;
+                edit_zone.Children.Add(userControlActivite);
+                Grid.SetRow(userControlActivite, 0);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
+                Grid.SetRow(userControlDepense, 1);
+            }
+            else if (tmp is Depense)
+            {
+                Depense tmp2 = tmp as Depense;
+                //UserControlDepense userControlDepense = new UserControlDepense(tmp2);
+                UserControlDepense userControlDepense = new UserControlDepense();
+                userControlDepense.DataContext = tmp2;
+                edit_zone.Children.Add(userControlDepense);
+                Grid.SetRow(userControlDepense, 1);
+            }
+
+        }
+
+        private void btn_update_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = listView_Depense.SelectedItem;
+            if (tmp is Activite)
+            {
+                Activite tmp2 = tmp as Activite;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateActivity(tmp2);
+            }
+            else if (tmp is Logement)
+            {
+                Logement tmp2 = tmp as Logement;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateLogement(tmp2);
+            }
+            else if (tmp is Transport)
+            {
+                Transport tmp2 = tmp as Transport;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateTransport(tmp2);
+            }
+            else if (tmp is Nourriture)
+            {
+                Nourriture tmp2 = tmp as Nourriture;
+                ManagerSql.UpdateDepense(tmp2);
+                ManagerSql.UpdateNourriture(tmp2);
+            }
+            else if (tmp is Depense)
+            {
+                Depense tmp2 = tmp as Depense;
+                ManagerSql.UpdateDepense(tmp2);
+            }
+            ManagerSql.SelectDepenseTot((Voyage)listView_Voyage.SelectedItem);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ContextMenuRemove_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerSql.DeleteAnyDepense((Depense)listView_Depense.SelectedItem);
+            ((Voyage)listView_Voyage.SelectedItem).refreshListeDepense();
+        }
+
+        private void btn_about_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This software was develloped by Clément Nicolas");
+        }
+
+        private void MI_Disconnection_Click(object sender, RoutedEventArgs e)
+        {
+            Utilisateur.resetInstance();
+            ResetListeDeVoyage();
+        }
+
+        private void btn_new_trip_Click(object sender, RoutedEventArgs e)
+        {
+            Voyage voyage = new Voyage();
+            WindowVoyage tmp = new WindowVoyage();
+            tmp.DataContext = voyage;
+            tmp.ShowDialog();
+        }
+
+        private void ContextMenuRemoveVoyage_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerSql.DeleteVoyage((Voyage)listView_Voyage.SelectedItem);
+            ReLoad();
+        }
+
+        private void btn_search_weatherCode_Click(object sender, RoutedEventArgs e)
+        {
+            WindowSearch tmp = new WindowSearch();
+            tmp.ShowDialog();
+        }
+
+        private void ContextMenuShowGraphique_Click(object sender, RoutedEventArgs e)
+        {
+            WindowGraphique tmp = new WindowGraphique(((Voyage)listView_Voyage.SelectedItem).Id_Voyage);
+            tmp.ShowDialog();
+        }
     }
 }

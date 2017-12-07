@@ -20,6 +20,13 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class UserControlLogement : UserControl
     {
+        public UserControlLogement(Logement logement)
+        {
+
+            InitializeComponent();
+            tb_city.Text = logement.Ville;
+            cb_categorie.Text = logement.CategorieLogement;
+        }
         public UserControlLogement()
         {
             InitializeComponent();

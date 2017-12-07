@@ -9,10 +9,24 @@ namespace ExpeditionHelper
 {
     public class Voyage
     {
+        private float depenseTot;
+
+        public float DepenseTot
+        {
+            get { return depenseTot; }
+            set { depenseTot = value; }
+        }
+
+
         public void refreshListeDepense()
         {
             listeDepense.Clear();
             ManagerSql.SelectDivers(this);
+            ManagerSql.SelectActivites(this);
+            ManagerSql.SelectLogements(this);
+            ManagerSql.SelectNourritures(this);
+            ManagerSql.SelectTransports(this);
+            ManagerSql.SelectDepenseTot(this);
         }
 
         private int id_Voyage;
@@ -57,19 +71,21 @@ namespace ExpeditionHelper
         {
 
         }
-        public Voyage(int id,string nom, DateTime debut, DateTime fin)
+        public Voyage(int id,string nom, DateTime debut, DateTime fin,float depenseTot)
         {
             this.id_Voyage = id;
             this.nom = nom;
             this.debut = debut;
             this.fin = fin;
+            this.depenseTot = depenseTot;
         }
-        public void Hydrate(int id, string nom, DateTime debut, DateTime fin)
+        public void Hydrate(int id, string nom, DateTime debut, DateTime fin, float depenseTot)
         {
             this.id_Voyage = id;
             this.nom = nom;
             this.debut = debut;
             this.fin = fin;
+            this.depenseTot = depenseTot;
         }
         public void AddDepense(Depense depense)
         {
