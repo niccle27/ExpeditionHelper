@@ -132,9 +132,12 @@
                 <MenuItem Name="btn_new_meal" Header="_Meal" Click="new_meal"/>
                 <MenuItem Name="btn_new_transport" Header="_Transport" Click="new_transport"/>
             </MenuItem>
-            <MenuItem Header="My _Account" RenderTransformOrigin="0.715,0.566">
+            <MenuItem Header="My _Account">
                 <MenuItem Name="MI_connection" Header="_Connection" Click="MI_connection_Click"/>
                 <MenuItem Name="MI_Disconnection" Header="_Disconnection" Click="MI_Disconnection_Click"/>
+            </MenuItem>
+            <MenuItem Header="Search">
+                <MenuItem Name="btn_search_weatherCode" Header="_Weather Code from city name" Click="btn_search_weatherCode_Click"/>
             </MenuItem>
         </Menu>
 

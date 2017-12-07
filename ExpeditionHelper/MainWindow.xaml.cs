@@ -242,5 +242,11 @@ namespace ExpeditionHelper
             ManagerSql.DeleteVoyage((Voyage)listView_Voyage.SelectedItem);
             ReLoad();
         }
+
+        private void btn_search_weatherCode_Click(object sender, RoutedEventArgs e)
+        {
+            WindowSearch tmp = new WindowSearch();
+            tmp.ShowDialog();
+        }
     }
 }

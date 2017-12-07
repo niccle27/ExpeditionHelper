@@ -99,6 +99,9 @@
     <Compile Include="WindowNourriture.xaml.cs">
       <DependentUpon>WindowNourriture.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowSearch.xaml.cs">
+      <DependentUpon>WindowSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowTransport.xaml.cs">
       <DependentUpon>WindowTransport.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowNourriture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

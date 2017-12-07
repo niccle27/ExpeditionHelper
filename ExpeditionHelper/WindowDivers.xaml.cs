@@ -29,12 +29,18 @@ namespace ExpeditionHelper
         {
             if (Utilisateur.IsConnected())
             {
-                Depense tmp = new Depense(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage, 0, 
-                    float.Parse(userControlDepense.tb_price.Text, System.Globalization.CultureInfo.InvariantCulture),
-                    userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now);
-                ManagerSql.InsertDepense(tmp);
-                Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
-                
+                try
+                {
+                    Depense tmp = new Depense(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage, 0, 
+                        float.Parse(userControlDepense.tb_price.Text, System.Globalization.CultureInfo.InvariantCulture),
+                        userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now);
+                    ManagerSql.InsertDepense(tmp);
+                    Utilisateur.Instance.CurrentVoyage.refreshListeDepense(); 
+                }
+               catch(FormatException ex)
+                {
+                    MessageBox.Show("an error occured, please retry", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else MessageBox.Show("You are not connected!");
             this.Close();

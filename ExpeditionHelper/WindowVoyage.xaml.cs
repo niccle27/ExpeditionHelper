@@ -29,8 +29,16 @@ namespace ExpeditionHelper
         {
             if (Utilisateur.IsConnected())
             {
-                ManagerSql.InsertVoyage((Voyage)DataContext);
-                MainWindow.ReLoad();
+                try
+                {
+                    ManagerSql.InsertVoyage((Voyage)DataContext);
+                    MainWindow.ReLoad();
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("an error occured, please retry","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                }
+
             }
             else MessageBox.Show("You are not connected!");
             this.Close();

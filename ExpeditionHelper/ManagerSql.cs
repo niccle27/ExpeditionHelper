@@ -357,7 +357,6 @@ namespace ExpeditionHelper
             Connection.getInstance().Dispose();
 
         }
-
         // update
         public static void UpdateDepense(Depense depense)
         {
