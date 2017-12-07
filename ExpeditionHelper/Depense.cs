@@ -112,12 +112,24 @@ namespace ExpeditionHelper
         }
         public int findCategorie()
         {
-            if (this is Activite) depenseCategorie = categorieTable["activite"];
-            else if (this is Logement) depenseCategorie = categorieTable["logement"];
-            else if (this is Transport) depenseCategorie = categorieTable["transport"];
-            else if (this is Nourriture) depenseCategorie = categorieTable["nourriture"];
-            else if (this is Depense) depenseCategorie = categorieTable["divers"];
+            if (this is Activite) depenseCategorie = categorieTable["Activity"];
+            else if (this is Logement) depenseCategorie = categorieTable["Accomodation"];
+            else if (this is Transport) depenseCategorie = categorieTable["Transport"];
+            else if (this is Nourriture) depenseCategorie = categorieTable["Food"];
+            else if (this is Depense) depenseCategorie = categorieTable["Others"];
             return depenseCategorie;
+        }
+        static public string findCategorieByValue(int value)
+        {
+            foreach (KeyValuePair<string, int> item in categorieTable)
+            {
+                if (item.Value == value)
+                {
+                    return item.Key;
+                }
+
+            }
+            return "error value not found";
         }
 
         public void Hydrate(int id_Depense, int Id_Voyage, int Id_subCat, float prix, string nom, string commentaire, DateTime m_dateTime)

@@ -48,3 +48,11 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\bin\Debug\HtmlAgilityPack.dll
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\bin\Debug\HtmlAgilityPack.pdb
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\bin\Debug\HtmlAgilityPack.xml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\OxyPlot.dll
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\OxyPlot.Wpf.dll
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\OxyPlot.pdb
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\OxyPlot.xml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\OxyPlot.Wpf.pdb
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\bin\Debug\OxyPlot.Wpf.xml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\WindowGraphique.g.cs
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\WindowGraphique.baml

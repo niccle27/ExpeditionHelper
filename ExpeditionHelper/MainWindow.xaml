@@ -158,6 +158,7 @@
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Name="ContextMenuRemoveVoyage_btn" Header="Remove" Click="ContextMenuRemoveVoyage_btn_Click"/>
+                                <MenuItem Name="ContextMenuShowGraphique" Header="Show pie" Click="ContextMenuShowGraphique_Click"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.View>

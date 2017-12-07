@@ -248,5 +248,11 @@ namespace ExpeditionHelper
             WindowSearch tmp = new WindowSearch();
             tmp.ShowDialog();
         }
+
+        private void ContextMenuShowGraphique_Click(object sender, RoutedEventArgs e)
+        {
+            WindowGraphique tmp = new WindowGraphique(((Voyage)listView_Voyage.SelectedItem).Id_Voyage);
+            tmp.ShowDialog();
+        }
     }
 }

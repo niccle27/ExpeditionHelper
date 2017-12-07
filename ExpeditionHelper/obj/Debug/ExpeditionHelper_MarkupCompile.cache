@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\
 ExpeditionHelper
 none
 false
 DEBUG;TRACE
-D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\App.xaml
-141536114909
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\App.xaml
+151653926676
 
-271757035975
-161740084443
-MainWindow.xaml;UserControlActivite.xaml;UserControlDepense.xaml;UserControlLogement.xaml;UserControlNourriture.xaml;UserControlTransport.xaml;WindowActivites.xaml;WindowDivers.xaml;WindowLogement.xaml;WindowNourriture.xaml;WindowSearch.xaml;WindowTransport.xaml;WindowVoyage.xaml;Window_connection.xaml;
+281034585985
+71-1857844830
+MainWindow.xaml;UserControlActivite.xaml;UserControlDepense.xaml;UserControlLogement.xaml;UserControlNourriture.xaml;UserControlTransport.xaml;WindowActivites.xaml;WindowDivers.xaml;WindowGraphique.xaml;WindowLogement.xaml;WindowNourriture.xaml;WindowSearch.xaml;WindowTransport.xaml;WindowVoyage.xaml;Window_connection.xaml;
 
 False
 

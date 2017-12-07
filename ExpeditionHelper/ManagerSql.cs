@@ -158,6 +158,25 @@ namespace ExpeditionHelper
                 SelectTransports(voyage);
             }
         }
+        public static ObservableCollection<KeyValuePair<string, int>> SelectDataGraphiqueVoyage(int id)
+        {
+            ObservableCollection<KeyValuePair<string, int>> collection_Categorie_Value = new ObservableCollection<KeyValuePair<string, int>>();
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
+            cmd.CommandText = "SELECT id_categorie,SUM(prix) FROM `depenses` WHERE id_voyage=@id_voyage GROUP by id_categorie";
+            cmd.Connection = Connection.getInstance();
+            cmd.CommandTimeout = 60;
+            cmd.Parameters.AddWithValue("@id_voyage", id);
+            cmd.Prepare();
+            MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                collection_Categorie_Value.Add(new KeyValuePair<string, int>(Depense.findCategorieByValue(Convert.ToInt32(reader.GetValue(0))), Convert.ToInt32(reader.GetValue(1))));
+            }
+            Connection.getInstance().Dispose();
+            return collection_Categorie_Value;
+
+
+        }
         public static void Connection_Utilisateur(Utilisateur utilisateur)
         {
             Utilisateur tmp=null;
@@ -253,9 +272,8 @@ namespace ExpeditionHelper
             {
                 commande.Connection = Connection.getInstance();
                 commande.CommandText =
-                    "INSERT INTO `activites`(`id_categorie`, `ville`) " +
-                    "VALUES (@id_categorie,@ville)";
-                commande.Parameters.AddWithValue("@id_categorie", Depense.categorieTable["activite"]);
+                    "INSERT INTO `activites`(`ville`) " +
+                    "VALUES (@ville)";
                 commande.Parameters.AddWithValue("@ville",activite.Ville);
                 commande.Prepare();
                 commande.ExecuteNonQuery();
@@ -496,29 +514,87 @@ namespace ExpeditionHelper
                 Connection.getInstance().Dispose();
             if((depense is Activite) || (depense is Logement) || (depense is Nourriture) || (depense is Transport))
             {
-                string table="";
-                if (depense is Activite) table = "activites";
-                else if (depense is Logement) table = "logements";
-                else if (depense is Nourriture) table = "nourritures";
-                else if (depense is Transport) table = "transports";
-                try
+                if (depense is Activite) 
                 {
-                    if (Connection.getInstance() != null)
+                    try
                     {
-                        commande.Connection = Connection.getInstance();
-                        commande.CommandText ="DELETE FROM "+table+" WHERE id=@id ";
-                        commande.Parameters.AddWithValue("@id", depense.Id_subCat);
-                        commande.Prepare();
-                        commande.ExecuteNonQuery();
+                        if (Connection.getInstance() != null)
+                        {
+                            commande.Connection = Connection.getInstance();
+                            commande.CommandText = "DELETE FROM activites WHERE id=@id ";
+                            commande.Parameters.AddWithValue("@id", depense.Id_subCat);
+                            commande.Prepare();
+                            commande.ExecuteNonQuery();
+                        }
                     }
-
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    Connection.getInstance().Dispose();
                 }
-                catch (MySql.Data.MySqlClient.MySqlException ex)
+                else if (depense is Logement)
                 {
-                    MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    try
+                    {
+                        if (Connection.getInstance() != null)
+                        {
+                            commande.Connection = Connection.getInstance();
+                            commande.CommandText = "DELETE FROM logements WHERE id=@id ";
+                            commande.Parameters.AddWithValue("@id", depense.Id_subCat);
+                            commande.Prepare();
+                            commande.ExecuteNonQuery();
+                        }
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    Connection.getInstance().Dispose();
                 }
-                Connection.getInstance().Dispose();
+                else if (depense is Nourriture)
+                {
+                    try
+                    {
+                        if (Connection.getInstance() != null)
+                        {
+                            commande.Connection = Connection.getInstance();
+                            commande.CommandText = "DELETE FROM nourritures WHERE id=@id ";
+                            commande.Parameters.AddWithValue("@id", depense.Id_subCat);
+                            commande.Prepare();
+                            commande.ExecuteNonQuery();
+                        }
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    Connection.getInstance().Dispose();
+                }
+                else if (depense is Transport)
+                {
+                    try
+                    {
+                        if (Connection.getInstance() != null)
+                        {
+                            commande.Connection = Connection.getInstance();
+                            commande.CommandText = "DELETE FROM transports WHERE id=@id ";
+                            commande.Parameters.AddWithValue("@id", depense.Id_subCat);
+                            commande.Prepare();
+                            commande.ExecuteNonQuery();
+                        }
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    Connection.getInstance().Dispose();
+                }
+                
             }
 
             }

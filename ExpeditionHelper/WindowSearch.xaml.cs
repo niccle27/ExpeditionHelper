@@ -35,8 +35,7 @@ namespace ExpeditionHelper
             var htmlDoc = web.Load(search);
             HtmlNode node = htmlDoc.DocumentNode.SelectSingleNode("/html/body/main/div/div[2]/div/div[3]/div/dl/dt[1]");
             if (node != null) MessageBox.Show(node.InnerText);
-            else MessageBox.Show("an error occured, the code couldn't have been found");
-                     
+            else MessageBox.Show("an error occured, the code couldn't have been found");                     
         }
     }
 }
