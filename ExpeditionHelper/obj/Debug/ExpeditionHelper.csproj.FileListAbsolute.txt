@@ -45,3 +45,6 @@ D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\Expedition
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\obj\Debug\ExpeditionHelper.csprojResolveAssemblyReference.cache
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\WindowSearch.g.cs
 D:\Users\cleme\Documents\Visual Studio 2017\Projects\ExpeditionHelper\ExpeditionHelper\obj\Debug\WindowSearch.baml
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\bin\Debug\HtmlAgilityPack.dll
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\bin\Debug\HtmlAgilityPack.pdb
+D:\Users\cleme\Documents\Visual Studio 2017\Projects\expeditionHelper\ExpeditionHelper\bin\Debug\HtmlAgilityPack.xml
