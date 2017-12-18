@@ -21,13 +21,6 @@ namespace ExpeditionHelper
     /// </summary>
     public partial class UserControlDepense : UserControl
     {
-        public UserControlDepense(Depense depense)
-        {
-            InitializeComponent();
-            tb_name.Text = depense.Nom;
-            tb_price.Text = depense.Prix.ToString();
-            tb_comment.Text = depense.Commentaire;
-        }
         public UserControlDepense()
         {
             InitializeComponent();

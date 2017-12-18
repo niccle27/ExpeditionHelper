@@ -31,10 +31,11 @@ namespace ExpeditionHelper
             {
                 try
                 {
-                    Depense tmp = new Depense(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage, 0, 
+                    /*Depense tmp = new Depense(0, Utilisateur.Instance.CurrentVoyage.Id_Voyage, 0, 
                         float.Parse(userControlDepense.tb_price.Text, System.Globalization.CultureInfo.InvariantCulture),
-                        userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now);
-                    ManagerSql.InsertDepense(tmp);
+                        userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text, DateTime.Now);*/
+
+                    ManagerSql.InsertDepense((Depense)DataContext);
                     Utilisateur.Instance.CurrentVoyage.refreshListeDepense(); 
                 }
                catch(FormatException ex)

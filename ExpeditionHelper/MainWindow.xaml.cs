@@ -53,29 +53,44 @@ namespace ExpeditionHelper
 
         private void new_activities(object sender, RoutedEventArgs e)
         {
+            Activite activite = new Activite();
+            activite.M_datetime = DateTime.Now;
             WindowActivites tmp = new WindowActivites();
+            tmp.DataContext = activite;
             tmp.ShowDialog();
         }
 
         private void new_meal(object sender, RoutedEventArgs e)
         {
+            Nourriture nourriture = new Nourriture();
+            nourriture.M_datetime = DateTime.Now;
             WindowNourriture tmp = new WindowNourriture();
+            tmp.DataContext = nourriture;
             tmp.ShowDialog();
         }
 
         private void new_transport(object sender, RoutedEventArgs e)
         {
+            Transport transport = new Transport();
+            transport.M_datetime = DateTime.Now;
             WindowTransport tmp = new WindowTransport();
+            tmp.DataContext = transport;
             tmp.ShowDialog();
         }
         private void new_logement(object sender, RoutedEventArgs e)
         {
+            Logement logement = new Logement();
+            logement.M_datetime = DateTime.Now;
             WindowLogement tmp = new WindowLogement();
+            tmp.DataContext = logement;
             tmp.ShowDialog();
         }
         private void new_divers(object sender, RoutedEventArgs e)
         {
+            Depense depense = new Depense();
+            depense.M_datetime = DateTime.Now;
             WindowDivers tmp = new WindowDivers();
+            tmp.DataContext = depense;
             tmp.ShowDialog();
         }
 
@@ -102,8 +117,7 @@ namespace ExpeditionHelper
             catch (Exception)
             {
                 //ne rien faire c'est que la liste est vide
-            }
-            //bug le sort ne s'effecture pas 
+            } 
         }
 
         private void listView_Depense_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -205,6 +219,7 @@ namespace ExpeditionHelper
                 ManagerSql.UpdateDepense(tmp2);
             }
             ManagerSql.SelectDepenseTot((Voyage)listView_Voyage.SelectedItem);
+            totalSpent_value.Content = ((Voyage)listView_Voyage.SelectedItem).DepenseTot;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -232,6 +247,8 @@ namespace ExpeditionHelper
         private void btn_new_trip_Click(object sender, RoutedEventArgs e)
         {
             Voyage voyage = new Voyage();
+            voyage.Debut = DateTime.Now.Date;
+            voyage.Fin= DateTime.Now.Date;
             WindowVoyage tmp = new WindowVoyage();
             tmp.DataContext = voyage;
             tmp.ShowDialog();
