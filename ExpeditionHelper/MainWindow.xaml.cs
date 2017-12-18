@@ -102,8 +102,7 @@ namespace ExpeditionHelper
             catch (Exception)
             {
                 //ne rien faire c'est que la liste est vide
-            }
-            //bug le sort ne s'effecture pas 
+            } 
         }
 
         private void listView_Depense_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -205,6 +204,7 @@ namespace ExpeditionHelper
                 ManagerSql.UpdateDepense(tmp2);
             }
             ManagerSql.SelectDepenseTot((Voyage)listView_Voyage.SelectedItem);
+            totalSpent_value.Content = ((Voyage)listView_Voyage.SelectedItem).DepenseTot;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -232,6 +232,8 @@ namespace ExpeditionHelper
         private void btn_new_trip_Click(object sender, RoutedEventArgs e)
         {
             Voyage voyage = new Voyage();
+            voyage.Debut = DateTime.Now.Date;
+            voyage.Fin= DateTime.Now.Date;
             WindowVoyage tmp = new WindowVoyage();
             tmp.DataContext = voyage;
             tmp.ShowDialog();

@@ -22,7 +22,7 @@ namespace ExpeditionHelper
         public WindowVoyage()
         {
             InitializeComponent();
-
+            calendar_debut.SelectedDate = DateTime.Now.Date;
         }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)

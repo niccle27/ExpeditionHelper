@@ -28,7 +28,7 @@
             <StatusBarItem Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Total Spent" Foreground="Black"/>
-                    <Label DataContext="listView_Voyage." Content="{Binding Path=SelectedValue.DepenseTot,ElementName=listView_Voyage,Mode=OneWay}" Foreground="Red"/>
+                    <Label Name="totalSpent_value" DataContext="listView_Voyage" Content="{Binding Path=SelectedValue.DepenseTot,ElementName=listView_Voyage}" Foreground="Red"/>
                 </StackPanel>
             </StatusBarItem>
             <StatusBarItem Grid.Column="1">
