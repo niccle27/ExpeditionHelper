@@ -242,8 +242,10 @@
                                         </StackPanel>
 
                                     </Grid>
-                                        <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    <DockPanel Grid.Row="1" Grid.RowSpan="2">
+                                        <Label DockPanel.Dock="Left"  FontWeight="Bold" Content="Comment:" Padding="10"/>
+                                        <TextBlock TextWrapping="Wrap" Width="400" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    </DockPanel>
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate DataType = "{x:Type local:Activite}">
@@ -293,8 +295,11 @@
                                         </StackPanel>
 
                                     </Grid>
-                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    <DockPanel Grid.Row="1" Grid.RowSpan="2">
+                                        <Label DockPanel.Dock="Left"  FontWeight="Bold" Content="Comment:" Padding="10"/>
+                                        <TextBlock TextWrapping="Wrap" Width="400" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    </DockPanel>
+
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate DataType = "{x:Type local:Logement}">
