@@ -53,29 +53,44 @@ namespace ExpeditionHelper
 
         private void new_activities(object sender, RoutedEventArgs e)
         {
+            Activite activite = new Activite();
+            activite.M_datetime = DateTime.Now;
             WindowActivites tmp = new WindowActivites();
+            tmp.DataContext = activite;
             tmp.ShowDialog();
         }
 
         private void new_meal(object sender, RoutedEventArgs e)
         {
+            Nourriture nourriture = new Nourriture();
+            nourriture.M_datetime = DateTime.Now;
             WindowNourriture tmp = new WindowNourriture();
+            tmp.DataContext = nourriture;
             tmp.ShowDialog();
         }
 
         private void new_transport(object sender, RoutedEventArgs e)
         {
+            Transport transport = new Transport();
+            transport.M_datetime = DateTime.Now;
             WindowTransport tmp = new WindowTransport();
+            tmp.DataContext = transport;
             tmp.ShowDialog();
         }
         private void new_logement(object sender, RoutedEventArgs e)
         {
+            Logement logement = new Logement();
+            logement.M_datetime = DateTime.Now;
             WindowLogement tmp = new WindowLogement();
+            tmp.DataContext = logement;
             tmp.ShowDialog();
         }
         private void new_divers(object sender, RoutedEventArgs e)
         {
+            Depense depense = new Depense();
+            depense.M_datetime = DateTime.Now;
             WindowDivers tmp = new WindowDivers();
+            tmp.DataContext = depense;
             tmp.ShowDialog();
         }
 

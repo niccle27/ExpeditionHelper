@@ -30,10 +30,10 @@ namespace ExpeditionHelper
             {
                 try
                 {
-                    Activite tmp = new Activite(0,Utilisateur.Instance.CurrentVoyage.Id_Voyage,0,float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
-                    DateTime.Now, userControlActivite.tb_city.Text);
-                    ManagerSql.InsertActivity(tmp);
-                    ManagerSql.InsertDepense(tmp);
+                    /*Activite tmp = new Activite(0,Utilisateur.Instance.CurrentVoyage.Id_Voyage,0,float.Parse(userControlDepense.tb_price.Text), userControlDepense.tb_name.Text, userControlDepense.tb_comment.Text,
+                    DateTime.Now, userControlActivite.tb_city.Text);*/
+                    ManagerSql.InsertActivity((Activite)DataContext);
+                    ManagerSql.InsertDepense((Activite)DataContext);
                     Utilisateur.Instance.CurrentVoyage.refreshListeDepense();
                 }
                 catch (FormatException ex)
