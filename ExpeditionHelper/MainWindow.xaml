@@ -354,8 +354,11 @@
                                         </StackPanel>
 
                                     </Grid>
-                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    <DockPanel Grid.Row="1" Grid.RowSpan="2">
+                                        <Label DockPanel.Dock="Left"  FontWeight="Bold" Content="Comment:" Padding="10"/>
+                                        <TextBlock TextWrapping="Wrap" Width="400" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    </DockPanel>
+
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate DataType = "{x:Type local:Nourriture}">
@@ -405,8 +408,10 @@
                                         </StackPanel>
 
                                     </Grid>
-                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    <DockPanel Grid.Row="1" Grid.RowSpan="2">
+                                        <Label DockPanel.Dock="Left"  FontWeight="Bold" Content="Comment:" Padding="10"/>
+                                        <TextBlock TextWrapping="Wrap" Width="400" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    </DockPanel>
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate DataType = "{x:Type local:Transport}">
@@ -461,8 +466,10 @@
                                         </StackPanel>
 
                                     </Grid>
-                                    <Label Grid.Row="1" FontWeight="Bold" Content="Comment:"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    <DockPanel Grid.Row="1" Grid.RowSpan="2">
+                                        <Label DockPanel.Dock="Left"  FontWeight="Bold" Content="Comment:" Padding="10"/>
+                                        <TextBlock TextWrapping="Wrap" Width="400" FontStyle="Oblique" Text="{Binding Commentaire}"/>
+                                    </DockPanel>
                                 </Grid>
                             </DataTemplate>
                         </ListView.Resources>
@@ -496,7 +503,7 @@
                 </StackPanel>
                 <GridSplitter Grid.Column="3" Width="2" HorizontalAlignment="Stretch" ShowsPreview="False" />
                 <!-- colonne d'update-->
-                <Grid Grid.Column="4" Width="200">
+                <Grid Grid.Column="4" Width="250">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>

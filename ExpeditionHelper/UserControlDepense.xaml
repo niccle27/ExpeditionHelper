@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ExpeditionHelper"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Border BorderThickness="7">
+    <Border>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
