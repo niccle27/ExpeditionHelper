@@ -80,7 +80,7 @@ namespace ExpeditionHelper
         {
             get { return m_datetime; }
             set { m_datetime = value;
-                this.date = value.Date.ToString("MM/dd/yyyy");
+                this.date = value.Date.ToString("dd/MM/yyyy");
             }
         }
 
